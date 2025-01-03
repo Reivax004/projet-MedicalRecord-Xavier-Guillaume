@@ -45,7 +45,7 @@ public goToConsultMedical(): void {
   }
 
   public goToConsultPatients(): void{
-    this.router.navigate([' /patientpage', this.userId]);
+    this.router.navigate(['/patientpage', this.userId]);
 }
 }
 
