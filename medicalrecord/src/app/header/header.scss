@@ -1,0 +1,50 @@
+/* Reset rapide */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1976d2;
+  color: white;
+
+  width: 100%;          /* Prend toute la largeur */
+  top: 0;               /* Collée en haut */
+  left: 0;
+  position: fixed;      /* Reste visible au scroll */
+  z-index: 1000;        /* Au-dessus du contenu */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar .nav-links li a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Pour que le contenu ne soit pas caché sous la navbar */
+body {
+  padding-top: 70px; /* Ajuste selon la hauteur de ta navbar */
+}

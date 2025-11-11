@@ -1,0 +1,51 @@
+<div class="medical-container">
+  <h2>Dossier Médical</h2>
+
+  @if (showForm()) {
+  <form [formGroup]="medicalForm">
+
+    <label for="firstName">Prénom*</label>
+    <input type="text" id="firstName" formControlName="firstName">
+
+    <label for="lastName">Nom*</label>
+    <input type="text" id="lastName" formControlName="lastName">
+
+    <label for="dateOfBirth">Date de naissance*</label>
+    <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+
+    <label for="sex">Sexe*</label>
+    <select id="sex" formControlName="sex">
+      <option value="" disabled selected>Sélectionner</option>
+      <option value="Homme">Homme</option>
+      <option value="Femme">Femme</option>
+      <option value="Autre">Autre</option>
+    </select>
+
+    <label for="weight">Poids (kg)</label>
+    <input type="number" id="weight" formControlName="weight" min="0">
+
+    <label for="height">Taille (cm)</label>
+    <input type="number" id="height" formControlName="height" min="0">
+
+    <label for="bloodType">Groupe sanguin*</label>
+    <input type="text" id="bloodType" formControlName="bloodType">
+
+    <label for="allergies">Allergies</label>
+    <input type="text" id="allergies" formControlName="allergies">
+
+    <label for="chronicDiseases">Maladies chroniques</label>
+    <input type="text" id="chronicDiseases" formControlName="chronicDiseases">
+
+    <label for="currentMedications">Médicaments en cours</label>
+    <input type="text" id="currentMedications" formControlName="currentMedications">
+
+    <label for="pastSurgeries">Chirurgies passées</label>
+    <input type="text" id="pastSurgeries" formControlName="pastSurgeries">
+
+    <label for="emergencyContact">Contact d'urgence*</label>
+    <input type="text" id="emergencyContact" formControlName="emergencyContact">
+
+    <button type="submit">Soumettre</button>
+  </form>
+  }
+</div>
