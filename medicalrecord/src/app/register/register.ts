@@ -18,8 +18,19 @@ export class Register {
   constructor(private fb: FormBuilder, private router: Router) {
     this.registerForm = this.fb.group({
       role: ['', Validators.required],
+      ssn: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      birthDate: ['', Validators.required],
+      sex: ['', Validators.required],
+      phone: ['', Validators.required],
+
+      // Adresse découpée
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      country: ['', Validators.required],
+
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
@@ -27,13 +38,31 @@ export class Register {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      const account: Account = this.registerForm.value;
-      console.log(account); // Objet typé Account
+
+      // Reconstruction de l'objet Account avec address
+      const account: Account = {
+        role: this.registerForm.value.role,
+        ssn: this.registerForm.value.ssn,
+        lastName: this.registerForm.value.lastName,
+        firstName: this.registerForm.value.firstName,
+        birthDate: this.registerForm.value.birthDate,
+        sex: this.registerForm.value.sex,
+        phone: this.registerForm.value.phone,
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password,
+        address: {
+          street: this.registerForm.value.street,
+          city: this.registerForm.value.city,
+          postalCode: this.registerForm.value.postalCode,
+          country: this.registerForm.value.country
+        }
+      };
+
+      console.log(account);
       alert('Inscription réussie !');
 
-      // Redirection selon rôle
       if (account.role === 'Patient') {
-        this.router.navigate(['/medical-record']);
+        this.router.navigate(['/record']);
       } else {
         this.router.navigate(['/dashboard']);
       }

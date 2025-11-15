@@ -1,0 +1,53 @@
+<div class="practitioner-container">
+  <h2>Create Practitioner Account</h2>
+
+  <form [formGroup]="practitionerForm" (ngSubmit)="onSubmit()">
+
+    <label for="nom">Last Name*</label>
+    <input id="nom" formControlName="nom" type="text">
+
+    <label for="prenom">First Name*</label>
+    <input id="prenom" formControlName="prenom" type="text">
+
+    <label for="specialisation">Specialization*</label>
+    <input id="specialisation" formControlName="specialisation" type="text">
+
+    <label for="telephone">Phone*</label>
+    <input id="telephone" formControlName="telephone" type="text">
+
+    <h3>Establishment</h3>
+    <div formGroupName="establishment">
+      <label for="estName">Name*</label>
+      <input id="estName" formControlName="name" type="text">
+
+      <label for="estType">Type*</label>
+      <input id="estType" formControlName="type" type="text">
+
+      <label for="estDescription">Description</label>
+      <input id="estDescription" formControlName="description" type="text">
+
+      <label for="estPhone">Phone</label>
+      <input id="estPhone" formControlName="phone" type="text">
+
+      <label for="estEmail">Email</label>
+      <input id="estEmail" formControlName="email" type="email">
+    </div>
+
+    <h3>Address</h3>
+    <div formGroupName="address">
+      <label for="street">Street*</label>
+      <input id="street" formControlName="street" type="text">
+
+      <label for="city">City*</label>
+      <input id="city" formControlName="city" type="text">
+
+      <label for="zipCode">Zip Code*</label>
+      <input id="zipCode" formControlName="zipCode" type="text">
+
+      <label for="country">Country*</label>
+      <input id="country" formControlName="country" type="text">
+    </div>
+
+    <button class="submit-btn" type="submit">Create Account</button>
+  </form>
+</div>

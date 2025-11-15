@@ -1,9 +1,8 @@
-.medical-container {
+.dossier-container {
   max-width: 600px;
-  width: 90%;
   margin: 2rem auto;
-  padding: 2.5rem;
-  border-radius: 10px;
+  padding: 2rem;
+  border-radius: 8px;
   background-color: #f9f9f9;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   font-family: Arial, sans-serif;
@@ -39,25 +38,74 @@ form select:focus {
   box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
 }
 
-form button {
-  width: 100%;
-  padding: 0.8rem;
-  background-color: #1976d2;
+h3 {
+  margin-top: 25px;
+  color: #333;
+}
+
+.list {
+  margin-bottom: 15px;
+}
+
+.doc-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  input {
+    flex: 1;
+  }
+
+  button {
+    background: #e44;
+    border: none;
+    padding: 6px 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #c33;
+  }
+}
+
+.add {
+  background: #4caf50;
   color: white;
   border: none;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.add:hover {
+  background-color: #3b9e3b;
+}
+
+.submit-btn {
+  background: #1976d2;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  width: 100%;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
-form button:hover {
+.submit-btn:hover {
   background-color: #115293;
 }
 
 /* Responsive */
 @media (max-width: 640px) {
-  .medical-container {
+  .dossier-container {
     padding: 1rem;
   }
 

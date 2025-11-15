@@ -1,20 +1,49 @@
 <div class="register-container">
-  <h2>Inscription</h2>
+  <h2>Créer un compte Patient</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
     <label for="role">Rôle*</label>
     <select id="role" formControlName="role">
       <option value="" disabled selected>Sélectionner un rôle</option>
-      <option value="Patient">Patient</option>
-      <option value="Médecin">Médecin</option>
-      <option value="Secrétaire">Secrétaire</option>
+      <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
     </select>
+
+    <label for="ssn">Numéro de Sécurité Sociale*</label>
+    <input type="number" id="ssn" formControlName="ssn">
 
     <label for="firstName">Prénom*</label>
     <input type="text" id="firstName" formControlName="firstName">
 
     <label for="lastName">Nom*</label>
     <input type="text" id="lastName" formControlName="lastName">
+
+    <label for="birthDate">Date de naissance*</label>
+    <input type="date" id="birthDate" formControlName="birthDate">
+
+    <label for="sex">Sexe*</label>
+    <select id="sex" formControlName="sex">
+      <option value="" disabled selected>Sélectionner le sexe</option>
+      <option value="Homme">Homme</option>
+      <option value="Femme">Femme</option>
+      <option value="Autre">Autre</option>
+    </select>
+
+    <label for="phone">Téléphone*</label>
+    <input type="number" id="phone" formControlName="phone">
+
+    <h3>Adresse</h3>
+
+    <label for="street">Rue*</label>
+    <input type="text" id="street" formControlName="street">
+
+    <label for="city">Ville*</label>
+    <input type="text" id="city" formControlName="city">
+
+    <label for="postalCode">Code Postal*</label>
+    <input type="text" id="postalCode" formControlName="postalCode">
+
+    <label for="country">Pays*</label>
+    <input type="text" id="country" formControlName="country">
 
     <label for="email">Email*</label>
     <input type="email" id="email" formControlName="email">
