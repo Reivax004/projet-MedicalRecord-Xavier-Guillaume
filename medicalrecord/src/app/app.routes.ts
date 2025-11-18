@@ -6,6 +6,7 @@ import {FollowupRecord} from './followuprecord/followuprecord';
 import {RecordTransition} from './recordtransition/recordtransition';
 import {AccountPractitioner} from './accountpractitioner/accountpractitioner';
 import {AccountTransition} from './accounttransition/accounttransition';
+import {Appointments} from './appointments/appointments';
 
 export const routes: Routes = [
   { path: '', component: Home},
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'record', component: Record},
   { path: 'followuprecord', component: FollowupRecord},
   { path: 'recordtransition', component: RecordTransition},
+  { path: 'appointments', component: Appointments},
   { path: '**', redirectTo: 'home'}
 
 ];

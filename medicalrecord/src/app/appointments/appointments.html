@@ -1,1 +1,14 @@
-<p>appointments works!</p>
+<div class="appointment-container">
+  <h2>Historique de vos rendez-vous</h2>
+  @for (appointment of appointments; track appointment){
+  <div class="appointment-card">
+    <h3>{{ appointment.name }}</h3>
+    <p><strong>Date :</strong> {{ appointment.date | date:'longDate' }}</p>
+    <p><strong>Type :</strong> {{ appointment.type }}</p>
+    <p><strong>Description :</strong> {{ appointment.description }}</p>
+  </div>
+  }
+  <div class="retour-container">
+    <button class="btn-retour" onclick="history.back()">⟵ Retour</button>
+  </div>
+</div>
