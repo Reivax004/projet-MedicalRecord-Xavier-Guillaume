@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Account, Role } from '../models/account';
+import { Account} from '../models/account';
 
 @Component({
   selector: 'app-register',
@@ -13,11 +13,9 @@ import { Account, Role } from '../models/account';
 })
 export class Register {
   registerForm: FormGroup;
-  roles: Role[] = ['Patient', 'Médecin', 'Secrétaire'];
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.registerForm = this.fb.group({
-      role: ['', Validators.required],
       ssn: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -41,7 +39,6 @@ export class Register {
 
       // Reconstruction de l'objet Account avec address
       const account: Account = {
-        role: this.registerForm.value.role,
         ssn: this.registerForm.value.ssn,
         lastName: this.registerForm.value.lastName,
         firstName: this.registerForm.value.firstName,
@@ -60,12 +57,6 @@ export class Register {
 
       console.log(account);
       alert('Inscription réussie !');
-
-      if (account.role === 'Patient') {
-        this.router.navigate(['/record']);
-      } else {
-        this.router.navigate(['/dashboard']);
-      }
     } else {
       alert('Veuillez remplir tous les champs requis.');
     }

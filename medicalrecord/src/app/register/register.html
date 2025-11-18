@@ -2,12 +2,6 @@
   <h2>Créer un compte Patient</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-    <label for="role">Rôle*</label>
-    <select id="role" formControlName="role">
-      <option value="" disabled selected>Sélectionner un rôle</option>
-      <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
-    </select>
-
     <label for="ssn">Numéro de Sécurité Sociale*</label>
     <input type="number" id="ssn" formControlName="ssn">
 

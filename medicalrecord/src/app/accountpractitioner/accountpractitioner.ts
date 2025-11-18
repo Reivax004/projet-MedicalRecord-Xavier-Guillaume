@@ -8,8 +8,8 @@ import { Practitioner} from '../models/practitioner';
   selector: 'app-practitioner',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './account-practitioner.html',
-  styleUrls: ['./account-practitioner.scss']
+  templateUrl: './accountpractitioner.html',
+  styleUrls: ['./accountpractitioner.scss']
 })
 export class AccountPractitioner {
   practitionerForm: FormGroup;

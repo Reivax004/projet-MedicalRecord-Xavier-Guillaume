@@ -1,9 +1,7 @@
 import {Address} from './address';
 
-export type Role = 'Patient' | 'Médecin' | 'Secrétaire';
 
 export interface Account {
-  role: Role;
   ssn: number;
   lastName: string;
   firstName: string;
