@@ -1,7 +1,7 @@
 import {Address} from './address';
 
 export interface Establishment {
-  adresse: Address;
+  adress: Address;
   type: string;
   description?: string;
   telephone: string;

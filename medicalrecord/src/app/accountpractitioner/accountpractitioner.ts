@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Practitioner} from '../models/practitioner';
+import {RouterLink} from '@angular/router';
 
 
 @Component({
   selector: 'app-practitioner',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './accountpractitioner.html',
   styleUrls: ['./accountpractitioner.scss']
 })
@@ -26,15 +27,16 @@ export class AccountPractitioner {
         type: ['', Validators.required],
         description: [''],
         phone: [''],
-        email: ['', Validators.email]
+        email: ['', Validators.email],
+        address: this.fb.group({
+          street: ['', Validators.required],
+          city: ['', Validators.required],
+          zipCode: ['', Validators.required],
+          country: ['', Validators.required]
+        })
       }),
 
-      address: this.fb.group({
-        street: ['', Validators.required],
-        city: ['', Validators.required],
-        zipCode: ['', Validators.required],
-        country: ['', Validators.required]
-      })
+
     });
   }
 

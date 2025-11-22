@@ -1,6 +1,6 @@
 export interface Address {
-  street: string;       // Rue
-  city: string;         // Ville
-  postalCode: string;   // Code postal
-  country: string;      // Pays
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
 }

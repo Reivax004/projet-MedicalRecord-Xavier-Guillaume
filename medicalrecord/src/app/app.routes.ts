@@ -7,6 +7,8 @@ import {RecordTransition} from './recordtransition/recordtransition';
 import {AccountPractitioner} from './accountpractitioner/accountpractitioner';
 import {AccountTransition} from './accounttransition/accounttransition';
 import {Appointments} from './appointments/appointments';
+import {Patientpage} from './patientpage/patientpage';
+import {Practitionerpage} from './practitionerpage/practitionerpage';
 
 export const routes: Routes = [
   { path: '', component: Home},
@@ -18,6 +20,8 @@ export const routes: Routes = [
   { path: 'followuprecord', component: FollowupRecord},
   { path: 'recordtransition', component: RecordTransition},
   { path: 'appointments', component: Appointments},
+  { path: 'patientpage', component: Patientpage},
+  { path: 'practitionerpage', component: Practitionerpage},
   { path: '**', redirectTo: 'home'}
 
 ];
