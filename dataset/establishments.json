@@ -1,0 +1,53 @@
+[
+    {
+      "_id": 1,
+      "name": "Clinique Turin",
+       "address": {
+        "number": "15",
+        "street": "Rue de Turin",
+        "city": "Paris",
+        "postal_code": "75008",
+        "country": "France"
+      },
+      "type": "Établissement de santé privé",
+      "description": "Clinique pluridisciplinaire fictive proposant des services de chirurgie, médecine interne, imagerie et consultations spécialisées.",
+      "phone": "0156893021",
+      "email": "contact@clinique-turin.fr",
+      "creation_date": "1998-06-12",
+      "number_employees": 210
+    },
+    {
+      "_id": 2,
+      "name": "Hôpital Saint-Antoine",
+      "address": {
+        "number": "184",
+        "street": "Rue du Faubourg Saint-Antoine",
+        "city": "Paris",
+        "postal_code": "75012",
+        "country": "France"
+      },
+      "type": "Hôpital public",
+      "description": "Hôpital public parisien offrant un large panel de spécialités médicales.",
+      "phone": "0149285151",
+      "email": "contact@hopital-saint-antoine.fr",
+      "creation_date": "1965-04-21",
+      "number_employees": 950
+    },
+    {
+      "_id": 3,
+      "name": "Centre Médical Parmentier",
+      "address": {
+        "number": "27",
+        "street": "Avenue Parmentier",
+        "city": "Paris",
+        "postal_code": "75011",
+        "country": "France"
+      },
+      "type": "Centre de santé pluridisciplinaire",
+      "description": "Centre de consultations en médecine générale, pédiatrie et spécialités courantes.",
+      "phone": "0147002234",
+      "email": "contact@cm-parmentier.fr",
+      "creation_date": "2005-09-10",
+      "number_employees": 120
+    }
+]

@@ -1,0 +1,150 @@
+[
+    {
+      "_id": 1,
+      "lastname": "Martin",
+      "firstname": "Élodie",
+      "email": "martin.elodie@example.com",
+      "password": "token_string",
+      "specialization": "Cardiologie",
+      "phone": "0678451290",
+      "establishment": [
+        { "establishmentId": 1, "name": "Clinique Turin" }
+      ]
+    },
+
+    {
+      "_id": 2,
+      "lastname": "Leroy",
+      "firstname": "Thomas",
+      "email": "leroy.thomas@example.com",
+      "password": "token_string",
+      "specialization": "Médecin généraliste",
+      "phone": "0678124590",
+      "establishment": [
+        { "establishmentId": 1, "name": "Clinique Turin" }
+      ]
+    },
+
+    {
+      "_id": 3,
+      "lastname": "Renault",
+      "firstname": "Sophie",
+      "email": "renault.sophie@example.com",
+      "password": "token_string",
+      "specialization": "ORL",
+      "phone": "0678991122",
+      "establishment": [
+        { "establishmentId": 2, "name": "Hôpital Saint-Antoine" }
+      ]
+    },
+
+    {
+      "_id": 4,
+      "lastname": "Bernard",
+      "firstname": "Antoine",
+      "email": "bernard.antoine@example.com",
+      "password": "token_string",
+      "specialization": "Médecin généraliste",
+      "phone": "0678001122",
+      "establishment": [
+        { "establishmentId": 3, "name": "Centre Médical Parmentier" }
+      ]
+    },
+
+    {
+      "_id": 5,
+      "lastname": "Haddad",
+      "firstname": "Karim",
+      "email": "haddad.karim@example.com",
+      "password": "token_string",
+      "specialization": "Pneumologie",
+      "phone": "0678440022",
+      "establishment": [
+        { "establishmentId": 2, "name": "Hôpital Saint-Antoine" }
+      ]
+    },
+    {
+      "_id": 6,
+      "lastname": "Morel",
+      "firstname": "Camille",
+      "email": "camille.morel@example.com",
+      "password": "token_string",
+      "specialization": "Endocrinologie",
+      "phone": "0678124500",
+      "establishment": [
+        { "establishmentId": 2, "name": "Hôpital Saint-Antoine" }
+      ]
+    },
+    {
+      "_id": 7,
+      "lastname": "Petit",
+      "firstname": "Julien",
+      "email": "julien.petit@example.com",
+      "password": "token_string",
+      "specialization": "Neurologie",
+      "phone": "0678456700",
+      "establishment": [
+        { "establishmentId": 1, "name": "Clinique Turin" }
+      ]
+    },
+    {
+      "_id": 8,
+      "lastname": "Gomes",
+      "firstname": "Laura",
+      "email": "laura.gomes@example.com",
+      "password": "token_string",
+      "specialization": "Kinésithérapie",
+      "phone": "0678992300",
+      "establishment": [
+        { "establishmentId": 3, "name": "Centre Médical Parmentier" }
+      ]
+    },
+    {
+      "_id": 9,
+      "lastname": "Dumas",
+      "firstname": "Claire",
+      "email": "claire.dumas@example.com",
+      "password": "token_string",
+      "specialization": "Dermatologie",
+      "phone": "0678543210",
+      "establishment": [
+        { "establishmentId": 2, "name": "Hôpital Saint-Antoine" }
+      ]
+    },
+    {
+      "_id": 10,
+      "lastname": "Fournier",
+      "firstname": "Julien",
+      "email": "julien.fournier@example.com",
+      "password": "token_string",
+      "specialization": "Rhumatologie",
+      "phone": "0678112233",
+      "establishment": [
+        { "establishmentId": 2, "name": "Hôpital Saint-Antoine" }
+      ]
+    },
+    {
+      "_id": 11,
+      "lastname": "Garnier",
+      "firstname": "Paul",
+      "email": "garnier.paul@example.com",
+      "password": "token_string",
+      "specialization": "Radiologie",
+      "phone": "0678123400",
+      "establishment": [
+        { "establishmentId": 2, "name": "Hôpital Saint-Antoine" }
+      ]
+    },
+    {
+      "_id": 12,
+      "lastname": "Moretti",
+      "firstname": "Clara",
+      "email": "moretti.clara@example.com",
+      "password": "token_string",
+      "specialization": "Gynécologie",
+      "phone": "0678994412",
+      "establishment": [
+        { "establishmentId": 2, "name": "Hôpital Saint-Antoine" }
+      ]
+    }
+]

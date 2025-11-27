@@ -1,0 +1,969 @@
+[{
+    "_id": 1,
+    "SSN": "290041234567890",
+    "lastname": "Dupont",
+    "firstname": "Alice",
+    "birthdate": "1990-04-12",
+    "address": {
+      "number": "69",
+      "street": "Rue des Lilas",
+      "city": "Paris",
+      "postal_code": "75010",
+      "country": "France"
+    },
+    "sex": "Femme",
+    "phone": "0601020304",
+    "email": "alice.dupont@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 101,
+      "blood_group": "A+",
+      "weight": "68.4",
+      "height": "172",
+      "blood_pressure": "110/70",
+
+      "general_practitioner": [
+        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-05-12",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        },
+        {
+          "name": "Vaccin grippe saisonnière",
+          "injection_date": "2023-10-20",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2019-03-15",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Dr. Karim Haddad"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "2018-06-10",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Élodie Martin"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1992-09-05",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Infirmière scolaire"
+        },
+        {
+          "name": "Vaccin papillomavirus",
+          "injection_date": "2008-04-18",
+          "vaccination_type": "Première dose",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        }
+      ],
+
+      "allergies": [
+        "Pollen",
+        "Arachides"
+      ]
+    }
+ },
+ {
+    "_id": 2,
+    "SSN": "182051234567891",
+    "lastname": "Moreau",
+    "firstname": "Jean",
+    "birthdate": "1982-05-23",
+    "address": {
+      "number": "69",
+      "street": "Rue des Lilas",
+      "city": "Paris",
+      "postal_code": "75010",
+      "country": "France"
+    },
+    "sex": "Homme",
+    "phone": "0605060708",
+    "email": "jean.moreau@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 102,
+      "blood_group": "O+",
+      "weight": "82.0",
+      "height": "180",
+      "blood_pressure": "125/80",
+
+      "general_practitioner": [
+        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-04-30",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Dr. Antoine Bernard"
+        },
+        {
+          "name": "Vaccin grippe saisonnière",
+          "injection_date": "2022-11-10",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Antoine Bernard"
+        },
+        {
+          "name": "Vaccin grippe saisonnière",
+          "injection_date": "2023-11-15",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Antoine Bernard"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2016-07-02",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin hépatite A",
+          "injection_date": "2015-03-19",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "2015-04-19",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin pneumocoque",
+          "injection_date": "2020-01-12",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Karim Haddad"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1984-09-01",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        }
+      ],
+
+      "allergies": [
+        "Acarien",
+        "Pénicilline"
+      ]
+    }
+ },
+ {
+    "_id": 3,
+    "SSN": "197012345678922",
+    "lastname": "Lefèvre",
+    "firstname": "Sophie",
+    "birthdate": "1970-12-05",
+    "address": {
+      "number": "24",
+      "street": "Rue de Charonne",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Femme",
+    "phone": "0611223344",
+    "email": "sophie.lefebvre@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 103,
+      "blood_group": "B+",
+      "weight": "72.0",
+      "height": "168",
+      "blood_pressure": "118/72",
+
+      "general_practitioner": [
+        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin grippe saisonnière",
+          "injection_date": "2023-11-03",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        },
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-05-25",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2018-04-12",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin pneumocoque",
+          "injection_date": "2020-09-10",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Élodie Martin"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "1994-05-20",
+          "vaccination_type": "Troisième injection",
+          "vaccinator_name": "Service de santé universitaire"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1972-10-01",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        }
+      ],
+
+      "allergies": [
+        "Latex"
+      ]
+    }
+ },
+ {
+    "_id": 4,
+    "SSN": "199503456789123",
+    "lastname": "Dubois",
+    "firstname": "Pierre",
+    "birthdate": "1995-03-14",
+    "address": {
+      "number": "102",
+      "street": "Rue Saint-Maur",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Homme",
+    "phone": "0677889900",
+    "email": "pierre.dubois@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 104,
+      "blood_group": "AB-",
+      "weight": "76.5",
+      "height": "178",
+      "blood_pressure": "121/75",
+
+      "general_practitioner": [
+        { "practitionerId": 4, "lastname": "Benard", "firstname": "Antoine" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-06-05",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1997-04-20",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2020-08-14",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2023-11-10",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Bernard Antoine"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "2010-10-18",
+          "vaccination_type": "Troisième dose",
+          "vaccinator_name": "Infirmier scolaire"
+        }
+      ],
+
+      "allergies": [
+        "Poils de chat"
+      ]
+    }
+ },
+ {
+    "_id": 5,
+    "SSN": "199061234567894",
+    "lastname": "Girard",
+    "firstname": "Camille",
+    "birthdate": "1990-06-10",
+    "address": {
+      "number": "12",
+      "street": "Rue Oberkampf",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Femme",
+    "phone": "0678901234",
+    "email": "camille.girard@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 105,
+      "blood_group": "A-",
+      "weight": "58.0",
+      "height": "165",
+      "blood_pressure": "108/68",
+
+      "general_practitioner": [
+        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-06-15",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2023-10-22",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Antoine Bernard"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2017-04-10",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1992-09-15",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "2010-05-20",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Médecin scolaire"
+        }
+      ],
+
+      "allergies": []
+    }
+ },
+ {
+    "_id": 6,
+    "SSN": "200021234567895",
+    "lastname": "Petit",
+    "firstname": "Lucas",
+    "birthdate": "2000-02-11",
+    "address": {
+      "number": "18",
+      "street": "Rue Sedaine",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Homme",
+    "phone": "0678124499",
+    "email": "lucas.petit@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 106,
+      "blood_group": "O-",
+      "weight": "74.2",
+      "height": "179",
+      "blood_pressure": "120/78",
+
+      "general_practitioner": [],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-07-01",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris"
+        },
+        {
+          "name": "Vaccin méningite",
+          "injection_date": "2018-10-05",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Médecin scolaire"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2020-06-01",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "2002-09-02",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2023-11-01",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        }
+      ],
+
+      "allergies": [
+        "Pollens"
+      ]
+    }
+ },
+ {
+    "_id": 7,
+    "SSN": "198811234567896",
+    "lastname": "Rolland",
+    "firstname": "Nina",
+    "birthdate": "1988-11-29",
+    "address": {
+      "number": "18",
+      "street": "Rue Sedaine",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Femme",
+    "phone": "0688124450",
+    "email": "nina.rolland@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 107,
+      "blood_group": "B-",
+      "weight": "64.1",
+      "height": "170",
+      "blood_pressure": "118/71",
+
+      "general_practitioner": [
+        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-06-10",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2024-10-15",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        },
+        {
+          "name": "Vaccin coqueluche",
+          "injection_date": "2019-05-12",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Centre de santé Paris"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "2004-03-22",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Médecin scolaire"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1990-07-01",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        }
+      ],
+
+      "allergies": [
+        "Aspirine"
+      ]
+    }
+ },
+ {
+    "_id": 8,
+    "SSN": "197403456789155",
+    "lastname": "Bernard",
+    "firstname": "Hélène",
+    "birthdate": "1974-03-19",
+    "address": {
+      "number": "5",
+      "street": "Rue du Faubourg du Temple",
+      "city": "Paris",
+      "postal_code": "75010",
+      "country": "France"
+    },
+    "sex": "Femme",
+    "phone": "0677885521",
+    "email": "helene.bernard@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 108,
+      "blood_group": "A+",
+      "weight": "70.3",
+      "height": "167",
+      "blood_pressure": "129/82",
+
+      "general_practitioner": [
+        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-06-12",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris 10"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2023-10-12",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Antoine Bernard"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2019-06-01",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1976-09-08",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "1996-04-15",
+          "vaccination_type": "Troisième injection",
+          "vaccinator_name": "Infirmière"
+        }
+      ],
+
+      "allergies": [
+        "Gluten"
+      ]
+    }
+ },
+ {
+    "_id": 9,
+    "SSN": "199212345678977",
+    "lastname": "Marchand",
+    "firstname": "Éric",
+    "birthdate": "1992-01-27",
+    "address": {
+      "number": "45",
+      "street": "Boulevard Voltaire",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Homme",
+    "phone": "0677990055",
+    "email": "eric.marchand@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 109,
+      "blood_group": "O+",
+      "weight": "81.4",
+      "height": "183",
+      "blood_pressure": "124/80",
+
+      "general_practitioner": [
+        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-06-20",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2020-05-12",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1994-04-10",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "2012-03-21",
+          "vaccination_type": "Troisième dose",
+          "vaccinator_name": "Service universitaire"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2024-10-18",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        }
+      ],
+
+      "allergies": [
+        "Fruits à coque"
+      ]
+    }
+ },
+ {
+    "_id": 10,
+    "SSN": "198305678912345",
+    "lastname": "Blanchard",
+    "firstname": "Marion",
+    "birthdate": "1983-05-17",
+    "address": {
+      "number": "21",
+      "street": "Rue Jean-Pierre Timbaud",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Femme",
+    "phone": "0677554412",
+    "email": "marion.blanchard@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 110,
+      "blood_group": "AB+",
+      "weight": "61.0",
+      "height": "165",
+      "blood_pressure": "122/79",
+
+      "general_practitioner": [
+        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-05-29",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination République"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2024-10-10",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Antoine Bernard"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2016-07-15",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin hépatite A",
+          "injection_date": "2019-06-10",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1985-08-05",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        }
+      ],
+
+      "allergies": [
+        "Pénicilline",
+        "Kiwi"
+      ]
+    }
+ },
+ {
+    "_id": 11,
+    "SSN": "196812345678911",
+    "lastname": "Fontaine",
+    "firstname": "Laurent",
+    "birthdate": "1968-12-03",
+    "address": {
+      "number": "7",
+      "street": "Rue de la Roquette",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Homme",
+    "phone": "0688553322",
+    "email": "laurent.fontaine@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 111,
+      "blood_group": "B+",
+      "weight": "84.5",
+      "height": "175",
+      "blood_pressure": "132/85",
+
+      "general_practitioner": [
+        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-05-30",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre vaccination Paris"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2024-10-05",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Antoine Bernard"
+        },
+        {
+          "name": "Vaccin pneumocoque",
+          "injection_date": "2020-08-14",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2015-06-01",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "1990-09-20",
+          "vaccination_type": "Troisième dose",
+          "vaccinator_name": "Centre médical régional"
+        }
+      ],
+
+      "allergies": [
+        "Pollens",
+        "Acarien"
+      ]
+    }
+ },
+ {
+    "_id": 12,
+    "SSN": "200103456789144",
+    "lastname": "Gonzalez",
+    "firstname": "Clara",
+    "birthdate": "2001-03-22",
+    "address": {
+      "number": "88",
+      "street": "Avenue Parmentier",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Femme",
+    "phone": "0677554419",
+    "email": "clara.gonzalez@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 112,
+      "blood_group": "A-",
+      "weight": "59.7",
+      "height": "166",
+      "blood_pressure": "112/70",
+
+      "general_practitioner": [
+        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-07-18",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris 11"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2024-10-12",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Antoine Bernard"
+        },
+        {
+          "name": "Vaccin HPV",
+          "injection_date": "2016-04-09",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Médecin scolaire"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2020-05-01",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin généraliste"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "2019-09-14",
+          "vaccination_type": "Troisième dose",
+          "vaccinator_name": "Centre médical universitaire"
+        }
+      ],
+
+      "allergies": [
+        "Poussière"
+      ]
+    }
+ },
+ {
+    "_id": 13,
+    "SSN": "198911234567877",
+    "lastname": "Perrin",
+    "firstname": "Adrien",
+    "birthdate": "1989-11-14",
+    "address": {
+      "number": "102",
+      "street": "Rue Saint-Maur",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Homme",
+    "phone": "0677994410",
+    "email": "adrien.perrin@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 113,
+      "blood_group": "O+",
+      "weight": "79.0",
+      "height": "180",
+      "blood_pressure": "130/84",
+
+      "general_practitioner": [
+        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-06-03",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris 11"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2024-10-03",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2020-10-12",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin de ville"
+        },
+        {
+          "name": "Vaccin hépatite B",
+          "injection_date": "2005-04-15",
+          "vaccination_type": "Troisième injection",
+          "vaccinator_name": "Centre jeunesse"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1991-06-20",
+          "vaccination_type": "Deuxième injection",
+          "vaccinator_name": "Pédiatre"
+        }
+      ],
+
+      "allergies": [
+        "Arachides"
+      ]
+    }
+ },
+ {
+    "_id": 14,
+    "SSN": "197712345678900",
+    "lastname": "Renard",
+    "firstname": "Isabelle",
+    "birthdate": "1977-07-09",
+    "address": {
+      "number": "27",
+      "street": "Rue du Chemin Vert",
+      "city": "Paris",
+      "postal_code": "75011",
+      "country": "France"
+    },
+    "sex": "Femme",
+    "phone": "0677880099",
+    "email": "isabelle.renard@example.com",
+    "password": "token_string",
+
+    "general_file": {
+      "id": 114,
+      "blood_group": "AB-",
+      "weight": "68.9",
+      "height": "168",
+      "blood_pressure": "135/86",
+
+      "general_practitioner": [
+        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+      ],
+
+      "vaccines": [
+        {
+          "name": "Vaccin COVID-19",
+          "injection_date": "2021-05-11",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Centre de vaccination Paris"
+        },
+        {
+          "name": "Vaccin grippe",
+          "injection_date": "2024-10-20",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Dr. Thomas Leroy"
+        },
+        {
+          "name": "Vaccin tétanos",
+          "injection_date": "2018-09-01",
+          "vaccination_type": "Rappel",
+          "vaccinator_name": "Médecin généraliste"
+        },
+        {
+          "name": "Vaccin ROR",
+          "injection_date": "1979-10-20",
+          "vaccination_type": "Deuxième dose",
+          "vaccinator_name": "Pédiatre"
+        },
+        {
+          "name": "Vaccin hépatite A",
+          "injection_date": "2018-04-15",
+          "vaccination_type": "Injection intramusculaire",
+          "vaccinator_name": "Centre de santé Paris"
+        }
+      ],
+
+      "allergies": [
+        "Sulfamides"
+      ]
+    }
+ }
+]
