@@ -1,36 +1,44 @@
-.transition-container {
-  max-width: 6000px;         /* plus large */
-  width: 90%;               /* responsive */
-  margin: 5rem auto;        /* centré verticalement avec espace */
-  padding: 3rem 2rem;       /* plus d’espace intérieur */
-  text-align: center;
+.page-container {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;                     /* espace entre les colonnes */
+  width: 90%;
+  max-width: 6000px;
+  margin: 5rem auto;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9; /* fond léger */
+}
+
+.section {
+  flex: 1;
+  padding: 3rem 2rem;
+  background-color: #f9f9f9;
   border-radius: 10px;
+  text-align: center;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   min-height: 400px;
 }
 
-h2 {
+.section h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
   color: #333;
 }
-p {
+
+.section p {
   margin-bottom: 2rem;
   color: #555;
 }
 
 .buttons {
   display: flex;
-  justify-content: center;   /* centré horizontalement */
-  gap: 2rem;                /* espace entre les boutons */
+  justify-content: center;
+  gap: 2rem;
 }
 
 button {
-  padding: 1.2rem 2rem;      /* plus grand */
-  font-size: 1.2rem;         /* texte plus grand */
-  min-width: 150px;          /* taille minimale */
+  padding: 1.2rem 2rem;
+  font-size: 1.2rem;
+  min-width: 150px;
   border: none;
   border-radius: 8px;
   background-color: #1976d2;
@@ -41,16 +49,21 @@ button {
 
 button:hover {
   background-color: #115293;
-  transform: scale(1.05);   /* effet léger de zoom au survol */
+  transform: scale(1.05);
 }
 
 /* Responsive */
 @media (max-width: 640px) {
-  .transition-container {
+  .page-container {
+    flex-direction: column; /* passe en 1 colonne sur mobile */
+    gap: 2rem;
+  }
+
+  .section {
     padding: 2rem 1rem;
   }
 
-  h2 {
+  .section h2 {
     font-size: 1.5rem;
   }
 
@@ -65,9 +78,11 @@ button:hover {
     gap: 1rem;
   }
 }
+
+/* Bouton retour */
 .retour-container {
   display: flex;
-  justify-content: flex-start; /* aligné à gauche */
+  justify-content: flex-start;
   margin: 10px 0;
 }
 

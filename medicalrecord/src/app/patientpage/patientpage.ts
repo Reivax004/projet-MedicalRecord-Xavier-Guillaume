@@ -37,7 +37,32 @@ export class Patientpage implements OnInit {
       height: 123,
       blood_pressure: '1',
       blood_group: 'A',
-      general_practitioner: {
+      vaccine: [{
+        name: "d",
+        injection_date: new Date(),
+        vaccination_type: "",
+        vaccinator_name: "",
+      }],
+      allergies:[]
+    }
+  };
+
+  get current(): Account {
+    return this.account ?? this.demoAccount;
+  }
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  onEdit(): void {
+    console.log('Edit patient', this.current);
+    alert('Édition (exemple) — implémente la navigation vers le formulaire.');
+  }
+
+  protected readonly history = history;
+}
+/*general_practitioner: {
         lastname: "",
         firstname: "",
         specialization: "",
@@ -60,29 +85,4 @@ export class Patientpage implements OnInit {
         },
         email: "",
         password: ""
-      },
-      vaccine: {
-        name: "d",
-        injection_date: new Date(),
-        vaccination_type: "",
-        vaccinator_name: "",
-      },
-      allergies:[]
-    }
-  };
-
-  get current(): Account {
-    return this.account ?? this.demoAccount;
-  }
-
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  onEdit(): void {
-    console.log('Edit patient', this.current);
-    alert('Édition (exemple) — implémente la navigation vers le formulaire.');
-  }
-
-  protected readonly history = history;
-}
+      },*/

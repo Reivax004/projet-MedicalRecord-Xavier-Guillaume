@@ -1,0 +1,147 @@
+.followup-page-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #2c3e50;
+  }
+
+  .section {
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    h2 {
+      margin-bottom: 15px;
+      color: #34495e;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+
+      .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #e0e0e0;
+
+        .label {
+          font-weight: bold;
+        }
+
+        .value {
+          color: #555;
+        }
+      }
+    }
+
+    .prescriptions-list, .medical-documents-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+
+      .prescription-card, .document-card {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+
+        .prescription-header, .document-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+
+          h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #2c3e50;
+          }
+
+          .prescription-number, .document-number {
+            background-color: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+          }
+        }
+
+        .prescription-details, .document-details {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+
+          div {
+            display: flex;
+            justify-content: space-between;
+
+            .detail-label {
+              font-weight: bold;
+              color: #34495e;
+            }
+
+            .detail-value {
+              color: #555;
+            }
+          }
+        }
+      }
+    }
+
+    p {
+      font-style: italic;
+      color: #888;
+    }
+  }
+
+  .footer-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+
+      &.btn-back {
+        background-color: #3498db;
+        color: white;
+
+        &:hover {
+          background-color: #2980b9;
+        }
+      }
+
+      &.btn-delete {
+        background-color: #e74c3c;
+        color: white;
+
+        &:hover {
+          background-color: #c0392b;
+        }
+      }
+    }
+  }
+}

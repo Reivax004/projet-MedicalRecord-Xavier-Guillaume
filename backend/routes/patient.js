@@ -1,31 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const router = express.Router();
 
-const Patient = require('./models/Patient');
-
-// Connexion MongoDB
-mongoose.connect('mongodb://localhost:27017/MedicalRecord')
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error('MongoDB connection error:', err));
-
-const app = express();
-
-// Middlewares
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.use(cors({
-    origin: 'http://localhost:4200',
-    methods: 'GET,POST,PUT,PATCH,DELETE',
-    allowedHeaders: 'Content-Type, X-Requested-With',
-    credentials: true
-}));
-
-// ---------- ROUTES PATIENTS ----------
+const Patient = require('../models/Patient');
 
 // CREATE - POST /api/patients
-app.post('/api/patients', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const patient = new Patient(req.body);
         const saved = await patient.save();
@@ -36,7 +15,7 @@ app.post('/api/patients', async (req, res) => {
 });
 
 // READ ALL - GET /api/patients
-app.get('/api/patients', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const patients = await Patient.find();
         res.json(patients);
@@ -46,7 +25,7 @@ app.get('/api/patients', async (req, res) => {
 });
 
 // READ ONE - GET /api/patients/:id
-app.get('/api/patients/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const patient = await Patient.findById(req.params.id);
         if (!patient) {
@@ -59,7 +38,7 @@ app.get('/api/patients/:id', async (req, res) => {
 });
 
 // UPDATE - PUT /api/patients/:id
-app.put('/api/patients/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const updated = await Patient.findByIdAndUpdate(
             req.params.id,
@@ -76,7 +55,7 @@ app.put('/api/patients/:id', async (req, res) => {
 });
 
 // DELETE - DELETE /api/patients/:id
-app.delete('/api/patients/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deleted = await Patient.findByIdAndDelete(req.params.id);
         if (!deleted) {
@@ -88,5 +67,4 @@ app.delete('/api/patients/:id', async (req, res) => {
     }
 });
 
-// Lancement serveur
-app.listen(3000, () => console.log('API running on http://localhost:3000'));
+module.exports = router;

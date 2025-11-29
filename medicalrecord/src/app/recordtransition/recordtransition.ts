@@ -12,11 +12,19 @@ import { CommonModule } from '@angular/common';
 export class RecordTransition {
   constructor(private router: Router) {}
 
-  goToFollowup() {
+  goToCreateFollowup() {
     this.router.navigate(['/followuprecord']);
   }
 
-  goToMedical() {
-    this.router.navigate(['/record']);
+  goToCreateMedical() {
+    this.router.navigateByUrl('/record');
+  }
+  goToConsultFollowup() {
+    this.router.navigateByUrl('/followuppage/:id');
+  }
+
+goToConsultMedical() {
+    this.router.navigateByUrl('/medicalrecord/:id');
   }
 }
+

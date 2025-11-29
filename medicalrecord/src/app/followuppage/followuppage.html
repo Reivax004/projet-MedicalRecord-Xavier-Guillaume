@@ -1,0 +1,116 @@
+<div class="followup-page-container">
+  <h1>Dossier de Suivi</h1>
+
+  <!-- INFORMATIONS GÉNÉRALES -->
+  <div class="section">
+    <h2>Informations Générales</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Pathologie :</span>
+        <span class="value">{{ followup[0].pathology || 'Non renseignée' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Date de début :</span>
+        <span class="value">{{ formatDate(followup[0].start_date) }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Date de fin :</span>
+        <span class="value">
+          {{ followup[0].end_date ? formatDate(followup[0].end_date) : 'Non renseignée' }}
+        </span>
+      </div>
+      <div class="info-item">
+        <span class="label">État :</span>
+        <span class="value">{{ followup[0].status }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESCRIPTIONS -->
+  <div class="section">
+    <h2>Prescriptions</h2>
+    @if(followup[0].prescriptions && followup[0].prescriptions.length > 0){
+      <div class="prescriptions-list">
+        @for(prescription of followup[0].prescriptions; track prescription.drug_name; let i = $index){
+          <div class="prescription-card">
+            <div class="prescription-header">
+              <h3>{{ prescription.drug_name }}</h3>
+              <span class="prescription-number">#{{ i + 1 }}</span>
+            </div>
+            <div class="prescription-details">
+              <div>
+                <span class="detail-label">Forme :</span>
+                <span class="detail-value">{{ prescription.shape }}</span>
+              </div>
+              <div>
+                <span class="detail-label">Quantité :</span>
+                <span class="detail-value">{{ prescription.quantity }}</span>
+              </div>
+              <div>
+                <span class="detail-label">Fréquence :</span>
+                <span class="detail-value">{{ prescription.frequency }}</span>
+              </div>
+              <div>
+                <span class="detail-label">Date début :</span>
+                <span class="detail-value">{{ formatDate(prescription.start_date) }}</span>
+              </div>
+              <div>
+                <span class="detail-label">Date fin :</span>
+                <span class="detail-value">{{ formatDate(prescription.end_date) }}</span>
+              </div>
+              <div>
+                <span class="detail-label">Statut :</span>
+                <span class="detail-value">{{ prescription.status }}</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+    @if(!followup[0].prescriptions || followup[0].prescriptions.length === 0){
+      <p>Aucune prescription enregistrée</p>
+    }
+  </div>
+
+  <!-- DOCUMENTS MÉDICAUX -->
+  <!--<div class="section">
+    <h2>Documents Médicaux</h2>
+    @if(followup[0].medical_document && followup[0].medical_document.length > 0){
+      <div class="medical-documents-list">
+        @for(doc of followup[0].medical_document; track doc.follow_up_file_Id; let i = $index){
+          <div class="document-card">
+            <div class="document-header">
+              <h3>{{ doc.type }}</h3>
+              <span class="document-number">#{{ i + 1 }}</span>
+            </div>
+            <div class="document-details">
+              <div>
+                <span class="detail-label">Praticien :</span>
+                <span class="detail-value">{{ doc.practitioner }}</span>
+              </div>
+              <div>
+                <span class="detail-label">Date :</span>
+                <span class="detail-value">{{ formatDate(doc.date) }}</span>
+              </div>
+              <div>
+                <span class="detail-label">Description :</span>
+                <span class="detail-value">{{ doc.description }}</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+    @if(!followup[0].medical_document || followup[0].medical_document.length === 0){
+      <p>Aucun document médical enregistré</p>
+    }
+  </div>-->
+
+  <!-- FOOTER ACTIONS -->
+  <div class="footer-actions">
+    <button class="btn-back" (click)="goBack()">⟵ Retour</button>
+    <button class="btn-back" (click)="editFollowup()">Modifier</button>
+    <button class="btn-delete" (click)="deleteFollowup()">Supprimer</button>
+  </div>
+
+</div>
