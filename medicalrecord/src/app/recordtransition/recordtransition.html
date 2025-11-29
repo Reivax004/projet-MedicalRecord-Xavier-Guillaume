@@ -1,11 +1,28 @@
-<div class="transition-container">
-  <h2>Créer un dossier</h2>
-  <p>Choisissez le type de dossier que vous voulez créer :</p>
-  <div class="buttons">
-    <button (click)="goToFollowup()">Dossier de suivi</button>
-    <button (click)="goToMedical()">Dossier médical</button>
+<div class="page-container">
+
+  <!-- Colonne Création -->
+  <div class="section creation">
+    <h2>Création</h2>
+    <p>Choisissez le type de dossier à créer :</p>
+    <div class="buttons">
+      <button (click)="goToCreateFollowup()">Créer dossier de suivi</button>
+      <button (click)="goToCreateMedical()">Créer dossier médical</button>
+    </div>
   </div>
+
+  <!-- Colonne Consultation -->
+  <div class="section consultation">
+    <h2>Consultation</h2>
+    <p>Choisissez le type de dossier à consulter :</p>
+    <div class="buttons">
+      <button (click)="goToConsultFollowup()">Consulter dossier de suivi</button>
+      <button (click)="goToConsultMedical()">Consulter dossier médical</button>
+    </div>
+  </div>
+
 </div>
+
+<!-- Bouton retour -->
 <div class="retour-container">
   <button class="btn-retour" onclick="history.back()">⟵ Retour</button>
 </div>

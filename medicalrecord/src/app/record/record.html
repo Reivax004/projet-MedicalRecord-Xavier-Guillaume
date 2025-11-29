@@ -1,8 +1,11 @@
 <div class="medical-container">
-  <h2>Dossier Médical</h2>
-
-  @if (showForm()) {
-  <form [formGroup]="medicalForm">
+  @if(!isEdit){
+    <h2>Créer un dossier médical</h2>
+  }
+  @else{
+    <h2>Modifier le dossier médical</h2>
+  }
+  <form [formGroup]="medicalForm" (ngSubmit)="submitForm()">
 
     <label for="weight">Poids (kg)</label>
     <input type="number" id="weight" formControlName="weight" min="0">
@@ -11,22 +14,82 @@
     <input type="number" id="height" formControlName="height" min="0">
 
     <label for="bloodGroup">Groupe sanguin*</label>
-    <input type="text" id="bloodGroup" formControlName="blood_group">
+    <input type="text" id="bloodGroup" formControlName="blood_group" required>
 
     <label for="bloodPressure">Pression sanguine*</label>
-    <input type="text" id="bloodPressure" formControlName="blood_pressure">
+    <input type="text" id="bloodPressure" formControlName="blood_pressure" required>
 
-    <label for="allergies">Allergies</label>
-    <input type="text" id="allergies" formControlName="allergies">
+    <label for="allergies">Allergies (séparées par des virgules)</label>
+    <input type="text" id="allergies" formControlName="allergies"
+           placeholder="Arachides, Lactose, Gluten">
 
-    <label for="allergies">Practicien</label>
-    <input type="text" id="allergies" formControlName="general_practitioner">
+    <!-- SECTION VACCINS -->
+    <div class="vaccines-section">
+      <h2>Vaccins</h2>
 
-    <button type="submit">Enregistrer</button>
+      <div formArrayName="vaccine">
+        @for(vaccine of vaccineArray.controls; track vaccine; let i = $index){
+        <div [formGroupName]="i" class="vaccine-card">
+          <div class="vaccine-header">
+            <h3>Vaccin #{{ i + 1 }}</h3>
+            <button type="button"
+                    (click)="removeVaccine(i)"
+                    class="btn-remove"
+                    @if(vaccineArray.length > 0)>
+              Supprimer
+            </button>
+          </div>
+
+          <div class="vaccine-fields">
+            <div class="form-field">
+              <label [for]="'vaccine_name_' + i">Nom*</label>
+              <input type="text"
+                     [id]="'vaccine_name_' + i"
+                     formControlName="name"
+                     placeholder="Ex: COVID-19">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'injection_date_' + i">Date d'injection</label>
+              <input type="date"
+                     [id]="'injection_date_' + i"
+                     formControlName="injection_date">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'vaccination_type_' + i">Type de vaccin</label>
+              <input type="text"
+                     [id]="'vaccination_type_' + i"
+                     formControlName="vaccination_type"
+                     placeholder="Ex: ARNm">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'vaccinator_name_' + i">Nom du vaccinateur</label>
+              <input type="text"
+                     [id]="'vaccinator_name_' + i"
+                     formControlName="vaccinator_name"
+                     placeholder="Ex: Dr. Dupont">
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+
+      <button type="button" (click)="addVaccine()" class="btn-add">
+        + Ajouter un vaccin
+      </button>
+      @if(vaccineArray.length === 0){
+      <p class="info-text">
+        Aucun vaccin ajouté. Cliquez sur "+ Ajouter un vaccin" pour en ajouter un.
+      </p>
+      }
+    </div>
+
+    <button type="submit" [disabled]="medicalForm.invalid">Enregistrer</button>
   </form>
-  }
+
   <div class="retour-container">
-    <button class="btn-retour" onclick="history.back()">⟵ Retour</button>
+    <button class="btn-retour" type="button" onclick="history.back()">⟵ Retour</button>
   </div>
 </div>
-

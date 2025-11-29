@@ -3,9 +3,6 @@
 
   <form [formGroup]="dossierForm" (ngSubmit)="onSubmit()">
 
-    <label for="id">ID*</label>
-    <input type="number" id="id" formControlName="id">
-
     <label for="pathology">Pathologie*</label>
     <input type="text" id="pathology" formControlName="pathology">
 
@@ -24,16 +21,87 @@
     </select>
 
     <h3>Prescriptions</h3>
-    <div class="list">
-      @for (doc of prescriptions.controls; let i = $index ; track i){
-           <div class="doc-item">
-        <!---<input type="text" [formControl]="doc.get('name')" placeholder="Nom du document">
-        <input type="text" [formControl]="doc.get('url')" placeholder="URL du document">-->
-        <button type="button" (click)="removePrescription(i)">Supprimer</button>
-      </div>
+
+    <div formArrayName="prescriptions">
+      @for (prescription of prescriptions.controls; track prescription; let i = $index) {
+
+        <div [formGroupName]="i" class="prescription-card">
+
+          <div class="prescription-header">
+            <h3>Prescription #{{ i + 1 }}</h3>
+            <div class="doc-item">
+              <button type="button"
+                      (click)="removePrescription(i)">
+                Supprimer
+              </button>
+            </div>
+
+          </div>
+
+          <div class="prescription-fields">
+
+            <div class="form-field">
+              <label [for]="'drug_name_' + i">Médicament*</label>
+              <input type="text"
+                     [id]="'drug_name_' + i"
+                     formControlName="drug_name"
+                     placeholder="Ex : Doliprane">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'shape_' + i">Forme*</label>
+              <input type="text"
+                     [id]="'shape_' + i"
+                     formControlName="shape"
+                     placeholder="Ex : comprimé">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'quantity_' + i">Quantité*</label>
+              <input type="number"
+                     [id]="'quantity_' + i"
+                     formControlName="quantity"
+                     placeholder="Ex : 20">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'frequency_' + i">Fréquence (par jour)*</label>
+              <input type="number"
+                     [id]="'frequency_' + i"
+                     formControlName="frequency"
+                     placeholder="Ex : 3">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'start_date_' + i">Date début*</label>
+              <input type="date"
+                     [id]="'start_date_' + i"
+                     formControlName="start_date">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'end_date_' + i">Date fin*</label>
+              <input type="date"
+                     [id]="'end_date_' + i"
+                     formControlName="end_date">
+            </div>
+
+            <div class="form-field">
+              <label [for]="'status_' + i">Statut*</label>
+              <input type="text"
+                     [id]="'status_' + i"
+                     formControlName="status"
+                     placeholder="Ex : actif / suspendu">
+            </div>
+          </div>
+        </div>
       }
     </div>
-    <button type="button" class="add" (click)="addPrescription()">+ Ajouter une prescription</button>
+
+    <button type="button" class="add" (click)="addPrescription()">
+      + Ajouter une prescription
+    </button>
+
 
     <h3>Documents Médicaux</h3>
     <div class="list">
