@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const {Schema} = require("mongoose");
-const {VaccineSchema} = require("./vaccine");
+// backend/models/record.js
+const { Schema } = require('mongoose');
+const { VaccineSchema } = require('./vaccine');
 
 const MedicalRecordSchema = new Schema({
     weight: {
@@ -19,16 +19,17 @@ const MedicalRecordSchema = new Schema({
         type: String,
         required: true
     },
-    /*general_practitioner: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Practitioner',
-        required: true
-    },*/
-    vaccine: [VaccineSchema],
+    // si tu veux remettre plus tard un snapshot du médecin traitant :
+    // general_practitioner: [{
+    //   practitionerId: Number,
+    //   lastname: String,
+    //   firstname: String
+    // }],
+    vaccines: [VaccineSchema],          // NOTE: je mets "vaccines" (pluriel)
     allergies: {
-        type: [String],   // tableau de strings
+        type: [String],
         default: []
     }
-});
+}, { _id: false }); // embedded, pas de _id
 
-module.exports = mongoose.model('MedicalRecord', MedicalRecordSchema);
+module.exports = { MedicalRecordSchema };

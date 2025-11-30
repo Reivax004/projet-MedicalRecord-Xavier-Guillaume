@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema } = require('mongoose');
 
 const VaccineSchema= new Schema({
     name: {
@@ -21,6 +20,6 @@ const VaccineSchema= new Schema({
         required: true,
         trim: true
     }
-});
+}, { _id: false });
 
 module.exports = { VaccineSchema };

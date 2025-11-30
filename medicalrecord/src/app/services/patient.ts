@@ -27,4 +27,11 @@ export class PatientService {
     const res = await axios.delete(`${this.baseUrl}/${id}`);
     return res.data;
   }
+
+
+  async registerPatient(data: any) {        // <-- ICI : any
+    const res = await axios.post(`${this.baseUrl}/register`, data);
+    return res.data;
+  }
+
 }

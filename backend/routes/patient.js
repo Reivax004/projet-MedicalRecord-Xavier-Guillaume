@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Patient = require('../models/Patient');
+const Patient = require('../models/patient');
 
 // CREATE - POST /api/patients
 router.post('/', async (req, res) => {
