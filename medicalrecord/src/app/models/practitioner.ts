@@ -1,4 +1,3 @@
-import {Address} from './address';
 import {Establishment} from './establishment';
 
 export interface Practitioner {
