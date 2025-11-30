@@ -1,8 +1,8 @@
+/*
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { PatientService } from '../services/patient';
-
+import { PatientService } from '../services/patient'
 @Component({
   selector: 'app-testmongo',
   standalone: true,
@@ -79,3 +79,4 @@ export class Testmongo implements OnInit {
     this.patientForm.reset();
   }
 }
+*/

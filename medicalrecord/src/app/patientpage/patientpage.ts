@@ -1,88 +1,78 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { PatientService } from '../services/patient';
 import { Account } from '../models/account';
-import {Component, Input, OnInit} from '@angular/core';
-import {DatePipe} from '@angular/common';
-import {Practitioner} from '../models/practitioner';
-import {Vaccine} from '../models/vaccine';
-import {Establishment} from '../models/establishment';
 
 @Component({
-  selector: 'app-patientpage',
+  selector: 'app-patient-page',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './patientpage.html',
-  imports: [
-    DatePipe
-  ],
   styleUrls: ['./patientpage.scss']
 })
-export class Patientpage implements OnInit {
-  @Input() account: Account | null = null;
+export class PatientPage implements OnInit {
 
-  demoAccount: Account = {
-    ssn: 123456789,
-    lastName: 'Dupont',
-    firstName: 'Marie',
-    birthDate: new Date('1990-04-12'),
-    address: {
-      number: 12,
-      street: 'rue de la Santé',
-      city: 'Paris',
-      postalCode: '75005',
-      country: 'France'
-    },
-    sex: 'F',
-    phone: 33612345678,
-    email: 'marie.dupont@example.com',
-    password: '********',
-    general_file: {
-      weight: 12,
-      height: 123,
-      blood_pressure: '1',
-      blood_group: 'A',
-      vaccine: [{
-        name: "d",
-        injection_date: new Date(),
-        vaccination_type: "",
-        vaccinator_name: "",
-      }],
-      allergies:[]
+  current!: Account;
+  loading: boolean = true;
+  error: string | null = null;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private patientService: PatientService
+  ) {}
+
+  ngOnInit(): void {
+
+    // ⬅️ On récupère l’ID MongoDB dans l'URL
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (!id) {
+      this.error = "Identifiant patient invalide.";
+      this.loading = false;
+      return;
     }
-  };
 
-  get current(): Account {
-    return this.account ?? this.demoAccount;
+    // ⬅️ On charge le patient via son ID MongoDB
+    this.patientService.getPatient(id).subscribe({
+      next: (patient: Account) => {
+        this.current = patient;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = "Patient introuvable ou erreur serveur.";
+        this.loading = false;
+      }
+    });
   }
 
-  constructor() {}
+  onEdit() {
+    if (!this.current || !this.current._id) return;
+    this.router.navigate(['/register/', this.current._id]);
+  }
 
-  ngOnInit(): void {}
+  onDelete() {
 
-  onEdit(): void {
-    console.log('Edit patient', this.current);
-    alert('Édition (exemple) — implémente la navigation vers le formulaire.');
+    if (!this.current || !this.current._id) return;
+
+    const confirmDelete = confirm(
+      `Es-tu sûr de vouloir supprimer le patient ${this.current.firstname} ${this.current.lastname} ?`
+    );
+
+    if (!confirmDelete) return;
+
+    this.patientService.deletePatient(this.current._id).subscribe({
+      next: () => {
+        alert('Patient supprimé avec succès.');
+        this.router.navigate(['/patientlist']); // ➡️ Change vers ta vraie page de liste
+      },
+      error: (err) => {
+        console.error(err);
+        alert("Erreur lors de la suppression du patient.");
+      }
+    });
   }
 
   protected readonly history = history;
 }
-/*general_practitioner: {
-        lastname: "",
-        firstname: "",
-        specialization: "",
-        phone: "",
-        establishment: {
-          name: "",
-          address: {
-            number: 1,
-            street: "",
-            city: "",
-            postalCode: "",
-            country: "",
-          },
-          type: "",
-          description: "",
-          phone: 12345,
-          email: "",
-          creation_date: new Date(),
-          number_employees: 1
-        },
-        email: "",
-        password: ""
-      },*/

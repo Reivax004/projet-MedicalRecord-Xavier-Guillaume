@@ -1,74 +1,134 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-
-const API_BASE_URL = 'http://localhost:3000';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Account } from '../models/account';
+import { MedicalRecord } from '../models/record';
+import { PatientService } from '../services/patient';
 
 @Component({
   selector: 'app-register',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './register.html',
   styleUrls: ['./register.scss']
 })
-export class Register {
+export class Register implements OnInit {
 
-  patient = {
-    SSN: '',
-    lastname: '',
-    firstname: '',
-    birthdate: '',
-    sex: '',
-    phone: '',
-    email: '',
-    password: '',
-    address: {
-      number: null as number | null,
-      street: '',
-      postal_code: null as number | null,
-      city: '',
-      country: ''
-    }
-  };
-
-  errorMessage = '';
-  isSubmitting = false;
+  registerForm: FormGroup;
+  serverError: string | null = null;
+  isEdit: boolean = false;
+  idToEdit: string | null = null; // <-- ID MongoDB
 
   constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {}
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private patientService: PatientService
+  ) {
+    this.registerForm = this.fb.group({
+      SSN: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      birthdate: ['', Validators.required],
+      sex: ['', Validators.required],
+      phone: ['', Validators.required],
+      number: ['', Validators.required],
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      postal_code: ['', Validators.required],
+      country: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
 
-  submit(): void {
-    this.errorMessage = '';
-    this.isSubmitting = true;
+  ngOnInit(): void {
 
-    const payload = {
-      SSN: this.patient.SSN,
-      lastname: this.patient.lastname,
-      firstname: this.patient.firstname,
-      birthdate: this.patient.birthdate,
-      sex: this.patient.sex,
-      phone: this.patient.phone,
-      email: this.patient.email,
-      password: this.patient.password,
+    // ⬅️ On récupère l'ID MongoDB dans l’URL
+    this.idToEdit = this.route.snapshot.paramMap.get('id');
+    this.isEdit = !!this.idToEdit;
+
+    if (this.isEdit && this.idToEdit) {
+      this.patientService.getPatient(this.idToEdit).subscribe({
+        next: (patient: Account) => this.loadForm(patient),
+        error: (err) => console.error('Impossible de charger le patient', err)
+      });
+    }
+  }
+
+  loadForm(patient: Account) {
+    this.registerForm.patchValue({
+      SSN: patient.SSN,
+      firstname: patient.firstname,
+      lastname: patient.lastname,
+      birthdate: patient.birthdate,
+      sex: patient.sex,
+      phone: patient.phone,
+      number: patient.address.number,
+      street: patient.address.street,
+      city: patient.address.city,
+      postal_code: patient.address.postal_code,
+      country: patient.address.country,
+      email: patient.email,
+      password: patient.password
+    });
+  }
+
+  onSubmit() {
+    this.serverError = null;
+
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+
+    const v = this.registerForm.value;
+
+    const account: Account = {
+      SSN: v.SSN,
+      firstname: v.firstname,
+      lastname: v.lastname,
+      birthdate: v.birthdate,
+      sex: v.sex,
+      phone: v.phone,
       address: {
-        number: this.patient.address.number,
-        street: this.patient.address.street,
-        postal_code: this.patient.address.postal_code,
-        city: this.patient.address.city,
-        country: this.patient.address.country
-      }
+        number: v.number,
+        street: v.street,
+        city: v.city,
+        postal_code: v.postal_code,
+        country: v.country
+      },
+      email: v.email,
+      password: v.password,
+      general_file: {} as MedicalRecord
     };
 
-    this.http.post(`${API_BASE_URL}/patient/register`, payload)
-      .subscribe({
+    if (this.isEdit && this.idToEdit) {
+      // MODE EDIT
+      this.patientService.updatePatient(this.idToEdit, account).subscribe({
         next: () => {
-          this.isSubmitting = false;
-          this.router.navigate(['/login']); // adapte la route si ton login a un autre path
+          alert('Patient mis à jour !');
+          this.router.navigate(['/patient', this.idToEdit]);
         },
         error: (err) => {
-          this.isSubmitting = false;
-          this.errorMessage = err.error?.message || 'Erreur lors de la création du compte patient.';
+          console.error(err);
+          this.serverError = 'Erreur lors de la mise à jour';
         }
       });
+
+    } else {
+      // MODE CREATE
+      this.patientService.createPatient(account).subscribe({
+        next: (created: any) => {
+          alert('Patient créé !');
+          this.router.navigate(['/patient', created._id]); // ➜ Redirige vers la fiche du nouveau patient
+        },
+        error: (err) => {
+          console.error(err);
+          this.serverError = 'Erreur lors de la création';
+        }
+      });
+    }
   }
 }

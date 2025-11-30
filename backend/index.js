@@ -31,7 +31,7 @@ app.use(cors({
 }));
 
 // ------------------ ROUTES --------------------------
-app.use('/api/patients', patientRoutes);
+app.use('/api/patient', patientRoutes);
 app.use('/api/medical-records', medicalRecordRoutes);
 app.use('/api/followuprecord', followupRecordRoutes);
 app.use('/api/appointments', appointmentRoutes);

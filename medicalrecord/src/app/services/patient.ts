@@ -1,37 +1,38 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Account } from '../models/account';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
+  private baseUrl = 'http://localhost:3000/api/patient';
 
-  private baseUrl = 'http://localhost:3000/api/patients';
+  constructor(private http: HttpClient) {}
 
-  async getPatients() {
-    const res = await axios.get(this.baseUrl);
-    return res.data;
+  // Récupérer tous les patients
+  getPatients(): Observable<Account[]> {
+    return this.http.get<Account[]>(this.baseUrl);
   }
 
-  async addPatient(patient: any) {
-    const res = await axios.post(this.baseUrl, patient);
-    return res.data;
+  // Récupérer un patient par id
+  getPatient(id: string): Observable<Account> {
+    return this.http.get<Account>(`${this.baseUrl}/${id}`);
   }
 
-  async updatePatient(id: string, patient: any) {
-    const res = await axios.put(`${this.baseUrl}/${id}`, patient);
-    return res.data;
+  // Créer un patient
+  createPatient(patient: Partial<Account>): Observable<Account> {
+    return this.http.post<Account>(this.baseUrl, patient);
   }
 
-  async deletePatient(id: string) {
-    const res = await axios.delete(`${this.baseUrl}/${id}`);
-    return res.data;
+  // Mettre à jour un patient
+  updatePatient(id: string, patient: Partial<Account>): Observable<Account> {
+    return this.http.put<Account>(`${this.baseUrl}/${id}`, patient);
   }
 
-
-  async registerPatient(data: any) {        // <-- ICI : any
-    const res = await axios.post(`${this.baseUrl}/register`, data);
-    return res.data;
+  // Supprimer un patient
+  deletePatient(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
-
 }

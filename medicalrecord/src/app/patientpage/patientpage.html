@@ -4,11 +4,11 @@
   <main class="content">
     <section class="card">
       <div class="card-row">
-        <div class="avatar">{{ current.firstName.charAt(0) }}{{ current.lastName.charAt(0) }}</div>
+        <div class="avatar">{{ current.firstname.charAt(0) }}{{ current.lastname.charAt(0) }}</div>
         <div class="personal">
-          <h2>{{ current.firstName }} {{ current.lastName }}</h2>
-          <p class="muted">Né(e) le {{ current.birthDate | date: 'longDate' }} — Sexe : {{ current.sex }}</p>
-          <p class="muted">N° SSN : {{ current.ssn }}</p>
+          <h2>{{ current.firstname }} {{ current.lastname }}</h2>
+          <p class="muted">Né(e) le {{ current.birthdate | date: 'longDate' }} — Sexe : {{ current.sex }}</p>
+          <p class="muted">N° SSN : {{ current.SSN }}</p>
         </div>
       </div>
       <hr />
@@ -22,7 +22,7 @@
           <h3>Adresse</h3>
           <p>{{ current.address.number }}</p>
           <p>{{ current.address.street }}</p>
-          <p>{{ current.address.postalCode }} {{ current.address.city }}</p>
+          <p>{{ current.address.postal_code }} {{ current.address.city }}</p>
           <p>{{ current.address.country }}</p>
         </div>
         <div class="info-block full-width">
@@ -32,6 +32,9 @@
       </div>
       <div class="actions">
         <button class="btn-primary" (click)="onEdit()">Modifier</button>
+      </div>
+      <div class="actions">
+        <button class="btn-primary" (click)="onDelete()">Supprimer</button>
       </div>
     </section>
   </main>

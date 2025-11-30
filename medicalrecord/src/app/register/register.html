@@ -1,2 +1,71 @@
-<h2>Création de compte patient</h2>
+<div class="register-container">
+  <h2>Créer un compte patient</h2>
 
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <!-- SSN -->
+    <label for="ssn">Numéro de sécurité sociale</label>
+    <input id="ssn" type="text" formControlName="SSN" />
+    @if(registerForm.get('ssn')?.touched && registerForm.get('ssn')?.invalid){
+      <div class="error">
+        Le numéro de sécurité sociale est requis.
+      </div>
+    }
+    <!-- Nom -->
+    <label for="lastName">Nom</label>
+    <input id="lastName" type="text" formControlName="lastname" />
+
+    <!-- Prénom -->
+    <label for="firstName">Prénom</label>
+    <input id="firstName" type="text" formControlName="firstname" />
+
+    <!-- Date de naissance -->
+    <label for="birthDate">Date de naissance</label>
+    <input id="birthDate" type="date" formControlName="birthdate" />
+
+    <!-- Sexe -->
+    <label for="sex">Sexe</label>
+    <select id="sex" formControlName="sex">
+      <option value="">Sélectionnez</option>
+      <option value="M">Homme</option>
+      <option value="F">Femme</option>
+      <option value="O">Autre</option>
+    </select>
+
+    <!-- Téléphone -->
+    <label for="phone">Téléphone</label>
+    <input id="phone" type="tel" formControlName="phone" />
+
+    <!-- Adresse -->
+    <h3>Adresse</h3>
+
+    <label for="number">Numéro</label>
+    <input id="number" type="text" formControlName="number" />
+
+    <label for="street">Rue</label>
+    <input id="street" type="text" formControlName="street" />
+
+    <label for="city">Ville</label>
+    <input id="city" type="text" formControlName="city" />
+
+    <label for="postalCode">Code postal</label>
+    <input id="postalCode" type="text" formControlName="postal_code" />
+
+    <label for="country">Pays</label>
+    <input id="country" type="text" formControlName="country" />
+
+    <!-- Email -->
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+
+    <!-- Mot de passe -->
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" formControlName="password" />
+
+
+    <!-- Bouton de soumission -->
+    <button type="submit" [disabled]="registerForm.invalid">Créer le compte</button>
+
+
+  </form>
+</div>
