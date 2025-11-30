@@ -3,13 +3,24 @@ const router = express.Router();
 
 const FollowupRecord = require('../models/followuprecord');
 
+router.get('/:id', async (req, res) => {
+    try {
+        const record = await FollowupRecord.findById(Number(req.params.id));
+        if (!record) {
+            return res.status(404).json({ error: 'Follow-up record not found' });
+        }
 
+        res.json(record);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 // Route : GET /api/followuprecord/patient/:patientId
 router.get('/patient/:patientId', async (req, res) => {
     console.log('📥 Requête reçue pour patientId:',req.params.patientId );
 
-    const records = await FollowupRecord.find({ patientId: req.params.patientId});
-
+    const records = await FollowupRecord.find({ patientId: Number(req.params.patientId)})
+    .select("_id patientId pathology start_date end_date status prescriptions medical_document").lean();
     res.json(records);
 });
 // -----------------------------------------------------
@@ -24,19 +35,7 @@ router.post('/', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-router.get('/:id', async (req, res) => {
-    try {
-        const record = await FollowupRecord.findById(req.params.id);
 
-        if (!record) {
-            return res.status(404).json({ error: 'Follow-up record not found' });
-        }
-
-        res.json(record);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
 // -----------------------------------------------------
 // READ ALL - GET /api/followup-records
 // -----------------------------------------------------
@@ -62,7 +61,7 @@ router.get('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const updated = await FollowupRecord.findByIdAndUpdate(
-            req.params.id,
+            Number(req.params.id),
             req.body,
             { new: true }
         );
@@ -82,7 +81,7 @@ router.put('/:id', async (req, res) => {
 // -----------------------------------------------------
 router.delete('/:id', async (req, res) => {
     try {
-        const deleted = await FollowupRecord.findByIdAndDelete(req.params.id);
+        const deleted = await FollowupRecord.findByIdAndDelete(Number(req.params.id));
 
         if (!deleted) {
             return res.status(404).json({ error: 'Follow-up record not found' });

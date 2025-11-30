@@ -5,6 +5,7 @@ import { FollowupRecord } from '../models/followuprecord';
 import { Followuprecord } from '../services/followuprecord';
 import {Medicaldocument} from '../services/medicaldocument';
 import {MedicalDocument} from '../models/medicaldocument';
+import {catchError, forkJoin, of} from 'rxjs';
 
 @Component({
   selector: 'app-record-page',
@@ -31,10 +32,7 @@ export class Followuppage implements OnInit {
 
   ngOnInit(): void {
     // Récupération du paramètre 'patientId' depuis l'URL
-    this.followupId = this.route.snapshot.paramMap.get('id') || '';
     this.patientId = this.route.snapshot.paramMap.get('patientId') || '';
-
-    console.log("ID du dossier récupéré :", this.followupId);
     console.log("ID du patient récupéré :", this.patientId);
 
     if (!this.patientId) {
@@ -50,43 +48,46 @@ export class Followuppage implements OnInit {
     this.loading = true;
     this.error = '';
 
+
     this.followuprecordService.getByPatientId(patientId).subscribe({
       next: (data) => {
         this.followups = data;
-        this.loading = false;
-
-        // Charger les documents médicaux pour chaque followup
-        for (let follow of this.followups) {
-          this.medicalDocumentService.getByFollowupId(follow._id).subscribe({
-            next: (docs: any[]) => {
-              follow.medical_document = docs; // <- on injecte les documents dans le followup
-            },
-            error: (err) => {
-              console.error("Erreur chargement docs :", err);
-              follow.medical_document = [];
-            }
-          });
+        for (let follow of this.followups){
+          console.log(follow);
         }
+        // Si pas de followups → on arrête
+        if (!this.followups || this.followups.length === 0) {
+          this.loading = false;
+          return;
+        }
+        // On prépare toutes les requêtes
+        const requests = this.followups.map(follow =>
+          this.medicalDocumentService.getByFollowupId(follow._id).pipe(
+            catchError(() => of([])) // si une requête échoue → on met []
+          )
+        );
+
+        forkJoin(requests).subscribe({
+          next: (allDocs: any[][]) => {
+            // On réinjecte dans chaque followup
+            this.followups.forEach((follow, i) => {
+              follow.medical_document = allDocs[i];
+            });
+
+
+            this.loading = false;
+          },
+          error: (err: any) => {
+            console.error("Erreur chargement documents :", err);
+            this.error = "Erreur lors du chargement des documents médicaux";
+            this.loading = false;
+          }
+        });
       },
+
       error: (err) => {
         console.error("Erreur complète :", err);
         this.error = "Impossible de charger les dossiers de suivi";
-        this.loading = false;
-      }
-    });
-  }
-
-
-  loadMedicalDocuments(followupId: string | undefined): void {
-    this.medicalDocumentService.getByFollowupId(followupId).subscribe({
-      next: (docs: any) => {
-        console.log("Documents médicaux chargés :", docs);
-        this.medicalDocuments = docs;
-        this.loading = false;
-      },
-      error: (err: any) => {
-        console.error("Erreur chargement documents médicaux :", err);
-        this.medicalDocuments = [];
         this.loading = false;
       }
     });
@@ -102,7 +103,8 @@ export class Followuppage implements OnInit {
     });
   }
 
-  deleteFollowup(followupId: string | undefined, event: Event): void {
+  deleteFollowup(followupId: string, event: Event): void {
+    console.log('deleteFollowup', followupId);
     event.stopPropagation();
     if (confirm("Voulez-vous vraiment supprimer ce dossier ?")) {
       this.followuprecordService.delete(followupId).subscribe({
@@ -118,7 +120,7 @@ export class Followuppage implements OnInit {
     }
   }
 
-  editFollowup(followupId: string | undefined, event: Event): void {
+  editFollowup(followupId: string, event: Event): void {
     event.stopPropagation();
     console.log(followupId);
     this.router.navigate(['/followuprecord/', followupId]);

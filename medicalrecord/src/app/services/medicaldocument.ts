@@ -8,42 +8,42 @@ import {Observable} from 'rxjs';
 })
 export class Medicaldocument {
 
-  private baseUrl = 'http://localhost:3000/api/medicaldocuments'; // adapte l'URL
+  private apiUrl = 'http://localhost:3000/api/medicaldocuments'; // adapte l'URL
 
   constructor(private http: HttpClient) {}
 
+  /** 🔹 GET DOCUMENTS BY FOLLOWUP ID */
+  getByFollowupId(followupId: string | undefined): Observable<MedicalDocument[]> {
+    return this.http.get<MedicalDocument[]>(`${this.apiUrl}/followup/${followupId}`);
+  }
+
   /** 🔹 CREATE ONE DOCUMENT */
   create(document: MedicalDocument): Observable<MedicalDocument> {
-    return this.http.post<MedicalDocument>(`${this.baseUrl}/create`, document);
+    return this.http.post<MedicalDocument>(`${this.apiUrl}/create`, document);
   }
 
   /** 🔹 CREATE MULTIPLE DOCUMENTS */
   createmultiple(documents: MedicalDocument[]): Observable<MedicalDocument[]> {
-    return this.http.post<MedicalDocument[]>(`${this.baseUrl}/create-multiple`, documents);
+    return this.http.post<MedicalDocument[]>(`${this.apiUrl}/create-multiple`, documents);
   }
 
   /** 🔹 GET ALL DOCUMENTS */
   getAll(): Observable<MedicalDocument[]> {
-    return this.http.get<MedicalDocument[]>(`${this.baseUrl}`);
+    return this.http.get<MedicalDocument[]>(`${this.apiUrl}`);
   }
 
   /** 🔹 GET DOCUMENT BY ID */
   getById(id: string): Observable<MedicalDocument> {
-    return this.http.get<MedicalDocument>(`${this.baseUrl}/${id}`);
-  }
-
-  /** 🔹 GET DOCUMENTS BY FOLLOWUP ID */
-  getByFollowupId(followupId: string | undefined): Observable<MedicalDocument[]> {
-    return this.http.get<MedicalDocument[]>(`${this.baseUrl}/followup/${followupId}`);
+    return this.http.get<MedicalDocument>(`${this.apiUrl}/${id}`);
   }
 
   /** 🔹 UPDATE DOCUMENT */
-  update(id: string, document: MedicalDocument): Observable<MedicalDocument> {
-    return this.http.put<MedicalDocument>(`${this.baseUrl}/${id}`, document);
+  update(id: number, document: MedicalDocument): Observable<MedicalDocument> {
+    return this.http.put<MedicalDocument>(`${this.apiUrl}/${id}`, document);
   }
 
   /** 🔹 DELETE DOCUMENT */
-  delete(id: string): Observable<{ message: string }> {
-    return this.http.delete<{ message: string }>(`${this.baseUrl}/${id}`);
+  delete(id: string | undefined): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
   }
 }

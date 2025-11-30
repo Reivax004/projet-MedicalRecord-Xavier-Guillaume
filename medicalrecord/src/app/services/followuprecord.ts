@@ -57,7 +57,7 @@ export class Followuprecord {
   }
 
   // DELETE
-  delete(id: string | undefined): Observable<any> {
+  delete(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
     //                      ↑ Parenthèse, pas backtick seul
   }

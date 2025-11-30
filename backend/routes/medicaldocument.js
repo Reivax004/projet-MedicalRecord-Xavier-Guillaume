@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
 // =========================
 router.get('/:id', async (req, res) => {
     try {
-        const doc = await MedicalDocument.findById(req.params.id);
+        const doc = await MedicalDocument.findById(Number(req.params.id));
 
         if (!doc) {
             return res.status(404).json({ message: "Document introuvable" });
@@ -86,7 +86,7 @@ router.get('/followup/:followupId', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const updated = await MedicalDocument.findByIdAndUpdate(
-            req.params.id,
+            Number(req.params.id),
             req.body,
             { new: true }
         );

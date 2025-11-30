@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const {Schema} = require("mongoose");
 
 const MedicalDocumentSchema = new mongoose.Schema({
+    _id : {type : Number},
     follow_up_file_Id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "FollowupRecord",
+        type: Number,
         required: true
     },
     /*practitioner: {

@@ -2,7 +2,6 @@
   <div class="header-section">
     <h1>Dossiers de Suivi</h1>
   </div>
-
   <!-- LOADING -->
   @if(loading){
     <div class="loading-message">
@@ -90,11 +89,11 @@
             <div class="card-actions">
               <button class="btn-action btn-edit"
                       (click)="editFollowup(followup._id, $event)">
-                ✎ Edit
+                Edit
               </button>
               <button class="btn-action btn-delete"
                       (click)="deleteFollowup(followup._id, $event)">
-                🗑 Supprimer
+                Supprimer
               </button>
             </div>
           </div>

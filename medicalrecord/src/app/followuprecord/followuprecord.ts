@@ -11,6 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {Followuprecord} from '../services/followuprecord';
 import {Prescription} from '../models/prescription';
 import {Medicaldocument} from '../services/medicaldocument';
+import {catchError, forkJoin, map, Observable, of, switchMap} from 'rxjs';
+import {MedicalDocument} from '../models/medicaldocument';
 
 
 @Component({
@@ -105,9 +107,11 @@ export class FollowupRecord implements OnInit {
 
   /** -------------------- LOAD (GET BY ID) -------------------- */
   loadFollowup(id: string) {
-    this.followupService.getById(id).subscribe({
-      next: (followup) => {
+    this.followupService.getById(id).pipe(
+      switchMap((followup) => {
         console.log("➡ Données chargées :", followup);
+
+        // Patch des champs du formulaire principal
         this.dossierForm.patchValue({
           patientId: followup.patientId,
           pathology: followup.pathology,
@@ -131,22 +135,30 @@ export class FollowupRecord implements OnInit {
           this.prescriptions.push(g);
         });
 
-        // Documents médicaux → requête séparée
+        // Requête pour récupérer les documents médicaux
+        return this.medicalDocumentService.getByFollowupId(id).pipe(
+          map((docs: any) => ({ followup, docs })) // On renvoie followup + docs ensemble
+        );
+      })
+    ).subscribe({
+      next: ({ followup, docs }) => {
+        // On ajoute les documents médicaux au followup pour pouvoir récupérer leur _id
+        followup.medical_document = docs;
+
+        // Documents médicaux → ajout au FormArray
         this.documentsMedicaux.clear();
-        this.medicalDocumentService.getByFollowupId(id).subscribe({
-          next: (docs) => {
-            docs.forEach((d: any) => {
-              const g = this.fb.group({
-                follow_up_file_Id: d.follow_up_file_Id,
-                type: d.type,
-                date: d.date ? new Date(d.date).toISOString().substring(0, 10) : '',
-                description: d.description
-              });
-              this.documentsMedicaux.push(g);
-            });
-          },
-          error: (err) => console.error('Erreur chargement documents médicaux :', err)
+        docs.forEach((d: any) => {
+          const g = this.fb.group({
+            _id: d._id, // important pour la mise à jour
+            follow_up_file_Id: d.follow_up_file_Id,
+            type: d.type,
+            date: d.date ? new Date(d.date).toISOString().substring(0, 10) : '',
+            description: d.description
+          });
+          this.documentsMedicaux.push(g);
         });
+
+        console.log("➡ Followup avec documents :", followup);
       },
       error: (err) => console.error("Erreur chargement followup :", err)
     });
@@ -177,26 +189,30 @@ export class FollowupRecord implements OnInit {
       prescriptions: prescriptionsPayload,
       medical_document: medicalDocsPayload
     };
-
     /** Mode EDIT → UPDATE */
     if (this.isEdit && this.followupId) {
-      this.followupService.update(this.followupId, followupPayload).subscribe({
-        next: () => {
+      console.log(medicalDocsPayload);
+      this.followupService.update(this.followupId, followupPayload).pipe(
+        switchMap(() => {
           if (medicalDocsPayload.length > 0) {
-            // Ajouter l'id du followup à chaque document
-            const docs = medicalDocsPayload.map((doc: any) => ({
-              ...doc,
-              follow_up_file_Id: this.followupId
-            }));
+            // Ne garder que les documents existants à mettre à jour
+            const updates: Observable<any>[] = medicalDocsPayload
+              .map((doc: MedicalDocument) => this.medicalDocumentService.update(Number(doc._id), doc).pipe(
+                catchError(err => {
+                  console.error("Erreur update doc :", err);
+                  return of(null); // ignorer l'erreur pour continuer
+                })
+              ));
 
-            // Créer tous les documents en une seule requête
-            this.medicalDocumentService.createmultiple(docs).subscribe({
-              next: () => console.log("Documents médicaux mis à jour"),
-              error: (err: any) => console.error("Erreur création docs :", err)
-            });
+            // Si pas de document à update, on retourne un Observable vide
+            return updates.length > 0 ? forkJoin(updates) : of([]);
+          } else {
+            return of([]); // Pas de documents à gérer
           }
-
-          alert("Dossier mis à jour !");
+        })
+      ).subscribe({
+        next: () => {
+          alert("Dossier et documents mis à jour !");
           this.router.navigate(['/followuppage', this.followupId]);
         },
         error: (err: any) => {

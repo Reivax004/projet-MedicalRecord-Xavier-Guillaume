@@ -2,7 +2,7 @@ import {Prescription} from './prescription';
 import {MedicalDocument} from './medicaldocument';
 
 export interface FollowupRecord {
-  _id?: string;
+  _id: string;
   patientId: number;
   pathology: String;
   start_date: Date;

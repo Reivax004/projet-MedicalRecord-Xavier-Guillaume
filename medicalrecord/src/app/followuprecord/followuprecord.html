@@ -106,7 +106,7 @@
     <h3>Documents Médicaux</h3>
 
     <div formArrayName="medical_document">
-      @for(doc of documentsMedicaux.controls; track documentsMedicaux; let i = $index){
+      @for(doc of documentsMedicaux.controls; track doc ?? $index; let i = $index){
       <div [formGroupName]="i" class="doc-card">
 
         <div class="doc-header">
