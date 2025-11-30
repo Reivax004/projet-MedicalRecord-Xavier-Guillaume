@@ -8,7 +8,7 @@ const Appointment = require('../models/appointment');
 // -----------------------------------------------------
 router.get('/:id', async (req, res) => {
     try {
-        const record = await Appointment.findById(req.params.id);
+        const record = await Appointment.find(({ patientId: req.params.id }));
 
         if (!record) {
             return res.status(404).json({ error: 'Appointment not found' });

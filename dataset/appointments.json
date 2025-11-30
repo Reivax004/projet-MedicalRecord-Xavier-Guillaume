@@ -1,77 +1,677 @@
     [
-        { "_id": {"$oid": 501}, "patientId": 1, "practitionerId": 2, "name": "Consultation annuelle", "date": "2023-02-18", "type": "Consultation", "description": "Bilan de santé annuel avec contrôle de la tension." },
-        { "_id": 502, "patientId": 1, "practitionerId": 2, "name": "Suivi hypertension", "date": "2023-06-10", "type": "Consultation", "description": "Contrôle de l'hypertension artérielle et adaptation du traitement." },
-        { "_id": 503, "patientId": 1, "practitionerId": 2, "name": "Renouvellement traitement", "date": "2023-10-05", "type": "Consultation", "description": "Renouvellement des prescriptions de médicaments." },
-        { "_id": 504, "patientId": 1, "practitionerId": 2, "name": "Bilan sanguin", "date": "2024-03-12", "type": "Examen", "description": "Prise de sang pour suivi tensionnel et glycémique." },
-        { "_id": 505, "patientId": 1, "practitionerId": 2, "name": "Vaccination grippe", "date": "2024-10-20", "type": "Vaccination", "description": "Injection du vaccin contre la grippe saisonnière." },
-        { "_id": 506, "patientId": 1, "practitionerId": 6, "name": "Consultation diabète", "date": "2024-11-15", "type": "Consultation", "description": "Suivi du diabète de type 2 et ajustement du traitement." },
-        { "_id": 507, "patientId": 1, "practitionerId": 7, "name": "Consultation migraine", "date": "2025-01-09", "type": "Consultation", "description": "Suivi des migraines chroniques." },
-        { "_id": 508, "patientId": 1, "practitionerId": 2, "name": "Contrôle tension", "date": "2025-03-21", "type": "Consultation", "description": "Vérification de la tension artérielle." },
-        { "_id": 509, "patientId": 2, "practitionerId": 4, "name": "Consultation de médecine générale", "date": "2023-03-02", "type": "Consultation", "description": "Consultation pour fatigue persistante." },
-        { "_id": 510, "patientId": 2, "practitionerId": 5, "name": "Suivi asthme", "date": "2023-05-18", "type": "Consultation", "description": "Contrôle de l'asthme allergique et renouvellement du traitement." },
-        { "_id": 511, "patientId": 2, "practitionerId": 4, "name": "Consultation lombalgie", "date": "2023-09-07", "type": "Consultation", "description": "Douleurs lombaires chroniques, mise en place d’un traitement." },
-        { "_id": 512, "patientId": 2, "practitionerId": 8, "name": "Séance kinésithérapie", "date": "2023-10-01", "type": "Rééducation", "description": "Séance de kinésithérapie pour lombalgie." },
-        { "_id": 513, "patientId": 2, "practitionerId": 5, "name": "Bilan respiratoire", "date": "2024-02-22", "type": "Examen", "description": "Explorations fonctionnelles respiratoires pour suivi de l'asthme." },
-        { "_id": 514, "patientId": 2, "practitionerId": 4, "name": "Consultation de contrôle", "date": "2024-11-05", "type": "Consultation", "description": "Contrôle général et mise à jour des traitements." },
-        { "_id": 515, "patientId": 3, "practitionerId": 2, "name": "Consultation générale", "date": "2023-01-12", "type": "Consultation", "description": "Bilan annuel et mise à jour du dossier." },
-        { "_id": 516, "patientId": 3, "practitionerId": 9, "name": "Consultation dermatologie", "date": "2023-05-20", "type": "Consultation", "description": "Lésions cutanées bénignes." },
-        { "_id": 517, "patientId": 3, "practitionerId": 2, "name": "Bilan sanguin", "date": "2023-08-15", "type": "Examen", "description": "Suivi fatigue chronique." },
-        { "_id": 518, "patientId": 3, "practitionerId": 2, "name": "Consultation fatigue", "date": "2024-02-10", "type": "Consultation", "description": "Fatigue persistante depuis plusieurs mois." },
-        { "_id": 519, "patientId": 3, "practitionerId": 2, "name": "Suivi tension", "date": "2024-07-22", "type": "Consultation", "description": "Tension artérielle légèrement élevée." },
-        { "_id": 520, "patientId": 3, "practitionerId": 2, "name": "Vaccination grippe", "date": "2024-11-03", "type": "Vaccination", "description": "Vaccin antigrippal annuel." },
-        { "_id": 521, "patientId": 4, "practitionerId": 4, "name": "Consultation générale", "date": "2023-03-15", "type": "Consultation", "description": "Bilan annuel de santé." },
-        { "_id": 522, "patientId": 4, "practitionerId": 9, "name": "Consultation dermatologie", "date": "2023-07-12", "type": "Consultation", "description": "Rougeurs persistantes au cuir chevelu." },
-        { "_id": 523, "patientId": 4, "practitionerId": 4, "name": "Bilan sanguin complet", "date": "2023-12-01", "type": "Examen", "description": "Bilan général demandé par le médecin traitant." },
-        { "_id": 524, "patientId": 4, "practitionerId": 9, "name": "Suivi dermatologique", "date": "2024-04-09", "type": "Consultation", "description": "Contrôle de l'amélioration des irritations." },
-        { "_id": 525, "patientId": 4, "practitionerId": 4, "name": "Vaccination grippe", "date": "2024-11-10", "type": "Vaccination", "description": "Vaccin grippe saisonnière." },
-        { "_id": 526, "patientId": 4, "practitionerId": 4, "name": "Consultation fatigue", "date": "2025-02-03", "type": "Consultation", "description": "Fatigue persistante depuis 2 mois." },
-        { "_id": 527, "patientId": 5, "practitionerId": 4, "name": "Consultation générale", "date": "2023-02-10", "type": "Consultation", "description": "Consultation pour fatigue persistante." },
-        { "_id": 528, "patientId": 5, "practitionerId": 4, "name": "Suivi tension", "date": "2023-06-18", "type": "Consultation", "description": "Contrôle tensionnel suite à vertiges." },
-        { "_id": 529, "patientId": 5, "practitionerId": 4, "name": "Bilan sanguin", "date": "2024-01-05", "type": "Examen", "description": "Bilan complet : hémogramme, ferritine, bilan thyroïde." },
-        { "_id": 530, "patientId": 5, "practitionerId": 9, "name": "Consultation dermatologie", "date": "2024-05-15", "type": "Consultation", "description": "Éruption cutanée bénigne." },
-        { "_id": 531, "patientId": 5, "practitionerId": 4, "name": "Vaccination grippe", "date": "2024-10-10", "type": "Vaccination", "description": "Vaccin saisonnier contre la grippe." },
-        { "_id": 532, "patientId": 6, "practitionerId": 5, "name": "Consultation allergie", "date": "2023-04-15", "type": "Consultation", "description": "Éternuements chroniques au printemps." },
-        { "_id": 533, "patientId": 6, "practitionerId": 5, "name": "Bilan respiratoire", "date": "2023-09-02", "type": "Examen", "description": "Suspicion d'asthme léger." },
-        { "_id": 534, "patientId": 6, "practitionerId": 2, "name": "Suivi général", "date": "2024-05-20", "type": "Consultation", "description": "Contrôle annuel." },
-        { "_id": 535, "patientId": 6, "practitionerId": 2, "name": "Vaccination grippe", "date": "2024-11-15", "type": "Vaccination", "description": "Injection du vaccin grippe 2024." },
-        { "_id": 536, "patientId": 7, "practitionerId": 2, "name": "Consultation douleurs thoraciques", "date": "2023-03-10", "type": "Consultation", "description": "Douleurs diffuses, examen normal." },
-        { "_id": 537, "patientId": 7, "practitionerId": 2, "name": "Suivi tension", "date": "2023-08-20", "type": "Consultation", "description": "Légère hypotension observée." },
-        { "_id": 538, "patientId": 7, "practitionerId": 9, "name": "Consultation dermatologie", "date": "2024-01-10", "type": "Consultation", "description": "Petites lésions cutanées bénignes." },
-        { "_id": 539, "patientId": 7, "practitionerId": 2, "name": "Bilan sanguin", "date": "2024-04-03", "type": "Examen", "description": "Bilan annuel." },
-        { "_id": 540, "patientId": 7, "practitionerId": 2, "name": "Vaccination grippe", "date": "2024-10-22", "type": "Vaccination", "description": "Vaccin grippe saisonnière." },
-        { "_id": 541, "patientId": 8, "practitionerId": 4, "name": "Consultation de médecine générale", "date": "2023-02-20", "type": "Consultation", "description": "Bilan initial et mise à jour du dossier médical." },
-        { "_id": 542, "patientId": 8, "practitionerId": 4, "name": "Consultation douleurs articulaires", "date": "2023-06-15", "type": "Consultation", "description": "Douleurs diffuses, suspicion d’arthrose débutante." },
-        { "_id": 543, "patientId": 8, "practitionerId": 4, "name": "Radiographie genoux", "date": "2023-06-18", "type": "Examen", "description": "Radiographie pour suspicion arthrose." },
-        { "_id": 544, "patientId": 8, "practitionerId": 10, "name": "Consultation rhumatologie", "date": "2023-10-03", "type": "Consultation", "description": "Analyse des résultats radiologiques." },
-        { "_id": 545, "patientId": 8, "practitionerId": 4, "name": "Vaccination grippe", "date": "2024-10-12", "type": "Vaccination", "description": "Vaccin grippe annuel." },
-        { "_id": 546, "patientId": 9, "practitionerId": 2, "name": "Consultation annuelle", "date": "2023-01-12", "type": "Consultation", "description": "Bilan de santé annuel." },
-        { "_id": 547, "patientId": 9, "practitionerId": 2, "name": "Consultation douleurs genou", "date": "2023-06-10", "type": "Consultation", "description": "Douleurs au genou droit après course." },
-        { "_id": 548, "patientId": 9, "practitionerId": 11, "name": "IRM genou droit", "date": "2023-06-18", "type": "Examen", "description": "IRM suite douleur persistante." },
-        { "_id": 549, "patientId": 9, "practitionerId": 1, "name": "Consultation cardiologie", "date": "2024-02-05", "type": "Consultation", "description": "Palpitations récurrentes." },
-        { "_id": 550, "patientId": 9, "practitionerId": 2, "name": "Bilan sanguin", "date": "2024-03-10", "type": "Examen", "description": "Bilan complet recommandé par le médecin traitant." },
-        { "_id": 551, "patientId": 10, "practitionerId": 4, "name": "Consultation initiale", "date": "2023-02-11", "type": "Consultation", "description": "Bilan général et dossier initial." },
-        { "_id": 552, "patientId": 10, "practitionerId": 4,"name": "Suivi douleurs cervicales", "date": "2023-09-10", "type": "Consultation", "description": "Douleurs au cou persistantes." },
-        { "_id": 553, "patientId": 10, "practitionerId": 11, "name": "Radiographie cervicale", "date": "2023-09-20", "type": "Examen", "description": "Analyse des douleurs cervicales." },
-        { "_id": 554, "patientId": 10, "practitionerId": 3, "name": "Consultation ORL", "date": "2024-01-12", "type": "Consultation", "description": "Sensations d’oreille bouchée." },
-        { "_id": 555, "patientId": 10, "practitionerId": 4, "name": "Vaccination grippe", "date": "2024-10-10", "type": "Vaccination", "description": "Vaccin grippe annuel." },
-        { "_id": 556, "patientId": 11, "practitionerId": 4, "name": "Consultation annuelle", "date": "2023-01-05", "type": "Consultation", "description": "Bilan médical général." },
-        { "_id": 557, "patientId": 11, "practitionerId": 4, "name": "Consultation fatigue", "date": "2023-05-18", "type": "Consultation", "description": "Fatigue importante depuis plusieurs semaines." },
-        { "_id": 558, "patientId": 11, "practitionerId": 4, "name": "Bilan sanguin", "date": "2023-05-22", "type": "Examen", "description": "Examen complet suite à fatigue persistante." },
-        { "_id": 559, "patientId": 11, "practitionerId": 5, "name": "Consultation pneumologie", "date": "2024-03-17", "type": "Consultation", "description": "Essoufflement à l'effort." },
-        { "_id": 560, "patientId": 11, "practitionerId": 11, "name": "Radiographie thoracique", "date": "2024-03-20", "type": "Examen", "description": "Exploration de l'essoufflement." },
-        { "_id": 561, "patientId": 12, "practitionerId": 4, "name": "Consultation de médecine générale", "date": "2023-02-20", "type": "Consultation", "description": "Mise à jour du dossier, contrôle annuel." },
-        { "_id": 562, "patientId": 12, "practitionerId": 12, "name": "Consultation règles douloureuses", "date": "2023-06-05", "type": "Consultation", "description": "Dysménorrhée fréquente." },
-        { "_id": 563, "patientId": 12, "practitionerId": 12, "name": "Échographie pelvienne", "date": "2023-06-12", "type": "Examen", "description": "Évaluation douleurs menstruelles." },
-        { "_id": 564, "patientId": 12, "practitionerId": 12, "name": "Suivi gynécologique", "date": "2024-03-10", "type": "Consultation", "description": "Contrôle annuel." },
-        { "_id": 565, "patientId": 12, "practitionerId": 4, "name": "Vaccination grippe", "date": "2024-10-12", "type": "Vaccination", "description": "Vaccin saisonnier." },
-        { "_id": 566, "patientId": 13, "practitionerId": 2, "name": "Consultation générale", "date": "2023-02-11", "type": "Consultation", "description": "Bilan annuel." },
-        { "_id": 567, "patientId": 13, "practitionerId": 1, "name": "Consultation palpitations", "date": "2023-06-21", "type": "Consultation", "description": "Palpitations occasionnelles — examen demandé." },
-        { "_id": 568, "patientId": 13, "practitionerId": 1, "name": "ECG", "date": "2023-06-23", "type": "Examen", "description": "Électrocardiogramme suite à palpitations." },
-        { "_id": 569, "patientId": 13, "practitionerId": 3, "name": "Consultation ORL", "date": "2024-03-05", "type": "Consultation", "description": "Sifflements dans l'oreille droite." },
-        { "_id": 570, "patientId": 13, "practitionerId": 3, "name": "Audiogramme", "date": "2024-03-07", "type": "Examen", "description": "Évaluation ORL." },
-        { "_id": 571, "patientId": 14, "practitionerId": 2, "name": "Consultation annuelle", "date": "2023-03-10", "type": "Consultation", "description": "Bilan général." },
-        { "_id": 572, "patientId": 14, "practitionerId": 2, "name": "Consultation maux de tête", "date": "2023-08-12", "type": "Consultation", "description": "Céphalées récurrentes." },
-        { "_id": 573, "patientId": 14, "practitionerId": 11, "name": "IRM cérébrale", "date": "2023-08-20", "type": "Examen", "description": "Vérification céphalées persistantes." },
-        { "_id": 574, "patientId": 14, "practitionerId": 2, "name": "Consultation digestion", "date": "2024-02-14", "type": "Consultation", "description": "Troubles digestifs intermittents." },
-        { "_id": 575, "patientId": 14, "practitionerId": 11, "name": "Echographie abdominale", "date": "2024-02-20", "type": "Examen", "description": "Exploration douleurs digestives." }      
+        {
+            "_id": { "$oid": "65f5a500a1b2c30000000501" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000001" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation annuelle",
+            "date": "2023-02-18",
+            "type": "Consultation",
+            "description": "Bilan de santé annuel avec contrôle de la tension."
+          },
+          {
+            "_id": { "$oid": "65f5a500a1b2c30000000502" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000001" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Suivi hypertension",
+            "date": "2023-06-10",
+            "type": "Consultation",
+            "description": "Contrôle de l'hypertension artérielle et adaptation du traitement."
+          },
+          {
+            "_id": { "$oid": "65f5a500a1b2c30000000503" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000001" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Renouvellement traitement",
+            "date": "2023-10-05",
+            "type": "Consultation",
+            "description": "Renouvellement des prescriptions de médicaments."
+          },
+          {
+            "_id": { "$oid": "65f5a500a1b2c30000000504" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000001" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Bilan sanguin",
+            "date": "2024-03-12",
+            "type": "Examen",
+            "description": "Prise de sang pour suivi tensionnel et glycémique."
+          },
+          {
+            "_id": { "$oid": "65f5a500a1b2c30000000505" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000001" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Vaccination grippe",
+            "date": "2024-10-20",
+            "type": "Vaccination",
+            "description": "Injection du vaccin contre la grippe saisonnière."
+          },
+          {
+            "_id": { "$oid": "65f5a500a1b2c30000000506" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000001" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000006" },
+            "name": "Consultation diabète",
+            "date": "2024-11-15",
+            "type": "Consultation",
+            "description": "Suivi du diabète de type 2 et ajustement du traitement."
+          },
+          {
+            "_id": { "$oid": "65f5a500a1b2c30000000507" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000001" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000007" },
+            "name": "Consultation migraine",
+            "date": "2025-01-09",
+            "type": "Consultation",
+            "description": "Suivi des migraines chroniques."
+          },
+          {
+            "_id": { "$oid": "65f5a500a1b2c30000000508" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000001" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Contrôle tension",
+            "date": "2025-03-21",
+            "type": "Consultation",
+            "description": "Vérification de la tension artérielle."
+          },
+          {
+            "_id": { "$oid": "65f5a501a1b2c30000000509" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000002" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation de médecine générale",
+            "date": "2023-03-02",
+            "type": "Consultation",
+            "description": "Consultation pour fatigue persistante."
+          },
+          {
+            "_id": { "$oid": "65f5a501a1b2c30000000510" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000002" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
+            "name": "Suivi asthme",
+            "date": "2023-05-18",
+            "type": "Consultation",
+            "description": "Contrôle de l'asthme allergique et renouvellement du traitement."
+          },
+          {
+            "_id": { "$oid": "65f5a501a1b2c30000000511" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000002" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation lombalgie",
+            "date": "2023-09-07",
+            "type": "Consultation",
+            "description": "Douleurs lombaires chroniques, mise en place d’un traitement."
+          },
+          {
+            "_id": { "$oid": "65f5a501a1b2c30000000512" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000002" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000008" },
+            "name": "Séance kinésithérapie",
+            "date": "2023-10-01",
+            "type": "Rééducation",
+            "description": "Séance de kinésithérapie pour lombalgie."
+          },
+          {
+            "_id": { "$oid": "65f5a501a1b2c30000000513" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000002" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
+            "name": "Bilan respiratoire",
+            "date": "2024-02-22",
+            "type": "Examen",
+            "description": "Explorations fonctionnelles respiratoires pour suivi de l'asthme."
+          },
+          {
+            "_id": { "$oid": "65f5a501a1b2c30000000514" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000002" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation de contrôle",
+            "date": "2024-11-05",
+            "type": "Consultation",
+            "description": "Contrôle général et mise à jour des traitements."
+          },
+          {
+            "_id": { "$oid": "65f5a502a1b2c30000000515" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000003" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation générale",
+            "date": "2023-01-12",
+            "type": "Consultation",
+            "description": "Bilan annuel et mise à jour du dossier."
+          },
+          {
+            "_id": { "$oid": "65f5a502a1b2c30000000516" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000003" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000009" },
+            "name": "Consultation dermatologie",
+            "date": "2023-05-20",
+            "type": "Consultation",
+            "description": "Lésions cutanées bénignes."
+          },
+          {
+            "_id": { "$oid": "65f5a502a1b2c30000000517" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000003" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Bilan sanguin",
+            "date": "2023-08-15",
+            "type": "Examen",
+            "description": "Suivi fatigue chronique."
+          },
+          {
+            "_id": { "$oid": "65f5a502a1b2c30000000518" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000003" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation fatigue",
+            "date": "2024-02-10",
+            "type": "Consultation",
+            "description": "Fatigue persistante depuis plusieurs mois."
+          },
+          {
+            "_id": { "$oid": "65f5a502a1b2c30000000519" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000003" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Suivi tension",
+            "date": "2024-07-22",
+            "type": "Consultation",
+            "description": "Tension artérielle légèrement élevée."
+          },
+          {
+            "_id": { "$oid": "65f5a502a1b2c30000000520" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000003" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Vaccination grippe",
+            "date": "2024-11-03",
+            "type": "Vaccination",
+            "description": "Vaccin antigrippal annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a503a1b2c30000000521" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000004" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation générale",
+            "date": "2023-03-15",
+            "type": "Consultation",
+            "description": "Bilan annuel de santé."
+          },
+          {
+            "_id": { "$oid": "65f5a503a1b2c30000000522" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000004" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000009" },
+            "name": "Consultation dermatologie",
+            "date": "2023-07-12",
+            "type": "Consultation",
+            "description": "Rougeurs persistantes au cuir chevelu."
+          },
+          {
+            "_id": { "$oid": "65f5a503a1b2c30000000523" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000004" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Bilan sanguin complet",
+            "date": "2023-12-01",
+            "type": "Examen",
+            "description": "Bilan général demandé par le médecin traitant."
+          },
+          {
+            "_id": { "$oid": "65f5a503a1b2c30000000524" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000004" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000009" },
+            "name": "Suivi dermatologique",
+            "date": "2024-04-09",
+            "type": "Consultation",
+            "description": "Contrôle de l'amélioration des irritations."
+          },
+          {
+            "_id": { "$oid": "65f5a503a1b2c30000000525" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000004" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Vaccination grippe",
+            "date": "2024-11-10",
+            "type": "Vaccination",
+            "description": "Vaccin grippe saisonnière."
+          },
+          {
+            "_id": { "$oid": "65f5a504a1b2c30000000526" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000004" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation fatigue",
+            "date": "2025-02-03",
+            "type": "Consultation",
+            "description": "Fatigue persistante depuis 2 mois."
+          },
+          {
+            "_id": { "$oid": "65f5a504a1b2c30000000527" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000005" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation générale",
+            "date": "2023-02-10",
+            "type": "Consultation",
+            "description": "Consultation pour fatigue persistante."
+          },
+          {
+            "_id": { "$oid": "65f5a504a1b2c30000000528" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000005" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Suivi tension",
+            "date": "2023-06-18",
+            "type": "Consultation",
+            "description": "Contrôle tensionnel suite à vertiges."
+          },
+          {
+            "_id": { "$oid": "65f5a504a1b2c30000000529" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000005" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Bilan sanguin",
+            "date": "2024-01-05",
+            "type": "Examen",
+            "description": "Bilan complet : hémogramme, ferritine, bilan thyroïde."
+          },
+          {
+            "_id": { "$oid": "65f5a504a1b2c30000000530" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000005" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000009" },
+            "name": "Consultation dermatologie",
+            "date": "2024-05-15",
+            "type": "Consultation",
+            "description": "Éruption cutanée bénigne."
+          },
+          {
+            "_id": { "$oid": "65f5a505a1b2c30000000531" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000005" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Vaccination grippe",
+            "date": "2024-10-10",
+            "type": "Vaccination",
+            "description": "Vaccin saisonnier contre la grippe."
+          },
+          {
+            "_id": { "$oid": "65f5a505a1b2c30000000532" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000006" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
+            "name": "Consultation allergie",
+            "date": "2023-04-15",
+            "type": "Consultation",
+            "description": "Éternuements chroniques au printemps."
+          },
+          {
+            "_id": { "$oid": "65f5a505a1b2c30000000533" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000006" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
+            "name": "Bilan respiratoire",
+            "date": "2023-09-02",
+            "type": "Examen",
+            "description": "Suspicion d'asthme léger."
+          },
+          {
+            "_id": { "$oid": "65f5a505a1b2c30000000534" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000006" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Suivi général",
+            "date": "2024-05-20",
+            "type": "Consultation",
+            "description": "Contrôle annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a505a1b2c30000000535" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000006" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Vaccination grippe",
+            "date": "2024-11-15",
+            "type": "Vaccination",
+            "description": "Injection du vaccin grippe 2024."
+          },
+          {
+            "_id": { "$oid": "65f5a505a1b2c30000000536" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000007" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation douleurs thoraciques",
+            "date": "2023-03-10",
+            "type": "Consultation",
+            "description": "Douleurs diffuses, examen normal."
+          },
+          {
+            "_id": { "$oid": "65f5a506a1b2c30000000537" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000007" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Suivi tension",
+            "date": "2023-08-20",
+            "type": "Consultation",
+            "description": "Légère hypotension observée."
+          },
+          {
+            "_id": { "$oid": "65f5a506a1b2c30000000538" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000007" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000009" },
+            "name": "Consultation dermatologie",
+            "date": "2024-01-10",
+            "type": "Consultation",
+            "description": "Petites lésions cutanées bénignes."
+          },
+          {
+            "_id": { "$oid": "65f5a506a1b2c30000000539" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000007" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Bilan sanguin",
+            "date": "2024-04-03",
+            "type": "Examen",
+            "description": "Bilan annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a506a1b2c30000000540" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000007" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Vaccination grippe",
+            "date": "2024-10-22",
+            "type": "Vaccination",
+            "description": "Vaccin grippe saisonnière."
+          },
+          {
+            "_id": { "$oid": "65f5a506a1b2c30000000541" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000008" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation de médecine générale",
+            "date": "2023-02-20",
+            "type": "Consultation",
+            "description": "Bilan initial et mise à jour du dossier médical."
+          },
+          {
+            "_id": { "$oid": "65f5a507a1b2c30000000542" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000008" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation douleurs articulaires",
+            "date": "2023-06-15",
+            "type": "Consultation",
+            "description": "Douleurs diffuses, suspicion d’arthrose débutante."
+          },
+          {
+            "_id": { "$oid": "65f5a507a1b2c30000000543" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000008" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Radiographie genoux",
+            "date": "2023-06-18",
+            "type": "Examen",
+            "description": "Radiographie pour suspicion arthrose."
+          },
+          {
+            "_id": { "$oid": "65f5a507a1b2c30000000544" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000008" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000a" },
+            "name": "Consultation rhumatologie",
+            "date": "2023-10-03",
+            "type": "Consultation",
+            "description": "Analyse des résultats radiologiques."
+          },
+          {
+            "_id": { "$oid": "65f5a507a1b2c30000000545" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000008" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Vaccination grippe",
+            "date": "2024-10-12",
+            "type": "Vaccination",
+            "description": "Vaccin grippe annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a507a1b2c30000000546" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000009" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation annuelle",
+            "date": "2023-01-12",
+            "type": "Consultation",
+            "description": "Bilan de santé annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a508a1b2c30000000547" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000009" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation douleurs genou",
+            "date": "2023-06-10",
+            "type": "Consultation",
+            "description": "Douleurs au genou droit après course."
+          },
+          {
+            "_id": { "$oid": "65f5a508a1b2c30000000548" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000009" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000b" },
+            "name": "IRM genou droit",
+            "date": "2023-06-18",
+            "type": "Examen",
+            "description": "IRM suite douleur persistante."
+          },
+          {
+            "_id": { "$oid": "65f5a508a1b2c30000000549" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000009" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000001" },
+            "name": "Consultation cardiologie",
+            "date": "2024-02-05",
+            "type": "Consultation",
+            "description": "Palpitations récurrentes."
+          },
+          {
+            "_id": { "$oid": "65f5a508a1b2c30000000550" },
+            "patientId": { "$oid": "65f4b001a1b2c30000000009" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Bilan sanguin",
+            "date": "2024-03-10",
+            "type": "Examen",
+            "description": "Bilan complet recommandé par le médecin traitant."
+          },
+          {
+            "_id": { "$oid": "65f5a600a1b2c30000000551" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000a" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation initiale",
+            "date": "2023-02-11",
+            "type": "Consultation",
+            "description": "Bilan général et dossier initial."
+          },
+          {
+            "_id": { "$oid": "65f5a600a1b2c30000000552" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000a" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Suivi douleurs cervicales",
+            "date": "2023-09-10",
+            "type": "Consultation",
+            "description": "Douleurs au cou persistantes."
+          },
+          {
+            "_id": { "$oid": "65f5a600a1b2c30000000553" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000a" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000b" },
+            "name": "Radiographie cervicale",
+            "date": "2023-09-20",
+            "type": "Examen",
+            "description": "Analyse des douleurs cervicales."
+          },
+          {
+            "_id": { "$oid": "65f5a601a1b2c30000000554" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000a" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
+            "name": "Consultation ORL",
+            "date": "2024-01-12",
+            "type": "Consultation",
+            "description": "Sensations d’oreille bouchée."
+          },
+          {
+            "_id": { "$oid": "65f5a601a1b2c30000000555" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000a" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Vaccination grippe",
+            "date": "2024-10-10",
+            "type": "Vaccination",
+            "description": "Vaccin grippe annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a601a1b2c30000000556" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000b" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation annuelle",
+            "date": "2023-01-05",
+            "type": "Consultation",
+            "description": "Bilan médical général."
+          },
+          {
+            "_id": { "$oid": "65f5a601a1b2c30000000557" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000b" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation fatigue",
+            "date": "2023-05-18",
+            "type": "Consultation",
+            "description": "Fatigue importante depuis plusieurs semaines."
+          },
+          {
+            "_id": { "$oid": "65f5a601a1b2c30000000558" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000b" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Bilan sanguin",
+            "date": "2023-05-22",
+            "type": "Examen",
+            "description": "Examen complet suite à fatigue persistante."
+          },
+          {
+            "_id": { "$oid": "65f5a602a1b2c30000000559" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000b" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
+            "name": "Consultation pneumologie",
+            "date": "2024-03-17",
+            "type": "Consultation",
+            "description": "Essoufflement à l'effort."
+          },
+          {
+            "_id": { "$oid": "65f5a602a1b2c30000000560" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000b" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000b" },
+            "name": "Radiographie thoracique",
+            "date": "2024-03-20",
+            "type": "Examen",
+            "description": "Exploration de l'essoufflement."
+          },
+          {
+            "_id": { "$oid": "65f5a602a1b2c30000000561" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000c" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Consultation de médecine générale",
+            "date": "2023-02-20",
+            "type": "Consultation",
+            "description": "Mise à jour du dossier, contrôle annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a602a1b2c30000000562" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000c" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000c" },
+            "name": "Consultation règles douloureuses",
+            "date": "2023-06-05",
+            "type": "Consultation",
+            "description": "Dysménorrhée fréquente."
+          },
+          {
+            "_id": { "$oid": "65f5a603a1b2c30000000563" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000c" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000c" },
+            "name": "Échographie pelvienne",
+            "date": "2023-06-12",
+            "type": "Examen",
+            "description": "Évaluation douleurs menstruelles."
+          },
+          {
+            "_id": { "$oid": "65f5a603a1b2c30000000564" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000c" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000c" },
+            "name": "Suivi gynécologique",
+            "date": "2024-03-10",
+            "type": "Consultation",
+            "description": "Contrôle annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a603a1b2c30000000565" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000c" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
+            "name": "Vaccination grippe",
+            "date": "2024-10-12",
+            "type": "Vaccination",
+            "description": "Vaccin saisonnier."
+          },
+          {
+            "_id": { "$oid": "65f5a603a1b2c30000000566" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000d" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation générale",
+            "date": "2023-02-11",
+            "type": "Consultation",
+            "description": "Bilan annuel."
+          },
+          {
+            "_id": { "$oid": "65f5a604a1b2c30000000567" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000d" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000001" },
+            "name": "Consultation palpitations",
+            "date": "2023-06-21",
+            "type": "Consultation",
+            "description": "Palpitations occasionnelles — examen demandé."
+          },
+          {
+            "_id": { "$oid": "65f5a604a1b2c30000000568" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000d" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000001" },
+            "name": "ECG",
+            "date": "2023-06-23",
+            "type": "Examen",
+            "description": "Électrocardiogramme suite à palpitations."
+          },
+          {
+            "_id": { "$oid": "65f5a604a1b2c30000000569" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000d" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
+            "name": "Consultation ORL",
+            "date": "2024-03-05",
+            "type": "Consultation",
+            "description": "Sifflements dans l'oreille droite."
+          },
+          {
+            "_id": { "$oid": "65f5a604a1b2c30000000570" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000d" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
+            "name": "Audiogramme",
+            "date": "2024-03-07",
+            "type": "Examen",
+            "description": "Évaluation ORL."
+          },
+          {
+            "_id": { "$oid": "65f5a605a1b2c30000000571" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000e" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation annuelle",
+            "date": "2023-03-10",
+            "type": "Consultation",
+            "description": "Bilan général."
+          },
+          {
+            "_id": { "$oid": "65f5a605a1b2c30000000572" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000e" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation maux de tête",
+            "date": "2023-08-12",
+            "type": "Consultation",
+            "description": "Céphalées récurrentes."
+          },
+          {
+            "_id": { "$oid": "65f5a605a1b2c30000000573" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000e" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000b" },
+            "name": "IRM cérébrale",
+            "date": "2023-08-20",
+            "type": "Examen",
+            "description": "Vérification céphalées persistantes."
+          },
+          {
+            "_id": { "$oid": "65f5a605a1b2c30000000574" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000e" },
+            "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
+            "name": "Consultation digestion",
+            "date": "2024-02-14",
+            "type": "Consultation",
+            "description": "Troubles digestifs intermittents."
+          },
+          {
+            "_id": { "$oid": "65f5a605a1b2c30000000575" },
+            "patientId": { "$oid": "65f4b001a1b2c3000000000e" },
+            "practitionerId": { "$oid": "65f3d001a1b2c3000000000b" },
+            "name": "Echographie abdominale",
+            "date": "2024-02-20",
+            "type": "Examen",
+            "description": "Exploration douleurs digestives."
+          }
     ]

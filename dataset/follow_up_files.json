@@ -1,7 +1,7 @@
 [
     {
-        "_id": 201,
-        "patientId": 1,
+        "_id": {"$oid": "65f4c300a1b2c30000000001"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000001" },
         "pathology": "Hypertension artérielle",
         "start_date": "2023-02-18",
         "end_date": "2025-02-18",
@@ -37,8 +37,8 @@
         "status": "En cours"
     },
     {
-        "_id": 202,
-        "patientId": 1,
+        "_id": {"$oid": "65f4c300a1b2c30000000002"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000001" },
         "pathology": "Diabète de type 2",
         "start_date": "2023-10-05",
         "end_date": "2025-10-05",
@@ -65,8 +65,8 @@
         "status": "En cours"
     },
     {
-        "_id": 203,
-        "patientId": 1,
+        "_id": {"$oid": "65f4c300a1b2c30000000003"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000001" },
         "pathology": "Migraine chronique",
         "start_date": "2024-12-01",
         "end_date": "2025-12-01",
@@ -93,8 +93,8 @@
         "status": "En cours"
     },
     {
-        "_id": 204,
-        "patientId": 2,
+        "_id": {"$oid": "65f4c300a1b2c30000000004"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000002" },
         "pathology": "Asthme allergique",
         "start_date": "2023-05-18",
         "end_date": "2025-05-18",
@@ -130,8 +130,8 @@
         "status": "En cours"
     },
     {
-        "_id": 205,
-        "patientId": 2,
+        "_id": {"$oid": "65f4c300a1b2c30000000005"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000002" },
         "pathology": "Lombalgie chronique",
         "start_date": "2023-09-07",
         "end_date": "2024-09-07",
@@ -158,8 +158,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 206,
-        "patientId": 3,
+        "_id": {"$oid": "65f4c300a1b2c30000000006"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000003" },
         "pathology": "Fatigue chronique",
         "start_date": "2023-02-01",
         "end_date": "2024-02-01",
@@ -177,8 +177,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 207,
-        "patientId": 3,
+        "_id": {"$oid": "65f4c300a1b2c30000000007"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000003" },
         "pathology": "Hypotension légère",
         "start_date": "2024-07-22",
         "end_date": "2025-01-22",
@@ -196,8 +196,8 @@
         "status": "En cours"
     },
     {
-        "_id": 208,
-        "patientId": 4,
+        "_id": {"$oid": "65f4c300a1b2c30000000008"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000004" },
         "pathology": "Dermatite séborrhéique",
         "start_date": "2023-07-12",
         "end_date": "2024-01-12",
@@ -224,8 +224,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 209,
-        "patientId": 4,
+        "_id": {"$oid": "65f4c300a1b2c30000000009"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000004" },
         "pathology": "Fatigue chronique légère",
         "start_date": "2025-02-03",
         "end_date": "2025-08-03",
@@ -252,8 +252,8 @@
         "status": "En cours"
     },
     {
-        "_id": 212,
-        "patientId": 5,
+        "_id": {"$oid": "65f4c300a1b2c3000000000a"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000005" },
         "pathology": "Fatigue chronique légère",
         "start_date": "2023-02-10",
         "end_date": "2024-02-10",
@@ -271,8 +271,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 213,
-        "patientId": 5,
+        "_id": {"$oid": "65f4c300a1b2c3000000000b"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000005" },
         "pathology": "Éruption cutanée bénigne",
         "start_date": "2024-05-15",
         "end_date": "2024-08-15",
@@ -290,8 +290,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 214,
-        "patientId": 6,
+        "_id": {"$oid": "65f4c300a1b2c3000000000c"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000006" },
         "pathology": "Allergie saisonnière",
         "start_date": "2023-04-15",
         "end_date": "2024-09-30",
@@ -318,8 +318,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 215,
-        "patientId": 7,
+        "_id": {"$oid": "65f4c300a1b2c3000000000d"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000007" },
         "pathology": "Hypotension légère",
         "start_date": "2023-08-20",
         "end_date": "2024-03-20",
@@ -337,8 +337,8 @@
         "status": "En cours"
     },
     {
-        "_id": 216,
-        "patientId": 8,
+        "_id": {"$oid": "65f4c300a1b2c3000000000e"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000008" },
         "pathology": "Arthrose des genoux",
         "start_date": "2023-06-15",
         "end_date": "2024-06-15",
@@ -365,8 +365,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 217,
-        "patientId": 8,
+        "_id": {"$oid": "65f4c300a1b2c3000000000f"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000008" },
         "pathology": "Hypertension modérée",
         "start_date": "2024-02-10",
         "end_date": "2025-02-10",
@@ -384,8 +384,8 @@
         "status": "En cours"
     },
     {
-        "_id": 218,
-        "patientId": 9,
+        "_id": {"$oid": "65f4c300a1b2c30000000010"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000009" },
         "pathology": "Tendinite genou droit",
         "start_date": "2023-06-10",
         "end_date": "2024-01-10",
@@ -412,8 +412,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 219,
-        "patientId": 9,
+        "_id": {"$oid": "65f4c300a1b2c30000000011"},
+        "patientId": { "$oid": "65f4b001a1b2c30000000009" },
         "pathology": "Palpitations cardiaques légères",
         "start_date": "2024-02-05",
         "end_date": "2025-02-05",
@@ -431,8 +431,8 @@
         "status": "En cours"
     },
     {
-        "_id": 220,
-        "patientId": 10,
+        "_id": {"$oid": "65f4c300a1b2c30000000012"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000a" },
         "pathology": "Cervicalgie mécanique",
         "start_date": "2023-09-10",
         "end_date": "2024-03-10",
@@ -459,8 +459,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 221,
-        "patientId": 10,
+        "_id": {"$oid": "65f4c300a1b2c30000000013"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000a" },
         "pathology": "Otite séreuse",
         "start_date": "2024-01-12",
         "end_date": "2024-03-12",
@@ -478,8 +478,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 222,
-        "patientId": 11,
+        "_id": {"$oid": "65f4c300a1b2c30000000014"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000b" },
         "pathology": "Anémie légère",
         "start_date": "2023-05-22",
         "end_date": "2023-11-22",
@@ -497,8 +497,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 223,
-        "patientId": 11,
+        "_id": {"$oid": "65f4c300a1b2c30000000015"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000b" },
         "pathology": "Asthme léger de l'adulte",
         "start_date": "2024-03-17",
         "end_date": "2025-03-17",
@@ -525,8 +525,8 @@
         "status": "En cours"
     },
     {
-        "_id": 224,
-        "patientId": 12,
+        "_id": {"$oid": "65f4c300a1b2c30000000016"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000c" },
         "pathology": "Dysménorrhée",
         "start_date": "2023-06-05",
         "end_date": "2024-01-05",
@@ -544,8 +544,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 225,
-        "patientId": 12,
+        "_id": {"$oid": "65f4c300a1b2c30000000017"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000c" },
         "pathology": "Allergie respiratoire légère",
         "start_date": "2024-03-01",
         "end_date": "2025-03-01",
@@ -572,8 +572,8 @@
         "status": "En cours"
     },
     {
-        "_id": 226,
-        "patientId": 13,
+        "_id": {"$oid": "65f4c300a1b2c30000000018"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000d" },
         "pathology": "Palpitations bénignes",
         "start_date": "2023-06-21",
         "end_date": "2024-01-21",
@@ -591,8 +591,8 @@
         "status": "Terminé"
     },
     {
-        "_id": 227,
-        "patientId": 13,
+        "_id": {"$oid": "65f4c300a1b2c30000000019"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000d" },
         "pathology": "Acouphènes intermittents",
         "start_date": "2024-03-05",
         "end_date": "2025-03-05",
@@ -610,8 +610,8 @@
         "status": "En cours"
     },
     {
-        "_id": 228,
-        "patientId": 14,
+        "_id": {"$oid": "65f4c300a1b2c3000000001a"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000e" },
         "pathology": "Migraine chronique",
         "start_date": "2023-08-12",
         "end_date": "2024-08-12",
@@ -638,8 +638,8 @@
         "status": "En cours"
     },
     {
-        "_id": 229,
-        "patientId": 14,
+        "_id": {"$oid": "65f4c300a1b2c3000000001b"},
+        "patientId": { "$oid": "65f4b001a1b2c3000000000e" },
         "pathology": "Troubles digestifs fonctionnels",
         "start_date": "2024-02-14",
         "end_date": "2024-10-14",

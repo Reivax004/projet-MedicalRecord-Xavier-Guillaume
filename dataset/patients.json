@@ -1,5 +1,5 @@
 [{
-    "_id": 1,
+    "_id": { "$oid": "65f4b001a1b2c30000000001" },
     "SSN": "290041234567890",
     "lastname": "Dupont",
     "firstname": "Alice",
@@ -17,14 +17,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 101,
       "blood_group": "A+",
       "weight": "68.4",
       "height": "172",
       "blood_pressure": "110/70",
 
       "general_practitioner": [
-        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000002"}, "lastname": "Leroy", "firstname": "Thomas" }
       ],
 
       "vaccines": [
@@ -73,7 +72,7 @@
     }
  },
  {
-    "_id": 2,
+    "_id": { "$oid": "65f4b001a1b2c30000000002" },
     "SSN": "182051234567891",
     "lastname": "Moreau",
     "firstname": "Jean",
@@ -91,14 +90,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 102,
       "blood_group": "O+",
       "weight": "82.0",
       "height": "180",
       "blood_pressure": "125/80",
 
       "general_practitioner": [
-        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000004"}, "lastname": "Bernard", "firstname": "Antoine" }
       ],
 
       "vaccines": [
@@ -159,7 +157,7 @@
     }
  },
  {
-    "_id": 3,
+    "_id": { "$oid": "65f4b001a1b2c30000000003" },
     "SSN": "197012345678922",
     "lastname": "Lefèvre",
     "firstname": "Sophie",
@@ -177,14 +175,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 103,
       "blood_group": "B+",
       "weight": "72.0",
       "height": "168",
       "blood_pressure": "118/72",
 
       "general_practitioner": [
-        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000002"}, "lastname": "Leroy", "firstname": "Thomas" }
       ],
 
       "vaccines": [
@@ -232,7 +229,7 @@
     }
  },
  {
-    "_id": 4,
+    "_id": { "$oid": "65f4b001a1b2c30000000004" },
     "SSN": "199503456789123",
     "lastname": "Dubois",
     "firstname": "Pierre",
@@ -250,14 +247,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 104,
       "blood_group": "AB-",
       "weight": "76.5",
       "height": "178",
       "blood_pressure": "121/75",
 
       "general_practitioner": [
-        { "practitionerId": 4, "lastname": "Benard", "firstname": "Antoine" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000004"}, "lastname": "Benard", "firstname": "Antoine" }
       ],
 
       "vaccines": [
@@ -299,7 +295,7 @@
     }
  },
  {
-    "_id": 5,
+    "_id": { "$oid": "65f4b001a1b2c30000000005" },
     "SSN": "199061234567894",
     "lastname": "Girard",
     "firstname": "Camille",
@@ -317,14 +313,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 105,
       "blood_group": "A-",
       "weight": "58.0",
       "height": "165",
       "blood_pressure": "108/68",
 
       "general_practitioner": [
-        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000004"}, "lastname": "Bernard", "firstname": "Antoine" }
       ],
 
       "vaccines": [
@@ -364,7 +359,7 @@
     }
  },
  {
-    "_id": 6,
+    "_id": { "$oid": "65f4b001a1b2c30000000006" },
     "SSN": "200021234567895",
     "lastname": "Petit",
     "firstname": "Lucas",
@@ -382,7 +377,6 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 106,
       "blood_group": "O-",
       "weight": "74.2",
       "height": "179",
@@ -429,7 +423,7 @@
     }
  },
  {
-    "_id": 7,
+    "_id": { "$oid": "65f4b001a1b2c30000000007" },
     "SSN": "198811234567896",
     "lastname": "Rolland",
     "firstname": "Nina",
@@ -447,14 +441,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 107,
       "blood_group": "B-",
       "weight": "64.1",
       "height": "170",
       "blood_pressure": "118/71",
 
       "general_practitioner": [
-        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000002"}, "lastname": "Leroy", "firstname": "Thomas" }
       ],
 
       "vaccines": [
@@ -496,7 +489,7 @@
     }
  },
  {
-    "_id": 8,
+    "_id": { "$oid": "65f4b001a1b2c30000000008" },
     "SSN": "197403456789155",
     "lastname": "Bernard",
     "firstname": "Hélène",
@@ -514,14 +507,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 108,
       "blood_group": "A+",
       "weight": "70.3",
       "height": "167",
       "blood_pressure": "129/82",
 
       "general_practitioner": [
-        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000004"}, "lastname": "Bernard", "firstname": "Antoine" }
       ],
 
       "vaccines": [
@@ -563,7 +555,7 @@
     }
  },
  {
-    "_id": 9,
+    "_id": { "$oid": "65f4b001a1b2c30000000009" },
     "SSN": "199212345678977",
     "lastname": "Marchand",
     "firstname": "Éric",
@@ -581,14 +573,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 109,
       "blood_group": "O+",
       "weight": "81.4",
       "height": "183",
       "blood_pressure": "124/80",
 
       "general_practitioner": [
-        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000002"}, "lastname": "Leroy", "firstname": "Thomas" }
       ],
 
       "vaccines": [
@@ -630,7 +621,7 @@
     }
  },
  {
-    "_id": 10,
+    "_id": { "$oid": "65f4b001a1b2c3000000000a" },
     "SSN": "198305678912345",
     "lastname": "Blanchard",
     "firstname": "Marion",
@@ -648,14 +639,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 110,
       "blood_group": "AB+",
       "weight": "61.0",
       "height": "165",
       "blood_pressure": "122/79",
 
       "general_practitioner": [
-        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000004"}, "lastname": "Bernard", "firstname": "Antoine" }
       ],
 
       "vaccines": [
@@ -698,7 +688,7 @@
     }
  },
  {
-    "_id": 11,
+    "_id": { "$oid": "65f4b001a1b2c3000000000b" },
     "SSN": "196812345678911",
     "lastname": "Fontaine",
     "firstname": "Laurent",
@@ -716,14 +706,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 111,
       "blood_group": "B+",
       "weight": "84.5",
       "height": "175",
       "blood_pressure": "132/85",
 
       "general_practitioner": [
-        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000004"}, "lastname": "Bernard", "firstname": "Antoine" }
       ],
 
       "vaccines": [
@@ -766,7 +755,7 @@
     }
  },
  {
-    "_id": 12,
+    "_id": { "$oid": "65f4b001a1b2c3000000000c" },
     "SSN": "200103456789144",
     "lastname": "Gonzalez",
     "firstname": "Clara",
@@ -784,14 +773,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 112,
       "blood_group": "A-",
       "weight": "59.7",
       "height": "166",
       "blood_pressure": "112/70",
 
       "general_practitioner": [
-        { "practitionerId": 4, "lastname": "Bernard", "firstname": "Antoine" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000004"}, "lastname": "Bernard", "firstname": "Antoine" }
       ],
 
       "vaccines": [
@@ -833,7 +821,7 @@
     }
  },
  {
-    "_id": 13,
+    "_id": { "$oid": "65f4b001a1b2c3000000000d" },
     "SSN": "198911234567877",
     "lastname": "Perrin",
     "firstname": "Adrien",
@@ -851,14 +839,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 113,
       "blood_group": "O+",
       "weight": "79.0",
       "height": "180",
       "blood_pressure": "130/84",
 
       "general_practitioner": [
-        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000002"}, "lastname": "Leroy", "firstname": "Thomas" }
       ],
 
       "vaccines": [
@@ -900,7 +887,7 @@
     }
  },
  {
-    "_id": 14,
+    "_id": { "$oid": "65f4b001a1b2c3000000000e" },
     "SSN": "197712345678900",
     "lastname": "Renard",
     "firstname": "Isabelle",
@@ -918,14 +905,13 @@
     "password": "token_string",
 
     "general_file": {
-      "id": 114,
       "blood_group": "AB-",
       "weight": "68.9",
       "height": "168",
       "blood_pressure": "135/86",
 
       "general_practitioner": [
-        { "practitionerId": 2, "lastname": "Leroy", "firstname": "Thomas" }
+        { "practitionerId": {"$oid": "65f3d001a1b2c30000000002"}, "lastname": "Leroy", "firstname": "Thomas" }
       ],
 
       "vaccines": [
