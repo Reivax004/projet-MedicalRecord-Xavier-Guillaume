@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const MedicalDocument = require('../models/MedicalDocument');
+const MedicalDocument = require('../models/medical_documents');
 
 
 // =========================

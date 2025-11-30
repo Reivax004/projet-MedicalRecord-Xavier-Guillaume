@@ -1,7 +1,7 @@
 // backend/models/patient.js
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { MedicalRecordSchema } = require('./record');
+const { MedicalRecordSchema } = require('./general_file');
 
 // sous-schéma d'adresse (embedded)
 const AddressSchema = new Schema({

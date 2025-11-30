@@ -40,7 +40,7 @@ export class RecordPage implements OnInit {
   loadRecordById(id: string): void {
     this.loading = true;
 
-    this.recordService.getById(id).subscribe({
+    this.recordService.getById("65f4b001a1b2c30000000002").subscribe({
       next: (data) => {
         console.log("Dossier chargé :", data);
         this.record = [data];  // On stocke dans un tableau comme dans ton HTML
