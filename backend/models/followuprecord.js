@@ -3,8 +3,11 @@ const {Schema} = require("mongoose");
 const {PrescriptionSchema} = require("./prescriptions");
 
 const FollowupRecordSchema = new Schema({
-    _id: { type: Number },
-    patientId: { type: Number, required: false },
+    patientId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Patient',
+        required: false
+    },
     pathology: { type: String, required: true },
     start_date: { type: Date, required: true },
     end_date: { type: Date, default: null },

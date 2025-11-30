@@ -38,7 +38,7 @@ export class Medicaldocument {
   }
 
   /** 🔹 UPDATE DOCUMENT */
-  update(id: number, document: MedicalDocument): Observable<MedicalDocument> {
+  update(id: string, document: MedicalDocument): Observable<MedicalDocument> {
     return this.http.put<MedicalDocument>(`${this.apiUrl}/${id}`, document);
   }
 

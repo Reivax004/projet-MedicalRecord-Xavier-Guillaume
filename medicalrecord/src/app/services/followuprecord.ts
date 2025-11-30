@@ -32,7 +32,7 @@ export class Followuprecord {
 
   // CREATE
   create(record: {
-    patientId?: number;
+    //patientId?: string;
     pathology: any;
     start_date: any;
     end_date: any;

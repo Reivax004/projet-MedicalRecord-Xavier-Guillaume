@@ -5,7 +5,7 @@ const FollowupRecord = require('../models/followuprecord');
 
 router.get('/:id', async (req, res) => {
     try {
-        const record = await FollowupRecord.findById(Number(req.params.id));
+        const record = await FollowupRecord.findById(req.params.id);
         if (!record) {
             return res.status(404).json({ error: 'Follow-up record not found' });
         }
@@ -19,7 +19,7 @@ router.get('/:id', async (req, res) => {
 router.get('/patient/:patientId', async (req, res) => {
     console.log('📥 Requête reçue pour patientId:',req.params.patientId );
 
-    const records = await FollowupRecord.find({ patientId: Number(req.params.patientId)})
+    const records = await FollowupRecord.find({ patientId: req.params.patientId})
     .select("_id patientId pathology start_date end_date status prescriptions medical_document").lean();
     res.json(records);
 });
@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const updated = await FollowupRecord.findByIdAndUpdate(
-            Number(req.params.id),
+            req.params.id,
             req.body,
             { new: true }
         );
@@ -81,7 +81,7 @@ router.put('/:id', async (req, res) => {
 // -----------------------------------------------------
 router.delete('/:id', async (req, res) => {
     try {
-        const deleted = await FollowupRecord.findByIdAndDelete(Number(req.params.id));
+        const deleted = await FollowupRecord.findByIdAndDelete(req.params.id);
 
         if (!deleted) {
             return res.status(404).json({ error: 'Follow-up record not found' });
