@@ -5,19 +5,19 @@ const { VaccineSchema } = require('./vaccine');
 const MedicalRecordSchema = new Schema({
     weight: {
         type: Number,
-        required: true
+        required: false
     },
     height: {
         type: Number,
-        required: true
+        required: false
     },
     blood_group: {
         type: String,
-        required: true
+        required: false
     },
     blood_pressure: {
         type: String,
-        required: true
+        required: false
     },
     // si tu veux remettre plus tard un snapshot du médecin traitant :
     // general_practitioner: [{
@@ -25,7 +25,10 @@ const MedicalRecordSchema = new Schema({
     //   lastname: String,
     //   firstname: String
     // }],
-    vaccines: [VaccineSchema],          // NOTE: je mets "vaccines" (pluriel)
+    vaccines: {
+        type: [VaccineSchema],
+        default: []
+    },
     allergies: {
         type: [String],
         default: []

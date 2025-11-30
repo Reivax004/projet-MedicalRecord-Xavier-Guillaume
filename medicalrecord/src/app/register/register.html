@@ -1,56 +1,71 @@
 <div class="register-container">
-  <h2>Créer un compte Patient</h2>
+  <h2>Créer un compte patient</h2>
+
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-    <label for="ssn">Numéro de Sécurité Sociale*</label>
-    <input type="number" id="ssn" formControlName="ssn">
+    <!-- SSN -->
+    <label for="ssn">Numéro de sécurité sociale</label>
+    <input id="ssn" type="text" formControlName="SSN" />
+    @if(registerForm.get('ssn')?.touched && registerForm.get('ssn')?.invalid){
+      <div class="error">
+        Le numéro de sécurité sociale est requis.
+      </div>
+    }
+    <!-- Nom -->
+    <label for="lastName">Nom</label>
+    <input id="lastName" type="text" formControlName="lastname" />
 
-    <label for="firstName">Prénom*</label>
-    <input type="text" id="firstName" formControlName="firstName">
+    <!-- Prénom -->
+    <label for="firstName">Prénom</label>
+    <input id="firstName" type="text" formControlName="firstname" />
 
-    <label for="lastName">Nom*</label>
-    <input type="text" id="lastName" formControlName="lastName">
+    <!-- Date de naissance -->
+    <label for="birthDate">Date de naissance</label>
+    <input id="birthDate" type="date" formControlName="birthdate" />
 
-    <label for="birthDate">Date de naissance*</label>
-    <input type="date" id="birthDate" formControlName="birthDate">
-
-    <label for="sex">Sexe*</label>
+    <!-- Sexe -->
+    <label for="sex">Sexe</label>
     <select id="sex" formControlName="sex">
-      <option value="" disabled selected>Sélectionner le sexe</option>
-      <option value="Homme">Homme</option>
-      <option value="Femme">Femme</option>
-      <option value="Autre">Autre</option>
+      <option value="">Sélectionnez</option>
+      <option value="M">Homme</option>
+      <option value="F">Femme</option>
+      <option value="O">Autre</option>
     </select>
 
-    <label for="phone">Téléphone*</label>
-    <input type="number" id="phone" formControlName="phone">
+    <!-- Téléphone -->
+    <label for="phone">Téléphone</label>
+    <input id="phone" type="tel" formControlName="phone" />
 
+    <!-- Adresse -->
     <h3>Adresse</h3>
 
-    <label for="number">Numéro*</label>
-    <input type="text" id="number" formControlName="number">
+    <label for="number">Numéro</label>
+    <input id="number" type="text" formControlName="number" />
 
-    <label for="street">Rue*</label>
-    <input type="text" id="street" formControlName="street">
+    <label for="street">Rue</label>
+    <input id="street" type="text" formControlName="street" />
 
-    <label for="city">Ville*</label>
-    <input type="text" id="city" formControlName="city">
+    <label for="city">Ville</label>
+    <input id="city" type="text" formControlName="city" />
 
-    <label for="postalCode">Code Postal*</label>
-    <input type="text" id="postalCode" formControlName="postalCode">
+    <label for="postalCode">Code postal</label>
+    <input id="postalCode" type="text" formControlName="postal_code" />
 
-    <label for="country">Pays*</label>
-    <input type="text" id="country" formControlName="country">
+    <label for="country">Pays</label>
+    <input id="country" type="text" formControlName="country" />
 
-    <label for="email">Email*</label>
-    <input type="email" id="email" formControlName="email">
+    <!-- Email -->
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
 
-    <label for="password">Mot de passe*</label>
-    <input type="password" id="password" formControlName="password">
+    <!-- Mot de passe -->
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" formControlName="password" />
 
-    <button type="submit">S'inscrire</button>
+
+    <!-- Bouton de soumission -->
+    <button type="submit" [disabled]="registerForm.invalid">Créer le compte</button>
+
+
   </form>
-  <div class="retour-container">
-    <button class="btn-retour" onclick="history.back()">⟵ Retour</button>
-  </div>
 </div>

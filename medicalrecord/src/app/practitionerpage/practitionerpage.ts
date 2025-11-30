@@ -1,3 +1,4 @@
+/*
 import { Account } from '../models/account';
 import {Component, Input, OnInit} from '@angular/core';
 import {DatePipe} from '@angular/common';
@@ -27,7 +28,7 @@ export class Practitionerpage implements OnInit {
         number: 12,
         street: 'rue de la Santé',
         city: 'Paris',
-        postalCode: '75005',
+        postal_code: '75005',
         country: 'France'
       },
       type: 'santé',
@@ -55,3 +56,4 @@ export class Practitionerpage implements OnInit {
 
   protected readonly history = history;
 }
+*/

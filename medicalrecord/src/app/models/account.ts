@@ -3,10 +3,11 @@ import {MedicalRecord} from './record';
 
 
 export interface Account {
-  ssn: number;
-  lastName: string;
-  firstName: string;
-  birthDate: Date;
+  _id?: string;
+  SSN: number;
+  lastname: string;
+  firstname: string;
+  birthdate: Date;
   address: Address;
   sex: string;
   phone: number;
