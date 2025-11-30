@@ -104,17 +104,61 @@
 
 
     <h3>Documents Médicaux</h3>
-    <div class="list">
-      @for (doc of documentsMedicaux.controls; let i = $index ; track i){
-        <div class="doc-item">
-          <!--<input type="text" [formControl]="doc.get('name')" placeholder="Nom du document">
-          <input type="text" [formControl]="doc.get('url')" placeholder="URL du document">-->
-          <button type="button" (click)="removeMedicalDoc(i)">Supprimer</button>
+
+    <div formArrayName="medical_document">
+      @for(doc of documentsMedicaux.controls; track doc ?? $index; let i = $index){
+      <div [formGroupName]="i" class="doc-card">
+
+        <div class="doc-header">
+          <h4>Document #{{ i + 1 }}</h4>
+          <div class="doc-item">
+            <button type="button" (click)="removeMedicalDoc(i)">Supprimer</button>
+          </div>
+
         </div>
+
+        <div class="doc-fields">
+          <!-- Practicien -->
+          <!--
+          <div class="form-field">
+            <label [for]="'practitioner_' + i">Praticien*</label>
+            <input type="text"
+                   [id]="'practitioner_' + i"
+                   formControlName="practitioner"
+                   placeholder="Nom du praticien">
+          </div>-->
+
+          <!-- Type de document -->
+          <div class="form-field">
+            <label [for]="'type_' + i">Type*</label>
+            <input type="text"
+                   [id]="'type_' + i"
+                   formControlName="type"
+                   placeholder="Ex : ordonnance, radio, certificat">
+          </div>
+
+          <!-- Date du document -->
+          <div class="form-field">
+            <label [for]="'date_' + i">Date*</label>
+            <input type="date"
+                   [id]="'date_' + i"
+                   formControlName="date">
+          </div>
+
+          <!-- Description -->
+          <div class="form-field">
+            <label [for]="'description_' + i">Description</label>
+            <textarea
+              [id]="'description_' + i"
+              formControlName="description"
+              placeholder="Informations complémentaires"></textarea>
+          </div>
+        </div>
+      </div>
       }
     </div>
-    <button type="button" class="add" (click)="addMedicalDoc()">+ Ajouter un document</button>
 
+    <button type="button" class="add" (click)="addMedicalDoc()">+ Ajouter un document</button>
 
     <button class="submit-btn" type="submit">Enregistrer</button>
   </form>

@@ -76,7 +76,12 @@ export class Record implements OnInit {
         // remplir les vaccins
         record.vaccine.forEach((v: any) => {
           const group = this.createVaccineGroup();
-          group.patchValue(v);
+          group.patchValue({
+            name: v.name,
+            injection_date: v.injection_date ? v.injection_date.substring(0, 10) : '',
+            vaccination_type: v.vaccination_type,
+            vaccinator_name: v.vaccinator_name
+          });
           this.vaccineArray.push(group);
         });
       },
