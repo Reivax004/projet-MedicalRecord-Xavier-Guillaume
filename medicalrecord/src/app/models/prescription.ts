@@ -1,4 +1,5 @@
 export interface Prescription {
+  _id?: string;
   drug_name: string;
   shape: string;
   quantity: number;

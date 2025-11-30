@@ -32,12 +32,9 @@
         <div [formGroupName]="i" class="vaccine-card">
           <div class="vaccine-header">
             <h3>Vaccin #{{ i + 1 }}</h3>
-            <button type="button"
-                    (click)="removeVaccine(i)"
-                    class="btn-remove"
-                    @if(vaccineArray.length > 0)>
-              Supprimer
-            </button>
+            @if(vaccineArray.length > 0){
+            <button type="button" (click)="removeVaccine(i)" class="btn-remove">Supprimer</button>
+            }
           </div>
 
           <div class="vaccine-fields">

@@ -74,7 +74,7 @@ export class RecordPage implements OnInit {
   }
 
 editRecord(): void {
-    this.router.navigate(['/record/6929fea568dac98a36f892c9']);
+    this.router.navigate(['/record/', this.recordId]);
   }
 
   formatDate(date: any): string {

@@ -1,4 +1,5 @@
 import {Prescription} from './prescription';
+import {MedicalDocument} from './medicaldocument';
 
 export interface FollowupRecord {
   _id?: string;
@@ -8,4 +9,5 @@ export interface FollowupRecord {
   end_date: Date | null;
   prescriptions: Prescription[];
   status: string;
+  medical_document: MedicalDocument[];
 }

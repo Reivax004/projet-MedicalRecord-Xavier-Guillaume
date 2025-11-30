@@ -3,10 +3,13 @@ const { Schema } = mongoose;
 
 
 const PrescriptionSchema = new Schema({
-    medication: { type: String, required: true },
-    posology: { type: String, required: true },
+    drug_name: { type: String, required: true },
+    shape: { type: String, required: true },
+    quantity: { type: Number, required: true },
+    frequency: { type: Number, required: true },
     start_date: { type: Date, required: true },
-    end_date: { type: Date }
+    end_date: { type: Date, required: true },
+    status: { type: String, required: true },
 });
 
 module.exports = { PrescriptionSchema };
