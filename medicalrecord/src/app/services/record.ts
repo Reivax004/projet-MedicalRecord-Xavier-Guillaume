@@ -18,7 +18,7 @@ export class MedicalRecordService {
   }
 
   // GET ONE
-  getById(id: string): Observable<MedicalRecord> {
+    getById(id: string | undefined): Observable<MedicalRecord> {
     return this.http.get<MedicalRecord>(`${this.apiUrl}/${id}`);
   }
 
