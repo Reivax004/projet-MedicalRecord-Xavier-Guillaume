@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Appointment} from '../models/appointment';
+import {AppointmentService} from '../services/appointments';
+
 
 @Component({
   selector: 'app-medical-appointment-list',
@@ -12,6 +14,7 @@ import {Appointment} from '../models/appointment';
 export class Appointments {
 
   appointments: Appointment[] = [
+    /*
     {
       patientId:1,
       practitionerId:1,
@@ -35,7 +38,15 @@ export class Appointments {
       date: new Date('2025-04-10'),
       type: 'Vaccin',
       description: 'Injection du vaccin contre la grippe saisonnière.'
-    }
+    }*/
   ];
+
+  constructor(private appointmentService: AppointmentService) {}
+  ngOnInit() {
+    this.appointmentService.getById("501")
+      .subscribe((data: any) => {
+        this.appointments = data;
+      });
+  }
 
 }

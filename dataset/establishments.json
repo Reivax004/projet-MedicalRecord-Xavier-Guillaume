@@ -1,6 +1,6 @@
 [
     {
-      "_id": 1,
+      "_id": { "$oid": "65f3cd01a1b2c30000000001" },
       "name": "Clinique Turin",
        "address": {
         "number": "15",
@@ -17,7 +17,7 @@
       "number_employees": 210
     },
     {
-      "_id": 2,
+      "_id": { "$oid": "65f3cd01a1b2c30000000002" },
       "name": "Hôpital Saint-Antoine",
       "address": {
         "number": "184",
@@ -34,7 +34,7 @@
       "number_employees": 950
     },
     {
-      "_id": 3,
+      "_id": { "$oid": "65f3cd01a1b2c30000000003" },
       "name": "Centre Médical Parmentier",
       "address": {
         "number": "27",
