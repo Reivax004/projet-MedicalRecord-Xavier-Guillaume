@@ -17,6 +17,11 @@ export class Followuprecord {
     return this.http.get<FollowupRecord[]>(this.apiUrl);
   }
 
+  // GET ONE BY ID
+  getById(id: string): Observable<FollowupRecord> {
+    return this.http.get<FollowupRecord>(`${this.apiUrl}/${id}`);
+  }
+
   // GET ALL BY PATIENT ID
   getByPatientId(patientId: string): Observable<FollowupRecord[]> {
     const url = `${this.apiUrl}/${patientId}`;
