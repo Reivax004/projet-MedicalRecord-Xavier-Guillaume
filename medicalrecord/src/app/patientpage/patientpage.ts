@@ -105,5 +105,9 @@ export class PatientPage implements OnInit {
     });
   }
 
-  protected readonly history = history;  
+  protected readonly history = history;
+  viewPatient(id: string) {
+    this.router.navigate(['/medicalrecord', id]);
+  }
+  
 }
