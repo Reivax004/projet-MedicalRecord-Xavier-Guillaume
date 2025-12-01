@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
@@ -29,7 +31,8 @@ export class Login {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private snack: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -60,13 +63,18 @@ export class Login {
           this.firstname = res.firstname;
           this.lastname = res.lastname;
           this.isLoggedIn = true;
-
-          // redirection si tu veux, ou tu restes sur la page login
-          // this.router.navigate(['/']);
+          this.snack.open("Connexion réussie !", "Fermer", {
+            duration: 3000,
+            panelClass: ['success-snackbar']
+          });
+          this.router.navigate(['/']);
         },
         error: (err) => {
           this.isSubmitting = false;
           this.error = err.error?.message || 'Erreur lors de la connexion';
+          this.snack.open("Identifiants invalides", "Fermer", {
+            duration: 3000,
+            panelClass: ['error-snackbar']})
         }
       });
   }
