@@ -55,16 +55,14 @@ export class Followuppage implements OnInit {
   loadFollowupsByPatientId(patientId: string): void {
     this.loading = true;
     this.error = '';
-
+  
     this.followuprecordService.getByPatientId(patientId).subscribe({
       next: (data) => {
         console.log("Dossiers de suivi chargés :", data);     
-
+  
         this.followupsInProgress = data.inProgress || [];
         this.followupsOther = data.others || [];
-        console.log("Dossiers en cours :", this.followupsInProgress);
-        console.log("Autres dossiers :", this.followupsOther);
-        // Si pas de followups → on arrête
+  
         if (
           this.followupsInProgress.length === 0 &&
           this.followupsOther.length === 0
@@ -72,34 +70,54 @@ export class Followuppage implements OnInit {
           this.loading = false;
           return;
         }
-        // On prépare toutes les requêtes
-        const requestsInProgress = this.followupsInProgress.map(follow =>
+  
+        const reqInProgress = this.followupsInProgress.map(follow =>
           this.medicalDocumentService.getByFollowupId(follow._id).pipe(
             catchError(() => of([]))
           )
         );
-
-        const requestsOther = this.followupsOther.map(follow =>
+  
+        const reqOther = this.followupsOther.map(follow =>
           this.medicalDocumentService.getByFollowupId(follow._id).pipe(
             catchError(() => of([]))
           )
         );
+  
+        forkJoin(reqInProgress).subscribe((docLists) => {
+          docLists.forEach((docs, index) => {
+  
+            // CRUD regroupement par type
+            const grouped: Record<string, MedicalDocument[]> = {};
 
-        forkJoin(requestsInProgress).subscribe((docs) => {
-          docs.forEach((docList, i) => {
-            this.followupsInProgress[i].medical_document = docList;
-          });
-          this.loading = false
-        });
-
-        forkJoin(requestsOther).subscribe((docs) => {
-          docs.forEach((docList, i) => {
-            this.followupsOther[i].medical_document = docList;
+            docs.forEach(group => {
+              if (!group._id) return;
+              grouped[group._id] = group.documents;
+            });
+  
+            this.followupsInProgress[index].documentsByType = grouped;
           });
           this.loading = false;
         });
-      },
+  
 
+        forkJoin(reqOther).subscribe((docLists) => {
+          docLists.forEach((docs, index) => {
+  
+            const grouped: Record<string, MedicalDocument[]> = {};
+
+            docs.forEach(group => {
+              if (!group._id) return;
+              grouped[group._id] = group.documents;
+            });
+  
+            this.followupsOther[index].documentsByType = grouped;
+          });
+          this.loading = false;
+        });
+
+        console.log("Dossiers après association des documents :", this.followupsOther, this.followupsInProgress);
+      },
+  
       error: (err) => {
         console.error("Erreur complète :", err);
         this.error = "Impossible de charger les dossiers de suivi";
@@ -107,6 +125,7 @@ export class Followuppage implements OnInit {
       }
     });
   }
+  
 
   goBack(): void {
     history.back(); // Adaptez selon votre route
@@ -155,5 +174,8 @@ export class Followuppage implements OnInit {
       case 'en pause': return 'status-paused';
       default: return 'status-default';
     }
+  }
+  getKeys(obj: any): string[] {
+    return obj ? Object.keys(obj) : [];
   }
 }

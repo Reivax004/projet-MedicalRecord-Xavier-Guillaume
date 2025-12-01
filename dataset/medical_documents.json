@@ -9,7 +9,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Compte-rendu de consultation",
+    "type": "Consultation",
     "date": "2023-02-18",
     "description": "Consultation initiale pour hypertension artérielle."
   },
@@ -23,7 +23,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Résultat de laboratoire",
+    "type": "Résultat d’examen",
     "date": "2023-02-20",
     "description": "Bilan sanguin de contrôle."
   },
@@ -37,7 +37,7 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Compte-rendu cardiologie",
+    "type": "Compte-rendu médical",
     "date": "2023-04-05",
     "description": "Examen cardiologique complet."
   },
@@ -51,7 +51,7 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "ECG",
+    "type": "Résultat d’examen",
     "date": "2023-04-05",
     "description": "Électrocardiogramme normal."
   },
@@ -79,7 +79,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Compte-rendu de suivi",
+    "type": "Suivi",
     "date": "2023-12-10",
     "description": "Tension mieux contrôlée."
   },
@@ -93,7 +93,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Résultat laboratoire",
+    "type": "Résultat d’examen",
     "date": "2024-06-15",
     "description": "Suivi de la fonction rénale."
   },
@@ -107,7 +107,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-10-05",
     "description": "Diagnostic du diabète de type 2."
   },
@@ -135,7 +135,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Éducation thérapeutique",
+    "type": "Conseils",
     "date": "2023-11-01",
     "description": "Informations sur la gestion du diabète."
   },
@@ -149,7 +149,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Résultat laboratoire",
+    "type": "Résultat d’examen",
     "date": "2024-02-15",
     "description": "HbA1c à 6.8 %."
   },
@@ -163,7 +163,7 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Compte-rendu spécialisé",
+    "type": "Compte-rendu médical",
     "date": "2024-03-10",
     "description": "Avis cardiologique concernant risque vasculaire."
   },
@@ -177,13 +177,13 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Compte-rendu suivi",
+    "type": "Suivi",
     "date": "2024-10-01",
     "description": "Amélioration de l'équilibre glycémique."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c3000000100e" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000003"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000003" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -191,13 +191,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2024-12-01",
     "description": "Consultation pour migraines fréquentes."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c3000000100f" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000003"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000003" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -211,7 +211,7 @@
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001010" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000003"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000003" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -219,13 +219,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "IRM cérébrale",
+    "type": "Résultat d’examen",
     "date": "2025-01-05",
     "description": "IRM normale."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001011" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000003"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000003" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -233,13 +233,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu suivi",
+    "type": "Suivi",
     "date": "2025-02-15",
     "description": "Diminution des migraines."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001012" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000003"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000003" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -251,10 +251,9 @@
     "date": "2025-03-01",
     "description": "Recommandations sur l'hygiène de vie."
   },
-
   {
     "_id": { "$oid": "65f3e501a1b2c30000001013" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000004"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000004" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -262,13 +261,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu de consultation",
+    "type": "Consultation",
     "date": "2023-05-18",
     "description": "Mise à jour du traitement contre l'asthme."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001014" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000004"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000004" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -282,7 +281,7 @@
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001015" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000004"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000004" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -290,13 +289,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Résultat de laboratoire",
+    "type": "Résultat d’examen",
     "date": "2023-06-01",
     "description": "Tests allergologiques."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001016" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000004"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000004" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -304,13 +303,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu de suivi",
+    "type": "Suivi",
     "date": "2023-09-01",
     "description": "Amélioration clinique."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001017" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000004"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000004" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -318,13 +317,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Plan d'action écrit",
+    "type": "Conseils",
     "date": "2024-03-10",
     "description": "Plan personnalisé pour gestion des crises."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001018" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000004"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000004" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -332,13 +331,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2024-10-05",
     "description": "Contrôle annuel de l'asthme."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001019" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000004"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000004" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -346,14 +345,14 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Résultat spirométrie",
+    "type": "Résultat d’examen",
     "date": "2024-10-06",
     "description": "Fonction respiratoire stable."
   },
 
   {
     "_id": { "$oid": "65f3e501a1b2c3000000101a" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000005"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000005" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -361,13 +360,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-09-07",
     "description": "Lombalgie mécanique suspectée."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c3000000101b" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000005"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000005" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -375,13 +374,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu imagerie",
+    "type": "Compte-rendu médical",
     "date": "2023-09-15",
     "description": "Radiographie lombaire : arthrose légère."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c3000000101c" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000005"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000005" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -395,7 +394,7 @@
   },
   {
     "_id": { "$oid": "65f3e501a1b2c3000000101d" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000005"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000005" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -403,13 +402,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu kinésithérapie",
+    "type": "Compte-rendu médical",
     "date": "2023-11-01",
     "description": "Amélioration mobilité."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c3000000101e" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000005"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000005" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -417,14 +416,14 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu de suivi",
+    "type": "Suivi",
     "date": "2024-02-01",
     "description": "Douleurs moins fréquentes."
   },
 
   {
     "_id": { "$oid": "65f3e501a1b2c3000000101f" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000006"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000006" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000001" },
@@ -432,13 +431,13 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-02-01",
     "description": "Fatigue persistante, suspicion carence vitaminiques."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001020" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000006"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000006" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000001" },
@@ -446,13 +445,13 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Résultats laboratoire",
+    "type": "Résultat d’examen",
     "date": "2023-02-03",
     "description": "Bilan sanguin : légère carence en vitamine B12."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001021" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000006"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000006" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000001" },
@@ -460,13 +459,14 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Compte-rendu de suivi",
+    "type": "Suivi",
     "date": "2023-04-05",
     "description": "Amélioration des symptômes avec compléments."
   },
+
   {
     "_id": { "$oid": "65f3e501a1b2c30000001022" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000007"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000007" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000001" },
@@ -474,13 +474,13 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2024-07-22",
     "description": "Hypotension légère confirmée."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001023" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000007"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000007" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000001" },
@@ -488,14 +488,13 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Conseils médicaux",
+    "type": "Conseils",
     "date": "2024-07-22",
     "description": "Conseils : hydratation, alimentation salée, éviter les stations debout prolongées."
   },
-
   {
     "_id": { "$oid": "65f3e501a1b2c30000001024" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000008"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000008" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -503,13 +502,13 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Compte-rendu dermatologie",
+    "type": "Compte-rendu médical",
     "date": "2023-07-12",
     "description": "Diagnostic de dermatite séborrhéique."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001025" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000008"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000008" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -523,7 +522,7 @@
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001026" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000008"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000008" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -531,14 +530,14 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Compte-rendu suivi",
+    "type": "Suivi",
     "date": "2023-09-20",
     "description": "Amélioration notable après traitement."
   },
 
   {
     "_id": { "$oid": "65f3e501a1b2c30000001027" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000009"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000009" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -546,13 +545,13 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2025-02-03",
     "description": "Evaluation initiale de la fatigue persistante."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001028" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000009"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000009" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -560,13 +559,13 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Résultats de laboratoire",
+    "type": "Résultat d’examen",
     "date": "2025-02-10",
     "description": "Bilan sanguin normal, légère carence en vitamine D."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c30000001029" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000009"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000009" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -574,14 +573,14 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Conseils médicaux",
+    "type": "Conseils",
     "date": "2025-02-15",
     "description": "Recommandations : sommeil, hydratation, alimentation."
   },
 
   {
     "_id": { "$oid": "65f3e501a1b2c3000000102a" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000000a"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000000a" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -589,13 +588,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu",
+    "type": "Compte-rendu médical",
     "date": "2023-02-10",
     "description": "Investigations initiales — suspicion de carence."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c3000000102b" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000000a"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000000a" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -603,13 +602,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Analyse sanguine",
+    "type": "Résultat d’examen",
     "date": "2023-02-12",
     "description": "Résultats montrant une légère carence en fer."
   },
   {
     "_id": { "$oid": "65f3e501a1b2c3000000102c" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000000a"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000000a" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -617,14 +616,14 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu de suivi",
+    "type": "Suivi",
     "date": "2023-04-15",
     "description": "Amélioration des symptômes."
   },
 
   {
     "_id": { "$oid": "65f3e501a1b2c3000000102d" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000000b"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000000b" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
@@ -632,7 +631,7 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Compte-rendu dermatologie",
+    "type": "Compte-rendu médical",
     "date": "2024-05-15",
     "description": "Éruption bénigne, traitement local."
   },
@@ -647,7 +646,7 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu allergie",
+    "type": "Compte-rendu médical",
     "date": "2023-04-15",
     "description": "Allergie saisonnière confirmée."
   },
@@ -661,7 +660,7 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Plan d'action",
+    "type": "Conseils",
     "date": "2023-04-16",
     "description": "Plan de gestion des crises allergiques."
   },
@@ -676,7 +675,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-08-20",
     "description": "Hypotension confirmée, conseils hygiéno-diététiques."
   },
@@ -690,7 +689,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Résultats prise de sang",
+    "type": "Résultat d’examen",
     "date": "2023-08-22",
     "description": "Bilan normal."
   },
@@ -705,7 +704,7 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-06-15",
     "description": "Suspicion d'arthrose des genoux."
   },
@@ -719,7 +718,7 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Résultat radiographie",
+    "type": "Résultat d’examen",
     "date": "2023-06-18",
     "description": "Arthrose débutante confirmée."
   },
@@ -733,7 +732,7 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Compte-rendu suivi",
+    "type": "Suivi",
     "date": "2023-10-03",
     "description": "Recommandations de soulagement et activité physique adaptée."
   },
@@ -748,7 +747,7 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2024-02-10",
     "description": "Hypertension légère détectée, traitement instauré."
   },
@@ -762,7 +761,7 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Résultats analyse sanguine",
+    "type": "Résultat d’examen",
     "date": "2024-02-12",
     "description": "Cholestérol légèrement élevé."
   },
@@ -776,7 +775,7 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Compte-rendu de suivi",
+    "type": "Suivi",
     "date": "2024-11-01",
     "description": "Stabilisation tensionnelle avec traitement."
   },
@@ -791,7 +790,7 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-06-10",
     "description": "Diagnostic de tendinite du genou droit."
   },
@@ -805,7 +804,7 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Résultat IRM",
+    "type": "Résultat d’examen",
     "date": "2023-06-18",
     "description": "IRM confirmant inflammation tendineuse sans lésion grave."
   },
@@ -819,7 +818,7 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Compte-rendu suivi",
+    "type": "Suivi",
     "date": "2023-09-02",
     "description": "Amélioration après kinésithérapie."
   },
@@ -834,7 +833,7 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2024-02-05",
     "description": "Palpitations légères, probablement liées au stress."
   },
@@ -848,7 +847,7 @@
         "firstname": "Élodie"
       }
     ],
-    "type": "Résultat ECG",
+    "type": "Résultat d’examen",
     "date": "2024-02-06",
     "description": "ECG normal."
   },
@@ -863,7 +862,7 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-09-10",
     "description": "Suspicion de cervicalgie mécanique."
   },
@@ -877,7 +876,7 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Résultat radiographie",
+    "type": "Résultat d’examen",
     "date": "2023-09-20",
     "description": "Absence de lésion osseuse, tension musculaire."
   },
@@ -891,7 +890,7 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Compte-rendu suivi",
+    "type": "Suivi",
     "date": "2023-12-15",
     "description": "Amélioration après kinésithérapie."
   },
@@ -906,7 +905,7 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Compte-rendu ORL",
+    "type": "Compte-rendu médical",
     "date": "2024-01-12",
     "description": "Otite séreuse diagnostiquée."
   },
@@ -920,13 +919,14 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Résultat audiogramme",
+    "type": "Résultat d’examen",
     "date": "2024-01-15",
     "description": "Légère perte de conduction."
   },
+  
   {
     "_id": { "$oid": "65f3e701a1b2c30000002010" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000014"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000014" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -934,13 +934,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-05-18",
     "description": "Suspicion d'anémie, examens prescrits."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c30000002011" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000014"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000014" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -948,13 +948,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Résultats analyse sanguine",
+    "type": "Résultat d’examen",
     "date": "2023-05-22",
     "description": "Anémie légère confirmée."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c30000002012" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000014"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000014" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -962,14 +962,14 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu suivi",
+    "type": "Suivi",
     "date": "2023-08-01",
     "description": "Amélioration après supplémentation."
   },
 
   {
     "_id": { "$oid": "65f3e701a1b2c30000002013" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000015"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000015" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -977,13 +977,13 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Compte-rendu pneumologie",
+    "type": "Compte-rendu médical",
     "date": "2024-03-17",
     "description": "Asthme léger, mise en route traitement inhalé."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c30000002014" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000015"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000015" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000005" },
@@ -991,14 +991,14 @@
         "firstname": "Karim"
       }
     ],
-    "type": "Résultat radiographie",
+    "type": "Résultat d’examen",
     "date": "2024-03-20",
     "description": "Radio thoracique normale."
   },
 
   {
     "_id": { "$oid": "65f3e701a1b2c30000002015" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000016"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000016" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
@@ -1006,13 +1006,13 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-06-05",
     "description": "Dysménorrhée récidivante, prescription d'antalgiques."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c30000002016" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000016"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000016" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
@@ -1020,14 +1020,14 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Résultat échographie",
+    "type": "Résultat d’examen",
     "date": "2023-06-12",
     "description": "Échographie pelvienne normale."
   },
 
   {
     "_id": { "$oid": "65f3e701a1b2c30000002017" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000017"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000017" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
@@ -1035,13 +1035,13 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2024-03-01",
     "description": "Allergie respiratoire légère, traitements prescrits."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c30000002018" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000017"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000017" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000004" },
@@ -1049,14 +1049,14 @@
         "firstname": "Antoine"
       }
     ],
-    "type": "Résultat test allergologique",
+    "type": "Résultat d’examen",
     "date": "2024-03-15",
     "description": "Allergie faible aux graminées."
   },
 
   {
     "_id": { "$oid": "65f3e701a1b2c30000002019" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000018"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000018" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -1064,13 +1064,13 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-06-21",
     "description": "Palpitations bénignes, traitement au magnésium conseillé."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c3000000201a" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000018"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000018" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -1078,14 +1078,14 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Résultat ECG",
+    "type": "Résultat d’examen",
     "date": "2023-06-23",
     "description": "ECG normal."
   },
 
   {
     "_id": { "$oid": "65f3e701a1b2c3000000201b" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000019"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000019" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -1093,13 +1093,13 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Compte-rendu ORL",
+    "type": "Compte-rendu médical",
     "date": "2024-03-05",
     "description": "Acouphènes intermittents, examen complémentaire demandé."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c3000000201c" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c30000000019"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c30000000019" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000003" },
@@ -1107,14 +1107,14 @@
         "firstname": "Sophie"
       }
     ],
-    "type": "Résultat audiogramme",
+    "type": "Résultat d’examen",
     "date": "2024-03-07",
     "description": "Audiogramme normal."
   },
 
   {
     "_id": { "$oid": "65f3e701a1b2c3000000201d" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000001a"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000001a" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
@@ -1122,13 +1122,13 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2023-08-12",
     "description": "Céphalées répétées, suspicion migraine."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c3000000201e" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000001a"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000001a" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
@@ -1136,13 +1136,13 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Résultat IRM",
+    "type": "Résultat d’examen",
     "date": "2023-08-20",
     "description": "IRM cérébrale normale."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c3000000201f" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000001a"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000001a" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
@@ -1150,14 +1150,14 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Compte-rendu suivi",
+    "type": "Suivi",
     "date": "2024-01-12",
     "description": "Légère amélioration sous traitement."
   },
 
   {
     "_id": { "$oid": "65f3e701a1b2c30000002020" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000001b"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000001b" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
@@ -1165,13 +1165,13 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Compte-rendu consultation",
+    "type": "Consultation",
     "date": "2024-02-14",
     "description": "Troubles digestifs fonctionnels diagnostiqués."
   },
   {
     "_id": { "$oid": "65f3e701a1b2c30000002021" },
-    "follow_up_file_Id": {"$oid": "65f4c300a1b2c3000000001b"},
+    "follow_up_file_Id": { "$oid": "65f4c300a1b2c3000000001b" },
     "practitioner": [
       {
         "practitionerId": { "$oid": "65f3d001a1b2c30000000002" },
@@ -1179,7 +1179,7 @@
         "firstname": "Thomas"
       }
     ],
-    "type": "Résultat échographie",
+    "type": "Résultat d’examen",
     "date": "2024-02-20",
     "description": "Echographie abdominale normale."
   }

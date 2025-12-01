@@ -2,205 +2,236 @@
   <div class="header-section">
     <h1>Dossiers de Suivi</h1>
   </div>
+
   <!-- LOADING -->
-  @if(loading){
+  @if (loading) {
     <div class="loading-message">
       <p>Chargement des dossiers...</p>
     </div>
   }
 
   <!-- ERROR -->
-  @if(error && !loading){
+  @if (error && !loading) {
     <div class="error-message">
       <p>{{ error }}</p>
     </div>
   }
 
-<!-- LISTE DES DOSSIERS -->
-@if (!loading && !error) {
+  <!-- LISTE DES DOSSIERS -->
+  @if (!loading && !error) {
 
-  <!-- 📌 BLOC 1 : DOSSIERS EN COURS -->
-  <h2 class="followup-section-title">Dossiers suivis en cours</h2>
+    <!-- 📌 BLOC 1 : DOSSIERS EN COURS -->
+    <h2 class="followup-section-title">Dossiers suivis en cours</h2>
 
-  @if (followupsInProgress && followupsInProgress.length > 0) {
-    <div class="followups-grid">
-      @for (followup of followupsInProgress; track followup._id) {
+    @if (followupsInProgress && followupsInProgress.length > 0) {
+      <div class="followups-grid">
 
-        <div class="followup-card">
+        @for (followup of followupsInProgress; track followup._id) {
 
-          <!-- Header -->
-          <div class="card-header">
-            <h3>{{ followup.pathology }}</h3>
-            <span class="status-badge" [ngClass]="getStatusClass(followup.status)">
-              {{ followup.status }}
-            </span>
-          </div>
+          <div class="followup-card">
 
-          <!-- Infos -->
-          <div class="card-body">
-            <div class="info-row">
-              <div class="info-content">
-                <span class="info-label">Début :</span>
-                <span class="info-value">{{ formatDate(followup.start_date) }}</span>
+            <!-- Header du dossier -->
+            <div class="card-header">
+              <h3>{{ followup.pathology }}</h3>
+              <span class="status-badge" [ngClass]="getStatusClass(followup.status)">
+                {{ followup.status }}
+              </span>
+            </div>
+
+            <!-- Corps du dossier -->
+            <div class="card-body">
+
+              <!-- Dates -->
+              <div class="info-row">
+                <div class="info-content">
+                  <span class="info-label">Début :</span>
+                  <span class="info-value">{{ formatDate(followup.start_date) }}</span>
+                </div>
+                <div class="info-content">
+                  <span class="info-label">Fin :</span>
+                  <span class="info-value">
+                    {{ followup.end_date ? formatDate(followup.end_date) : 'En cours' }}
+                  </span>
+                </div>
               </div>
-              <div class="info-content">
-                <span class="info-label">Fin :</span>
-                <span class="info-value">
-                  {{ followup.end_date ? formatDate(followup.end_date) : 'En cours' }}
-                </span>
+
+              <!-- PRESCRIPTIONS -->
+              <div class="section prescriptions">
+                <h4>Prescriptions ({{ followup.prescriptions?.length || 0 }})</h4>
+
+                @if (followup.prescriptions && followup.prescriptions.length > 0) {
+                  <ul>
+                    @for (prescription of followup.prescriptions; track prescription._id) {
+                      <li>
+                        <strong>{{ prescription.drug_name }}</strong> —
+                        {{ prescription.shape }}, {{ prescription.quantity }}
+                        ({{ prescription.frequency }} fois/jour)
+                        <br>
+                        Du {{ formatDate(prescription.start_date) }}
+                        au {{ prescription.end_date ? formatDate(prescription.end_date) : 'En cours' }}
+                      </li>
+                    }
+                  </ul>
+                } @else {
+                  <p>Aucune prescription enregistrée</p>
+                }
               </div>
-            </div>
 
-            <!-- Prescriptions -->
-            <div class="section prescriptions">
-              <h4>Prescriptions ({{ followup.prescriptions?.length || 0 }})</h4>
+              <!-- DOCUMENTS MÉDICAUX REGROUPÉS PAR TYPE -->
+              <div class="section medical-documents">
+                <h4>Documents Médicaux</h4>
 
-              @if (followup.prescriptions && followup.prescriptions.length > 0) {
-                <ul>
-                  @for (prescription of followup.prescriptions; track prescription._id) {
-                    <li>
-                      <strong>{{ prescription.drug_name }}</strong> —
-                      {{ prescription.shape }}, {{ prescription.quantity }}
-                      ({{ prescription.frequency }} fois/jour)
-                      <br>
-                      Du {{ formatDate(prescription.start_date) }}
-                      au {{ prescription.end_date ? formatDate(prescription.end_date) : 'En cours' }}
-                    </li>
+                @if (followup.documentsByType && getKeys(followup.documentsByType).length > 0) {
+
+                  @for (type of getKeys(followup.documentsByType); track type) {
+
+                    <!-- Badge du type -->
+                    <div class="doc-type-badge">
+                      <h6><b >{{ type }} ({{ followup.documentsByType[type].length }})</b></h6>
+                    </div>
+
+                    <ul>
+                      @for (doc of followup.documentsByType[type]; track doc._id) {
+                        <li>
+                          <strong>{{ doc.type }}</strong> — {{ doc.description || 'Aucune description' }}
+                          <br>
+                          Date : {{ formatDate(doc.date) }}
+                        </li>
+                      }
+                    </ul>
+
                   }
-                </ul>
-              } @else {
-                <p>Aucune prescription enregistrée</p>
-              }
+
+                } @else {
+                  <p>Aucun document médical enregistré</p>
+                }
+              </div>
+
             </div>
 
-            <!-- Documents médicaux -->
-            <div class="section medical-documents">
-              <h4>Documents Médicaux ({{ followup.medical_document?.length || 0 }})</h4>
+            <!-- Actions -->
+            <div class="card-actions">
+              <button class="btn-action btn-edit" (click)="editFollowup(followup._id, $event)">Modifier</button>
+              <button class="btn-action btn-delete" (click)="deleteFollowup(followup._id, $event)">Supprimer</button>
+            </div>
 
-              @if (followup.medical_document && followup.medical_document.length > 0) {
-                <ul>
-                  @for (doc of followup.medical_document; track doc._id) {
-                    <li>
-                      <strong>{{ doc.type }}</strong> - {{ doc.description || 'Aucune description' }}
-                      <br>
-                      Date : {{ formatDate(doc.date) }}
-                    </li>
+          </div> <!-- end card -->
+
+        } <!-- end for -->
+      </div>
+
+    } @else {
+      <p class="empty-state">Aucun dossier en cours</p>
+    }
+
+
+
+    <!-- 📌 BLOC 2 : DOSSIERS TERMINÉS -->
+    <h2 class="followup-section-title">Dossiers suivis terminés</h2>
+
+    @if (followupsOther && followupsOther.length > 0) {
+
+      <div class="followups-grid">
+
+        @for (followup of followupsOther; track followup._id) {
+
+          <div class="followup-card">
+
+            <div class="card-header">
+              <h3>{{ followup.pathology }}</h3>
+              <span class="status-badge" [ngClass]="getStatusClass(followup.status)">
+                {{ followup.status }}
+              </span>
+            </div>
+
+            <div class="card-body">
+
+              <!-- Dates -->
+              <div class="info-row">
+                <div class="info-content">
+                  <span class="info-label">Début :</span>
+                  <span class="info-value">{{ formatDate(followup.start_date) }}</span>
+                </div>
+                <div class="info-content">
+                  <span class="info-label">Fin :</span>
+                  <span class="info-value">
+                    {{ followup.end_date ? formatDate(followup.end_date) : 'En cours' }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Prescriptions -->
+              <div class="section prescriptions">
+                <h4>Prescriptions ({{ followup.prescriptions?.length || 0 }})</h4>
+
+                @if (followup.prescriptions && followup.prescriptions.length > 0) {
+                  <ul>
+                    @for (prescription of followup.prescriptions; track prescription._id) {
+                      <li>
+                        <strong>{{ prescription.drug_name }}</strong>
+                        — {{ prescription.shape }}, {{ prescription.quantity }}
+                        ({{ prescription.frequency }} fois/jour)
+                        <br>
+                        Du {{ formatDate(prescription.start_date) }}
+                        au {{ prescription.end_date ? formatDate(prescription.end_date) : 'En cours' }}
+                      </li>
+                    }
+                  </ul>
+                } @else {
+                  <p>Aucune prescription enregistrée</p>
+                }
+              </div>
+
+              <!-- DOCUMENTS REGROUPÉS PAR TYPE -->
+              <div class="section medical-documents">
+                <h4>Documents Médicaux</h4>
+
+                @if (followup.documentsByType && getKeys(followup.documentsByType).length > 0) {
+
+                  @for (type of getKeys(followup.documentsByType); track type) {
+
+                    <div class="doc-type-badge">
+                      <h6><b >{{ type }} ({{ followup.documentsByType[type].length }})</b></h6>
+                    </div>
+
+                    <ul>
+                      @for (doc of followup.documentsByType[type]; track doc._id) {
+                        <li>
+                          <strong>{{ doc.type }}</strong>
+                          — {{ doc.description || 'Aucune description' }}
+                          <br>
+                          Date : {{ formatDate(doc.date) }}
+                        </li>
+                      }
+                    </ul>
+
                   }
-                </ul>
-              } @else {
-                <p>Aucun document médical enregistré</p>
-              }
+
+                } @else {
+                  <p>Aucun document médical enregistré</p>
+                }
+              </div>
+
             </div>
+
+            <div class="card-actions">
+              <button class="btn-action btn-edit" (click)="editFollowup(followup._id, $event)">Modifier</button>
+              <button class="btn-action btn-delete" (click)="deleteFollowup(followup._id, $event)">Supprimer</button>
+            </div>
+
           </div>
 
-          <!-- Actions -->
-          <div class="card-actions">
-            <button class="btn-action btn-edit" (click)="editFollowup(followup._id, $event)">Edit</button>
-            <button class="btn-action btn-delete" (click)="deleteFollowup(followup._id, $event)">Supprimer</button>
-          </div>
+        }
+      </div>
 
-        </div> <!-- end card -->
+    } @else {
+      <p class="empty-state">Aucun dossier terminé</p>
+    }
 
-      } <!-- end for -->
-    </div> <!-- end grid -->
-
-  } @else {
-    <p class="empty-state">Aucun dossier en cours</p>
   }
 
-
-  <!-- 📌 BLOC 2 : DOSSIERS TERMINÉS -->
-  <h2 class="followup-section-title">Dossiers suivis terminés</h2>
-
-  @if (followupsOther && followupsOther.length > 0) {
-
-    <div class="followups-grid">
-      @for (followup of followupsOther; track followup._id) {
-        
-        <!-- 🔁 La même carte que ci-dessus -->
-        <div class="followup-card">
-
-          <div class="card-header">
-            <h3>{{ followup.pathology }}</h3>
-            <span class="status-badge" [ngClass]="getStatusClass(followup.status)">
-              {{ followup.status }}
-            </span>
-          </div>
-
-          <div class="card-body">
-            <!-- Idem : mêmes infos -->
-            <div class="info-row">
-              <div class="info-content">
-                <span class="info-label">Début :</span>
-                <span class="info-value">{{ formatDate(followup.start_date) }}</span>
-              </div>
-              <div class="info-content">
-                <span class="info-label">Fin :</span>
-                <span class="info-value">
-                  {{ followup.end_date ? formatDate(followup.end_date) : 'En cours' }}
-                </span>
-              </div>
-            </div>
-
-            <!-- Prescriptions -->
-            <div class="section prescriptions">
-              <h4>Prescriptions ({{ followup.prescriptions?.length || 0 }})</h4>
-
-              @if (followup.prescriptions && followup.prescriptions.length > 0) {
-                <ul>
-                  @for (prescription of followup.prescriptions; track prescription._id) {
-                    <li>
-                      <strong>{{ prescription.drug_name }}</strong>
-                      — {{ prescription.shape }}, {{ prescription.quantity }}
-                      ({{ prescription.frequency }} fois/jour)
-                      <br>
-                      Du {{ formatDate(prescription.start_date) }}
-                      au {{ prescription.end_date ? formatDate(prescription.end_date) : 'En cours' }}
-                    </li>
-                  }
-                </ul>
-              } @else {
-                <p>Aucune prescription enregistrée</p>
-              }
-            </div>
-
-            <!-- Documents -->
-            <div class="section medical-documents">
-              <h4>Documents Médicaux ({{ followup.medical_document?.length || 0 }})</h4>
-
-              @if (followup.medical_document && followup.medical_document.length > 0) {
-                <ul>
-                  @for (doc of followup.medical_document; track doc._id) {
-                    <li>
-                      <strong>{{ doc.type }}</strong>
-                      — {{ doc.description || 'Aucune description' }}
-                      <br>
-                      Date : {{ formatDate(doc.date) }}
-                    </li>
-                  }
-                </ul>
-              } @else {
-                <p>Aucun document médical enregistré</p>
-              }
-            </div>
-          </div>
-
-          <div class="card-actions">
-            <button class="btn-action btn-edit" (click)="editFollowup(followup._id, $event)">Edit</button>
-            <button class="btn-action btn-delete" (click)="deleteFollowup(followup._id, $event)">Supprimer</button>
-          </div>
-
-        </div>
-
-      }
-    </div>
-
-  } @else {
-    <p class="empty-state">Aucun dossier terminé</p>
-  }
-
-}
   <div class="footer-actions">
     <button class="btn-back" (click)="goBack()">⟵ Retour</button>
   </div>
+
 </div>

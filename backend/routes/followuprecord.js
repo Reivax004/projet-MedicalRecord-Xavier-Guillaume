@@ -17,9 +17,7 @@ const FollowupRecord = require('../models/followuprecord');
     }
 });*/
 // Route : GET /api/followuprecord/patient/:patientId
-router.get('/:patientId', async (req, res) => {
-    console.log('📥 Requête reçue pour patientId:',req.params.patientId );
-    
+router.get('/:patientId', async (req, res) => {    
     const patientId = new mongoose.Types.ObjectId(req.params.patientId);
 
     const results = await FollowupRecord.aggregate([
@@ -33,8 +31,6 @@ router.get('/:patientId', async (req, res) => {
           }
         }
       ]);
-      console.log(results);
-
       const response = {
         inProgress: [],
         others: []
@@ -48,8 +44,6 @@ router.get('/:patientId', async (req, res) => {
         }
       }
 
-      
-    console.log('📤 Envoi des follow-up records:', results );
     res.json(response);
 });
 

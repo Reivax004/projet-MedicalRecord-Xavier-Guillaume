@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {NgOptimizedImage} from '@angular/common';
 @Component({
@@ -7,6 +7,11 @@ import {NgOptimizedImage} from '@angular/common';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {
-
+export class Home implements OnInit{
+  userType: string | null = null;
+  ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
+    console.log('User Type:', this.userType);
+  }
+ 
 }

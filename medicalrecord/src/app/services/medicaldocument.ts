@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MedicalDocument} from '../models/medicaldocument';
 import {Observable} from 'rxjs';
+import {medical_documents_group} from '../models/medical_documents_group';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,8 @@ export class Medicaldocument {
   constructor(private http: HttpClient) {}
 
   /** 🔹 GET DOCUMENTS BY FOLLOWUP ID */
-  getByFollowupId(followupId: string | undefined): Observable<MedicalDocument[]> {
-    return this.http.get<MedicalDocument[]>(`${this.apiUrl}/followup/${followupId}`);
+  getByFollowupId(followupId: string | undefined): Observable<medical_documents_group[]> {
+    return this.http.get<medical_documents_group[]>(`${this.apiUrl}/followup/${followupId}`);
   }
 
   /** 🔹 CREATE ONE DOCUMENT */

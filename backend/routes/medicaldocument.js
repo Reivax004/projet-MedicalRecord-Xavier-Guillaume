@@ -69,17 +69,22 @@ router.get('/:id', async (req, res) => {
 // =========================
 router.get('/followup/:followupId', async (req, res) => {
     try {
-        const docs = await MedicalDocument.find({
-            follow_up_file_Id: req.params.followupId
-        });
-
+        const followupId = new mongoose.Types.ObjectId(req.params.followupId);
+        const docs = await MedicalDocument.aggregate([
+            { $match: { follow_up_file_Id: followupId } },
+            {
+                $group: {
+                  _id: "$type",
+                  documents: { $push: "$$ROOT" }
+                }
+            }
+          ]);
         res.json(docs);
     } catch (err) {
         console.error("Erreur récupération par followup :", err);
         res.status(500).json({ message: err.message });
     }
 });
-
 
 
 // =========================

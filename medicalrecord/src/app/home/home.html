@@ -1,7 +1,15 @@
 <main class="hero">
   <h1>Bienvenue sur MedicalRecord</h1>
   <p>Suivi médical simplifié pour votre bien-être.</p>
-  <button class="btn-action" routerLink="/appointments">Voir les rendez-vous</button>
+  @if(!userType){
+    <button class="btn-action" routerLink="/login">Se connecter</button>
+  }
+  @if(userType === 'practitioner'){
+    <button class="btn-action" routerLink="/practitionerpage">Voir mon compte</button>
+  }
+  @if(userType === 'patient'){
+    <button class="btn-action" routerLink="/patientpage">Voir mon compte</button>
+  }
 
   <section class="hero-features">
     <div class="feature">

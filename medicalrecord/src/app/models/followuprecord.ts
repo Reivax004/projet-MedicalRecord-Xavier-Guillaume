@@ -10,4 +10,5 @@ export interface FollowupRecord {
   prescriptions: Prescription[];
   status: string;
   medical_document: MedicalDocument[];
+  documentsByType?: { [key: string]: MedicalDocument[] };
 }
