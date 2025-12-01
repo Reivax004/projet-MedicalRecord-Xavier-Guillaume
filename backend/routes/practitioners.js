@@ -37,6 +37,18 @@ router.get('/:id', async (req, res) => {
 });
 
 // -----------------------------------------------------
+// READ ALL - GET /api/practitioners
+// -----------------------------------------------------
+router.get('/', async (req, res) => {
+    try {
+        const practitioners = await Practitioner.find().select('-password'); // enlève le mdp
+        res.json(practitioners);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// -----------------------------------------------------
 // UPDATE - PUT /api/practitioners/:id
 // -----------------------------------------------------
 router.put('/:id', async (req, res) => {

@@ -13,6 +13,7 @@ import {Followuppage} from './followuppage/followuppage';
 import {Login} from './login/login';
 import {PractitionerForm} from './accountpractitioner/accountpractitioner';
 import {PractitionerPage} from './practitionerpage/practitionerpage';
+import {AllPractitionners} from './allpractitionners/allpractitionners';
 
 export const routes: Routes = [
   { path: '', component: Home},
@@ -34,6 +35,7 @@ export const routes: Routes = [
   { path: 'practitionerpage', component: PractitionerPage},
   { path: 'practitionerpage/:id', component: PractitionerPage},
   { path: 'medicalrecord/:id', component: RecordPage },
+  { path: 'allpractitioners', component: AllPractitionners },
   { path: 'login', component: Login },
   { path: '**', redirectTo: 'home'},
 ];
