@@ -35,6 +35,4 @@ const AppointmentSchema = new Schema({
 
 });
 
-AppointmentSchema.index({ patientId: 1});
-
 module.exports = mongoose.model('appointments', AppointmentSchema);

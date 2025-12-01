@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { PatientService } from '../services/patient';
 import { Account } from '../models/account';
-import { PractitionerService } from '../services/practitioner';
+import { PractitionerService } from '../services/practitioners';
+import { Practitioner } from '../models/practitioner';
 
 @Component({
   selector: 'app-patient-page',
@@ -15,6 +16,7 @@ import { PractitionerService } from '../services/practitioner';
 export class PatientPage implements OnInit {
 
   current!: Account;
+  current2!: Practitioner;
   loading = true;
   error: string | null = null;
   userId: string = '';
@@ -60,9 +62,9 @@ export class PatientPage implements OnInit {
   }
 
   private loadPractitioner(id: string): void {
-    this.practitionerService.getPractitioner(id).subscribe({
-      next: (pract: Account) => {
-        this.current = pract;
+    this.practitionerService.getById(id).subscribe({
+      next: (pract: Practitioner) => {
+        this.current2 = pract;
         this.loading = false;
       },
       error: () => {
@@ -106,7 +108,7 @@ export class PatientPage implements OnInit {
         }
       });
     } else if (this.userType === 'practitioner') {
-      this.practitionerService.deletePractitioner(this.current._id).subscribe({
+      this.practitionerService.delete(this.current._id).subscribe({
         next: () => {
           alert('Praticien supprimé avec succès.');
           this.afterDelete();

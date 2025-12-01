@@ -90,14 +90,7 @@
                     <div class="doc-group">
                       <h5 class="doc-type-title">{{ entry.key }}</h5>
 
-                      <ul>
-                        @for (doc of entry.value; track doc._id) {
-                          <li>
-                            <strong>{{ doc.description || 'Aucune description' }}</strong><br>
-                            Date : {{ formatDate(doc.date) }}
-                          </li>
-                        }
-                      </ul>
+                      
 
                     </div>
 

@@ -3,12 +3,20 @@ const mongoose = require('mongoose');
 const {VaccineSchema} = require("./vaccine");
 const { Schema } = mongoose;
 
-const { AddressSchema } = require('./patient');
+// sous-schéma d'adresse (embedded)
+const AddressSchema = new Schema({
+    number: Number,
+    street: String,
+    postal_code: Number,
+    city: String,
+    country: String
+}, { _id: false });
+
 
 // Sous-schéma établissement
 const establishments = new Schema({
     name: { type: String, required: false },
-    address: { type: AddressSchema, required: false },
+    address: AddressSchema,
     type: { type: String, required: false },
     description: { type: String, required: false },
     phone: { type: String, required: false },
