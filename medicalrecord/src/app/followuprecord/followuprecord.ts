@@ -239,7 +239,7 @@ export class FollowupRecord implements OnInit {
       ).subscribe({
         next: () => {
           alert("Dossier et documents mis à jour !");
-          this.router.navigate(['/followuppage', this.followupId]);
+          window.history.back();
         },
         error: (err: any) => {
           console.error(err);

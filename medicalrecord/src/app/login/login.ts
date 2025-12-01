@@ -92,5 +92,13 @@ export class Login {
     this.firstname = null;
     this.lastname = null;
     this.isLoggedIn = false;
+
+    this.snack.open("Déconnexion réussie !", "Fermer", {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
 }

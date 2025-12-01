@@ -1,5 +1,4 @@
 import {Vaccine} from './vaccine';
-import {Practitioner} from './practitioner';
 
 export interface MedicalRecord {
   _id?: string;

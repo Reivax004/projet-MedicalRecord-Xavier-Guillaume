@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const MedicalDocument = require('../models/medical_documents');
@@ -78,6 +79,7 @@ router.get('/followup/:followupId', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
 
 
 // =========================

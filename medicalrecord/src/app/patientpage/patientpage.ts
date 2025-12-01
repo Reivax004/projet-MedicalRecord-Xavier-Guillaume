@@ -134,13 +134,26 @@ export class PatientPage implements OnInit {
 
     this.patientService.deletePatient(this.current._id).subscribe({
       next: () => {
-        alert('Patient supprimé avec succès.');
-        this.router.navigate(['/patientlist']); // ➡️ Change vers ta vraie page de liste
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userType');
+        localStorage.removeItem('userFirstname');
+        localStorage.removeItem('userLastname');
+        this.router.navigate(['/home']).then(() => {
+          alert('Patient supprimé avec succès.');
+          window.location.reload();
+        });
       },
       error: (err) => {
         console.error(err);
         alert("Erreur lors de la suppression du patient.");
       }
+    });
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('userFirstname');
+    localStorage.removeItem('userLastname');
+    this.router.navigate(['/home']).then(() => {
+      window.location.reload();
     });
   }
 

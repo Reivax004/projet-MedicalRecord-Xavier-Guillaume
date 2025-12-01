@@ -136,7 +136,7 @@ export class Followuppage implements OnInit {
   editFollowup(followupId: string, event: Event): void {
     event.stopPropagation();
     console.log(followupId);
-    this.router.navigate(['/followuprecord/', followupId]);
+    this.router.navigate(['/followuprecord/', followupId, ]);
   }
 
   formatDate(date: any): string {

@@ -16,6 +16,7 @@ export class Record implements OnInit {
   medicalForm!: FormGroup;
   isEdit: boolean = false;
   recordId: string | null = null;
+  userType: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +27,14 @@ export class Record implements OnInit {
 
   ngOnInit(): void {
     // Récupérer l'ID dans l'URL
-    this.recordId = localStorage.getItem('userId') || '';
+    this.userType = localStorage.getItem('userType');
+    if(this.userType === 'practitioner'){
+      this.recordId = this.route.snapshot.paramMap.get('id');
+    }
+    else{
+      this.recordId = localStorage.getItem('userId') || '';
+    }
+
     this.isEdit = !!this.recordId;
 
     // Création du formulaire
@@ -65,6 +73,7 @@ export class Record implements OnInit {
     this.recordService.getById(id).subscribe({
       next: (record) => {
         // remplir le formulaire
+        console.log(record)
         this.medicalForm.patchValue({
           weight: record.weight,
           height: record.height,

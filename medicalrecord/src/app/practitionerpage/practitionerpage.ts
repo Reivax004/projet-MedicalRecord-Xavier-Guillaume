@@ -71,14 +71,22 @@ export class PractitionerPage implements OnInit {
     if (confirm("Voulez-vous vraiment supprimer ce praticien ?")) {
       this.practitionerService.delete(this.current._id).subscribe({
         next: () => {
-          alert("Praticien supprimé avec succès");
-          this.router.navigate(['/practitioners']);
+          localStorage.removeItem('userId');
+          localStorage.removeItem('userType');
+          localStorage.removeItem('userFirstname');
+          localStorage.removeItem('userLastname');
+          this.router.navigate(['/home']).then(() => {
+            alert("Praticien supprimé avec succès");
+            window.location.reload();
+          });
         },
         error: (err) => {
           console.error(err);
           alert("Erreur lors de la suppression du praticien");
         }
       });
+      
+      
     }
   }
 }

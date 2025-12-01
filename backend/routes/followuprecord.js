@@ -33,6 +33,7 @@ router.get('/:patientId', async (req, res) => {
           }
         }
       ]);
+      console.log(results);
 
       const response = {
         inProgress: [],
