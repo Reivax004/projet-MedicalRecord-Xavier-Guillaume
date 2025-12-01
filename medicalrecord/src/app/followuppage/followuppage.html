@@ -1,42 +1,52 @@
 <div class="followup-page-container">
+
   <div class="header-section">
     <h1>Dossiers de Suivi</h1>
   </div>
+
   <!-- LOADING -->
-  @if(loading){
+  @if (loading) {
     <div class="loading-message">
       <p>Chargement des dossiers...</p>
     </div>
   }
 
   <!-- ERROR -->
-  @if(error && !loading){
+  @if (error && !loading) {
     <div class="error-message">
       <p>{{ error }}</p>
     </div>
   }
 
   <!-- LISTE DES DOSSIERS -->
-  @if(!loading && !error){
-    @if(followups && followups.length > 0){
+  @if (!loading && !error) {
+
+    @if (followups && followups.length > 0) {
+
       <div class="followups-grid">
-        @for(followup of followups; track followup._id){
+
+        @for (followup of followups; track followup._id) {
+
           <div class="followup-card">
-            <!-- Header du dossier -->
+
+            <!-- Header -->
             <div class="card-header">
               <h3>{{ followup.pathology }}</h3>
+
               <span class="status-badge" [ngClass]="getStatusClass(followup.status)">
                 {{ followup.status }}
               </span>
             </div>
 
-            <!-- Informations principales -->
+            <!-- Infos principales -->
             <div class="card-body">
+
               <div class="info-row">
                 <div class="info-content">
                   <span class="info-label">Début :</span>
                   <span class="info-value">{{ formatDate(followup.start_date) }}</span>
                 </div>
+
                 <div class="info-content">
                   <span class="info-label">Fin :</span>
                   <span class="info-value">
@@ -48,69 +58,90 @@
               <!-- PRESCRIPTIONS -->
               <div class="section prescriptions">
                 <h4>Prescriptions ({{ followup.prescriptions?.length || 0 }})</h4>
-                @if(followup.prescriptions && followup.prescriptions.length > 0){
+
+                @if (followup.prescriptions && followup.prescriptions.length > 0) {
+
                   <ul>
-                    @for(prescription of followup.prescriptions; track prescription._id){
+                    @for (prescription of followup.prescriptions; track prescription._id) {
                       <li>
-                        <strong>{{ prescription.drug_name }}</strong> - {{ prescription.shape }}, {{ prescription.quantity }}
-                        ({{ prescription.frequency }} fois/jour)
+                        <strong>{{ prescription.drug_name }}</strong>
+                        - {{ prescription.shape }},
+                        {{ prescription.quantity }} ({{ prescription.frequency }} fois/jour)
                         <br>
-                        Du {{ formatDate(prescription.start_date) }} au {{ prescription.end_date ? formatDate(prescription.end_date) : 'En cours' }}
+                        Du {{ formatDate(prescription.start_date) }} au
+                        {{ prescription.end_date ? formatDate(prescription.end_date) : 'En cours' }}
                       </li>
                     }
                   </ul>
-                }
-                @else{
+
+                } @else {
                   <p>Aucune prescription enregistrée</p>
                 }
               </div>
 
               <!-- DOCUMENTS MÉDICAUX -->
               <div class="section medical-documents">
-                <h4>Documents Médicaux ({{ followup.medical_document?.length || 0 }})</h4>
-                @if(followup.medical_document && followup.medical_document.length > 0){
-                  <ul>
-                    @for(doc of followup.medical_document; track doc._id){
-                      <li>
-                        <strong>{{ doc.type }}</strong> - {{ doc.description || 'Aucune description' }}
-                        <br>
-                        Date : {{ formatDate(doc.date) }}
-                      </li>
-                    }
-                  </ul>
-                }
-                @else{
+                <h4>Documents Médicaux</h4>
+
+                @if (followup.medical_document) {
+
+                  @for (entry of followup.medical_document | keyvalue; track entry.key) {
+
+                    <div class="doc-group">
+                      <h5 class="doc-type-title">{{ entry.key }}</h5>
+
+                      <ul>
+                        @for (doc of entry.value; track doc._id) {
+                          <li>
+                            <strong>{{ doc.description || 'Aucune description' }}</strong><br>
+                            Date : {{ formatDate(doc.date) }}
+                          </li>
+                        }
+                      </ul>
+
+                    </div>
+
+                  }
+
+                } @else {
                   <p>Aucun document médical enregistré</p>
                 }
               </div>
-            </div>
+
+            </div> <!-- END card-body -->
 
             <!-- Actions -->
             <div class="card-actions">
-              <button class="btn-action btn-edit"
-                      (click)="editFollowup(followup._id, $event)">
+              <button class="btn-action btn-edit" (click)="editFollowup(followup._id, $event)">
                 Edit
               </button>
-              <button class="btn-action btn-delete"
-                      (click)="deleteFollowup(followup._id, $event)">
+
+              <button class="btn-action btn-delete" (click)="deleteFollowup(followup._id, $event)">
                 Supprimer
               </button>
             </div>
-          </div>
-        }
-      </div>
-    }
-    @else{
+
+          </div> <!-- END followup-card -->
+
+        } <!-- END for followups -->
+
+      </div> <!-- END grid -->
+
+    } @else {
+
       <div class="empty-state">
         <p>Aucun dossier de suivi pour ce patient</p>
         <button class="btn-create-large" (click)="createNewFollowup()">
           Créer le premier dossier
         </button>
       </div>
+
     }
-  }
+
+  } <!-- END global @if -->
 
   <div class="footer-actions">
     <button class="btn-back" (click)="goBack()">⟵ Retour</button>
   </div>
+
 </div>
