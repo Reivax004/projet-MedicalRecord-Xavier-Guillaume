@@ -1,59 +1,49 @@
-/*
-import { Account } from '../models/account';
-import {Component, Input, OnInit} from '@angular/core';
-import {DatePipe} from '@angular/common';
-import {Address} from '../models/address';
-import {Practitioner} from '../models/practitioner';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
+import { PractitionerService, Practitioner } from '../services/practitioner';
 
 @Component({
-  selector: 'app-patientpage',
+  selector: 'app-practitioner-page',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './practitionerpage.html',
-  imports: [
-    DatePipe
-  ],
   styleUrls: ['./practitionerpage.scss']
 })
-export class Practitionerpage implements OnInit {
-  @Input() practitioner: Practitioner | null = null;
+export class PractitionerPage implements OnInit {
 
-  // @ts-ignore
-  demoAccount: Practitioner = {
-    lastname: 'Dr',
-    firstname: 'House',
-    specialization: 'Cardiologie',
-    phone: '019283746',
-    establishment:{
-      name: "santé",
-      address: {
-        number: 12,
-        street: 'rue de la Santé',
-        city: 'Paris',
-        postal_code: '75005',
-        country: 'France'
+  practitioners: Practitioner[] = [];
+  loading = true;
+  error: string | null = null;
+
+  constructor(
+    private practitionerService: PractitionerService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.loadPractitioners();
+  }
+
+  loadPractitioners(): void {
+    this.loading = true;
+    this.error = null;
+
+    this.practitionerService.getAllPractitioners().subscribe({
+      next: (data) => {
+        this.practitioners = data;
+        this.loading = false;
       },
-      type: 'santé',
-      description: 'santé',
-      phone: 1234,
-      email: 'sddfv@df',
-      creation_date: new Date(),
-      number_employees: 12,
-    }
-
-  };
-
-  get current(): Practitioner {
-    return this.practitioner ?? this.demoAccount;
+      error: (err) => {
+        console.error(err);
+        this.error = 'Impossible de charger la liste des praticiens.';
+        this.loading = false;
+      }
+    });
   }
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  onEdit(): void {
-    console.log('Edit patient', this.current);
-    alert('Édition (exemple) — implémente la navigation vers le formulaire.');
+  viewPractitioner(pract: Practitioner): void {
+    // vers la page de détail/compte praticien si tu en as une
+    this.router.navigate(['/practitioner', pract._id]);
   }
-
-  protected readonly history = history;
 }
-*/

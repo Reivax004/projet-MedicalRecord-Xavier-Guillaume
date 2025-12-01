@@ -1,50 +1,42 @@
-<!--<div class="patient-page">
-  <header class="page-header">
-    <h1>Récapitulatif du praticien</h1>
-  </header>
+<div class="practitioner-page">
 
-  <main class="content">
-    <section class="card">
-      <div class="card-row">
-        <div class="avatar">{{ current.lastname.charAt(0) }}{{ current.firstname.charAt(0) }}</div>
-        <div class="personal">
-          <h2>{{ current.lastname }} {{ current.firstname }}</h2>
-          <p class="muted">Spécialisation : {{ current.specialization }}</p>
-          <p class="muted">Téléphone : {{ current.phone }}</p>
-        </div>
-      </div>
+  <h2>Liste des praticiens</h2>
 
-      <hr />
+  <div *ngIf="loading">
+    <p>Chargement…</p>
+  </div>
 
-      <div class="info-grid">
-        <div class="info-block">
-          <h3>Établissement</h3>
-          <p><strong>Type</strong><br>{{ current.establishment.type }}</p>
-          <p><strong>Description</strong><br>{{ current.establishment.description }}</p>
-          <p><strong>Téléphone</strong><br>{{ current.establishment.phone }}</p>
-          <p><strong>Email</strong><br>{{ current.establishment.email }}</p>
-          <p><strong>Effectifs</strong><br>{{ current.establishment.number_employees }}</p>
-          <p><strong>Date création</strong><br>{{ current.establishment.creation_date | date: 'longDate' }}</p>
-        </div>
+  <div *ngIf="!loading && error">
+    <p class="error">{{ error }}</p>
+  </div>
 
-        <div class="info-block">
-          <h3>Adresse</h3>
-          <p>{{ current.establishment.address.number }}</p>
-          <p>{{ current.establishment.address.street }}</p>
-          <p>{{ current.establishment.address.postalCode }} {{ current.establishment.address.city }}</p>
-          <p>{{ current.establishment.address.country }}</p>
-        </div>
-      </div>
+  <div *ngIf="!loading && !error && practitioners.length === 0">
+    <p>Aucun praticien trouvé.</p>
+  </div>
 
-      <div class="actions">
-        <button class="btn-primary" (click)="onEdit()">Modifier</button>
-      </div>
-    </section>
-  </main>
+  <table *ngIf="!loading && !error && practitioners.length > 0" class="practitioner-table">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Spécialité</th>
+      <th>Email</th>
+      <th>Téléphone</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of practitioners">
+      <td>{{ p.lastname }}</td>
+      <td>{{ p.firstname }}</td>
+      <td>{{ p.specialization || 'Non renseignée' }}</td>
+      <td>{{ p.email }}</td>
+      <td>{{ p.phone || '-' }}</td>
+      <td>
+        <button (click)="viewPractitioner(p)">Voir</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
-  <footer class="page-footer">
-    <div class="retour-container">
-      <button class="btn-retour" (click)="history.back()">Retour</button>
-    </div>
-  </footer>
 </div>
