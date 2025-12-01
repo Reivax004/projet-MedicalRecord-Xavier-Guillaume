@@ -8,11 +8,8 @@ const Appointment = require('../models/appointment');
 // -----------------------------------------------------
 router.get('/:id', async (req, res) => {
     try {
-        const { patientId } = req.params.id;
+        const appointments = await Appointment.find({ patientId: req.params.id }).limit(10).sort({ date: -1 });
 
-        const appointments = await Appointment
-        .find({ patientId })
-        .limit(10);
         console.log("Fetched appointments:", appointments);
         return res.status(200).json(appointments);
     } catch (error) {

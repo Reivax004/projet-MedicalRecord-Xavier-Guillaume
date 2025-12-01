@@ -23,7 +23,7 @@ const AppointmentSchema = new Schema({
         type: Date,
         required: true,
         default: null,
-        index: true },
+        },
 
     type: {
         type: String,
@@ -35,6 +35,6 @@ const AppointmentSchema = new Schema({
 
 });
 
-AppointmentSchema.index({ patientId: 1, date: 1 });
+AppointmentSchema.index({ patientId: 1});
 
 module.exports = mongoose.model('appointments', AppointmentSchema);

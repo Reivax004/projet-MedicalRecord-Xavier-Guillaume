@@ -63,7 +63,6 @@ export class PractitionerForm implements OnInit {
           specialization: practitioner.specialization,
           phone: practitioner.phone,
           establishment: {
-            establishmentId: practitioner.establishment?.establishmentId || '',
             name: practitioner.establishment?.name || ''
           }
         });

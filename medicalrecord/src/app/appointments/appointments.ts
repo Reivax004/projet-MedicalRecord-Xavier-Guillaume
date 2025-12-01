@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Appointment} from '../models/appointment';
 import {AppointmentService} from '../services/appointments';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -14,7 +13,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Appointments {
 
-  private apiUrl = 'http://localhost:3000/api/appointments';
   appointments: Appointment[] = [
   ];
   userId: String = "";
@@ -23,9 +21,10 @@ export class Appointments {
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId') || '';
-  }
-
-  getById(): Observable<Appointment> {
-    return this.http.get<Appointment>(`${this.apiUrl}/${this.userId}`);
+    console.log("User ID:", this.userId);
+    this.appointmentService.getById(this.userId)
+    .subscribe((data: any) => {
+      this.appointments = data;
+    });  
   }
 }

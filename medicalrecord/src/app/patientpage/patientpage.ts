@@ -16,6 +16,7 @@ export class PatientPage implements OnInit {
   current!: Account;
   loading: boolean = true;
   error: string | null = null;
+  userId: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -26,16 +27,16 @@ export class PatientPage implements OnInit {
   ngOnInit(): void {
 
     // ⬅️ On récupère l’ID MongoDB dans l'URL
-    const id = this.route.snapshot.paramMap.get('id');
+    this.userId = localStorage.getItem('userId') || '';
 
-    if (!id) {
+    if (!this.userId) {
       this.error = "Identifiant patient invalide.";
       this.loading = false;
       return;
     }
 
     // ⬅️ On charge le patient via son ID MongoDB
-    this.patientService.getPatient(id).subscribe({
+    this.patientService.getPatient(this.userId).subscribe({
       next: (patient: Account) => {
         this.current = patient;
         this.loading = false;
