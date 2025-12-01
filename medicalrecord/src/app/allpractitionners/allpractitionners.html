@@ -1,0 +1,32 @@
+<div class="practitioners-container">
+
+  <h2>Liste des praticiens</h2>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">Chargement...</div>
+
+  <!-- Erreur -->
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <!-- Tableau -->
+  <table *ngIf="!loading && !error">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Spécialité</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let p of practitioners">
+      <td>{{ p.lastname }}</td>
+      <td>{{ p.firstname }}</td>
+      <td>{{ p.email }}</td>
+      <td>{{ p.specialization }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
