@@ -42,6 +42,9 @@ export class Login {
     this.lastname = localStorage.getItem('userLastname');
 
     this.isLoggedIn = !!this.userId;
+    if (this.router.url.includes('/login/logout')) {
+      this.logout();
+    }
   }
 
   submit(): void {

@@ -10,11 +10,9 @@ import {RouterLink} from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
-  typeUser: string = '';
-
+  typeUser: string | null = null;
   ngOnInit() {
     this.typeUser = localStorage.getItem('userType') || '';
-    console.log("Type d'utilisateur dans le header :", this.typeUser);
   }
 
 }
