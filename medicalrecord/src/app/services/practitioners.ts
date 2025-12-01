@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Practitioner } from '../models/practitioner';
 
 @Injectable({
@@ -7,23 +8,33 @@ import { Practitioner } from '../models/practitioner';
 })
 export class PractitionerService {
 
-  private apiUrl = 'http://localhost:3000/api/practitioners';
+  private baseUrl = 'http://localhost:3000/api/practitioners';
 
   constructor(private http: HttpClient) {}
 
-  getOne(id: string) {
-    return this.http.get<Practitioner>(`${this.apiUrl}/${id}`);
+  // Récupérer tous les praticiens
+  getPractitioners(): Observable<Practitioner[]> {
+    return this.http.get<Practitioner[]>(this.baseUrl);
   }
 
-  create(data: Practitioner) {
-    return this.http.post(this.apiUrl, data);
+  // Récupérer un praticien par id
+  getById(id: string): Observable<Practitioner> {
+    return this.http.get<Practitioner>(`${this.baseUrl}/${id}`);
   }
 
-  update(id: string, data: Practitioner) {
-    return this.http.put(`${this.apiUrl}/${id}`, data);
+  // Créer un praticien
+  create(practitioner: Partial<Practitioner>): Observable<Practitioner> {
+    console.log(practitioner);
+    return this.http.post<Practitioner>(this.baseUrl, practitioner);
   }
 
-  delete(id: string) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  // Mettre à jour un praticien
+  update(id: string, practitioner: Partial<Practitioner>): Observable<Practitioner> {
+    return this.http.put<Practitioner>(`${this.baseUrl}/${id}`, practitioner);
+  }
+
+  // Supprimer un praticien
+  delete(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

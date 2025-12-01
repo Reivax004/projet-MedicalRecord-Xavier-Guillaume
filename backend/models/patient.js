@@ -5,11 +5,11 @@ const { MedicalRecordSchema } = require('./general_file');
 
 // sous-schéma d'adresse (embedded)
 const AddressSchema = new Schema({
-    number: Number,
-    street: String,
-    postal_code: Number,
-    city: String,
-    country: String
+    number: { type: Number, required: false },
+    street: { type: String, required: false },
+    postal_code: { type: String, required: false },
+    city: { type: String, required: false },
+    country: { type: String, required: false },
 }, { _id: false });
 
 const patientSchema = new Schema(
@@ -33,3 +33,10 @@ const patientSchema = new Schema(
 );
 
 module.exports = mongoose.model('patients', patientSchema);
+// backend/models/patient.js
+module.exports = {
+    Patient: mongoose.model('patients', patientSchema),
+    AddressSchema: AddressSchema
+};
+
+

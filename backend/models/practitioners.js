@@ -1,6 +1,21 @@
 // backend/models/patient.js
 const mongoose = require('mongoose');
+const {VaccineSchema} = require("./vaccine");
 const { Schema } = mongoose;
+
+const { AddressSchema } = require('./patient');
+
+// Sous-schéma établissement
+const establishments = new Schema({
+    name: { type: String, required: false },
+    address: { type: AddressSchema, required: false },
+    type: { type: String, required: false },
+    description: { type: String, required: false },
+    phone: { type: String, required: false },
+    email: { type: String, required: false },
+    creation_date: { type: Date, required: false },
+    number_employees: { type: Number, required: false }
+}, { _id: false });
 
 const practitionerSchema = new Schema(
     {
@@ -10,14 +25,7 @@ const practitionerSchema = new Schema(
         password: { type: String, required: true },
         specialization: {type: String, required: true },
         phone: { type: String, required: true },
-        establishments: {
-            establishmentId:{
-                type: mongoose.Schema.Types.ObjectId,
-                        ref : 'establishments',
-                        required: true
-                },
-            name: {type: String, required: true}
-        }
+        establishments: { type: establishments, required: false },
         
     },
     { versionKey: false }

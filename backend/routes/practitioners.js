@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Practitioner = require('../models/practitioner');
+const Practitioner = require('../models/practitioners');
 
 // -----------------------------------------------------
 // CREATE - POST /api/practitioners

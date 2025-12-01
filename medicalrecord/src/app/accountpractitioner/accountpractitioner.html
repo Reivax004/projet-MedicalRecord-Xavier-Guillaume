@@ -15,52 +15,14 @@
     <label for="telephone">Téléphone*</label>
     <input id="telephone" formControlName="phone" type="text">
 
+    <label for="email">Email*</label>
+    <input id="email" formControlName="email" type="text">
+
     <label for="password">Mot de passe*</label>
     <input type="password" id="password" formControlName="password">
 
-    <h3>Etablissement</h3>
-    <div formGroupName="establishment">
-      <label for="estName">Nom*</label>
-      <input id="estName" formControlName="name" type="text">
 
-      <label for="estType">Type*</label>
-      <input id="estType" formControlName="type" type="text">
-
-      <label for="estDescription">Description</label>
-      <input id="estDescription" formControlName="description" type="text">
-
-      <label for="estPhone">Téléphone</label>
-      <input id="estPhone" formControlName="phone" type="text">
-
-      <label for="estEmail">Email</label>
-      <input id="estEmail" formControlName="email" type="email">
-
-      <label for="creationdate">Date de création</label>
-      <input id="creationdate" formControlName="creation_date" type="date">
-
-      <label for="number_employees">Nombre d'employes</label>
-      <input id="number_employees" formControlName="number_employees" type="number">
-    </div>
-
-    <h3>Adresse</h3>
-    <div formGroupName="address">
-      <label for="number">Numéro*</label>
-      <input id="number" formControlName="number" type="text">
-
-      <label for="street">Rue*</label>
-      <input id="street" formControlName="street" type="text">
-
-      <label for="city">Ville*</label>
-      <input id="city" formControlName="city" type="text">
-
-      <label for="zipCode">Code Postal*</label>
-      <input id="zipCode" formControlName="zipCode" type="text">
-
-      <label for="country">Pays*</label>
-      <input id="country" formControlName="country" type="text">
-    </div>
-
-    <button class="submit-btn" type="submit" onclick="window.location.href='/practitionerpage'">S'inscrire</button>
+    <button class="submit-btn" type="submit">S'inscrire</button>
   </form>
   <div class="retour-container">
     <button class="btn-retour" onclick="history.back()">⟵ Retour</button>

@@ -1,0 +1,35 @@
+<div class="patient-page">
+  <header class="page-header">
+    <h1>Récapitulatif du praticien</h1>
+  </header>
+
+  <main class="content">
+    @if(current){
+    <section class="card">
+      <div class="card-row">
+        <div class="avatar">
+          {{ current.lastname.charAt(0) }}{{ current.firstname.charAt(0) }}
+        </div>
+        <div class="personal">
+          <h2>{{ current.lastname }} {{ current.firstname }}</h2>
+          <p class="muted">Spécialisation : {{ current.specialization }}</p>
+          <p class="muted">Téléphone : {{ current.phone }}</p>
+          <p class="muted">Email : {{ current.email }}</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary" (click)="editPractitioner()">Modifier</button>
+        <button class="btn-primary" (click)="deletePractitioner()">Supprimer</button>
+      </div>
+    </section>
+    }
+
+  </main>
+
+  <footer class="page-footer">
+    <div class="retour-container">
+      <button class="btn-retour" (click)="goBack()">Retour</button>
+    </div>
+  </footer>
+</div>
