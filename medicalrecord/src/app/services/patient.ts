@@ -12,8 +12,8 @@ export class PatientService {
   constructor(private http: HttpClient) {}
 
   // Récupérer tous les patients
-  getPatients(): Observable<Account[]> {
-    return this.http.get<Account[]>(this.baseUrl);
+  getPatients(id: string): Observable<Account[]> {
+    return this.http.get<Account[]>(`${this.baseUrl}/practitioners/${id}`);
   }
 
   // Récupérer un patient par id

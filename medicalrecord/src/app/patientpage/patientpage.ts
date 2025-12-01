@@ -17,7 +17,8 @@ export class PatientPage implements OnInit {
   loading: boolean = true;
   error: string | null = null;
   userId: string = '';
-
+  userType: string | null = "";
+  users: Account[] = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -25,17 +26,24 @@ export class PatientPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    // ⬅️ On récupère l’ID MongoDB dans l'URL
     this.userId = localStorage.getItem('userId') || '';
-
+    this.userType = localStorage.getItem('userType');
+  
     if (!this.userId) {
       this.error = "Identifiant patient invalide.";
       this.loading = false;
       return;
     }
+  
+    if (this.userType === 'patient') {
+      this.loadPatient();
+    } else {
+      this.loadPatientsForPractitioner();
+    }
+  }
 
-    // ⬅️ On charge le patient via son ID MongoDB
+  
+  private loadPatient(): void {
     this.patientService.getPatient(this.userId).subscribe({
       next: (patient: Account) => {
         this.current = patient;
@@ -47,6 +55,28 @@ export class PatientPage implements OnInit {
       }
     });
   }
+
+  private loadPatientsForPractitioner(): void {
+    console.log("ID du praticien récupéré :", this.userId);
+  
+    this.patientService.getPatients(this.userId).subscribe({
+      next: (patients: Account[]) => {
+        if (patients.length > 0) {
+          this.users = patients;
+          this.loading = false;
+        } else {
+          this.error = "Aucun patient trouvé pour ce praticien.";
+          this.loading = false;
+        }
+      },
+      error: () => {
+        this.error = "Erreur lors du chargement des patients.";
+        this.loading = false;
+      }
+    });
+  }
+
+  
 
   onEdit() {
     if (!this.current || !this.current._id) return;
@@ -76,4 +106,12 @@ export class PatientPage implements OnInit {
   }
 
   protected readonly history = history;
+  viewPatient(id: string) {
+    this.router.navigate(['/medicalrecord', id]);
+  }
+  
+  viewFollowedFiles(id: string) {
+    this.router.navigate(['/followuppage', id]);
+  }
+  
 }

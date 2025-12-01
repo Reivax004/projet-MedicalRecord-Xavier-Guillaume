@@ -22,6 +22,7 @@ export class Followuppage implements OnInit {
   patientId: string = ''; // ← Initialisé au lieu de !
   followupId: string = '';
   medicalDocuments: MedicalDocument[] = [];
+  userType: string | null = "";
 
   constructor(
     private router: Router,
@@ -32,9 +33,14 @@ export class Followuppage implements OnInit {
 
   ngOnInit(): void {
     // Récupération de l'utilisateur connecté
-    this.patientId = localStorage.getItem('userId') || '';
-
-    console.log("ID du patient connecté :", this.patientId);
+   
+    this.userType = localStorage.getItem('userType');
+    if(this.userType === 'practitioner'){
+      this.patientId = this.route.snapshot.paramMap.get('id') || '';
+    }
+    else{
+      this.patientId = localStorage.getItem('userId') || '';
+    }
 
     if (!this.patientId) {
       this.error = "Aucun utilisateur connecté (ID manquant)";
@@ -96,7 +102,7 @@ export class Followuppage implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/patients']); // Adaptez selon votre route
+    history.back(); // Adaptez selon votre route
   }
 
   createNewFollowup(): void {

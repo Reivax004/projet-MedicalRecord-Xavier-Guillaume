@@ -1,5 +1,5 @@
 <div class="page-container">
-
+  @if(userType === "patient"){
   <!-- Colonne Création -->
   <div class="section creation">
     <h2>Création</h2>
@@ -11,15 +11,24 @@
       }
     </div>
   </div>
+  }
 
   <!-- Colonne Consultation -->
   <div class="section consultation">
     <h2>Consultation</h2>
-    <p>Choisissez le type de dossier à consulter :</p>
-    <div class="buttons">
-      <button (click)="goToConsultFollowup()">Consulter dossier de suivi</button>
-      <button (click)="goToConsultMedical()">Consulter dossier médical</button>
-    </div>
+    @if(userType === "patient"){
+      <p>Choisissez le type de dossier à consulter :</p>
+      <div class="buttons">
+        <button (click)="goToConsultFollowup()">Consulter dossier de suivi</button>
+        <button (click)="goToConsultMedical()">Consulter dossier médical</button>
+      </div>
+    }
+    @else{
+      <div class="buttons">
+        <button (click)="goToConsultPatients()">Consulter mes patients</button>
+      </div>
+    }
+  
   </div>
 
 </div>

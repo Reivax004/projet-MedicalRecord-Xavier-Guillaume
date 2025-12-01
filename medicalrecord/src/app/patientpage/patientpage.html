@@ -2,6 +2,7 @@
   <header class="page-header">
   </header>
   <main class="content">
+  @if(userType === 'patient'){
     <section class="card">
       <div class="card-row">
         <div class="avatar">{{ current.firstname.charAt(0) }}{{ current.lastname.charAt(0) }}</div>
@@ -37,6 +38,64 @@
         <button class="btn-primary" (click)="onDelete()">Supprimer</button>
       </div>
     </section>
+  }
+  @else{
+    <div class="patient-list-page">
+      <header class="page-header">
+        <h1>Liste des patients</h1>
+      </header>
+    
+        @for (patient of users; track patient._id) {
+        <section class="card">
+          <div class="card-row">
+            <div class="avatar">
+              {{ patient.firstname.charAt(0) }}{{ patient.lastname.charAt(0) }}
+            </div>
+    
+            <div class="personal">
+              <h2>{{ patient.firstname }} {{ patient.lastname }}</h2>
+              <p class="muted">
+                Né(e) le {{ patient.birthdate | date:'longDate' }} — Sexe : {{ patient.sex }}
+              </p>
+              <p class="muted">N° SSN : {{ patient.SSN }}</p>
+            </div>
+          </div>
+    
+          <hr />
+    
+          <div class="info-grid">
+            <div class="info-block">
+              <h3>Contact</h3>
+              <p><strong>Téléphone</strong><br>{{ patient.phone }}</p>
+              <p><strong>Email</strong><br>{{ patient.email }}</p>
+            </div>
+    
+            <div class="info-block">
+              <h3>Adresse</h3>
+              <p>{{ patient.address.number }}</p>
+              <p>{{ patient.address.street }}</p>
+              <p>{{ patient.address.postal_code }} {{ patient.address.city }}</p>
+              <p>{{ patient.address.country }}</p>
+            </div>
+          </div>  
+          <div class="actions">
+            <button class="btn-secondary"
+                    (click)="patient._id ? viewFollowedFiles(patient._id) : null">
+              Voir leurs dossiers suivis
+            </button>
+          
+            <button class="btn-primary"
+                    (click)="patient._id ? viewPatient(patient._id) : null">
+              Voir son dossier général
+            </button>
+          </div>
+          
+              
+        </section>
+      }
+    
+    </div>
+  }
   </main>
   <footer class="page-footer">
     <div class="retour-container">

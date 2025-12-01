@@ -27,7 +27,7 @@ export const routes: Routes = [
   { path: 'record/:id', component: Record },
   { path: 'followuprecord', component: FollowupRecord},
   { path: 'followuprecord/:id', component: FollowupRecord},
-  { path: 'followuppage/:patientId', component: Followuppage},
+  { path: 'followuppage/:id', component: Followuppage},
   { path: 'recordtransition', component: RecordTransition},
   { path: 'appointments', component: Appointments},
   { path: 'patientpage', component: PatientPage},

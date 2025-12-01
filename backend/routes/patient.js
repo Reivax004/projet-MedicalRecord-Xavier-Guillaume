@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const Patient = require('../models/patient');
@@ -35,6 +36,22 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+// READ ALL PATIENTS OF A PRACTITIONER - GET /api/practitioners/:id
+router.get('/practitioners/:id', async (req, res) => {
+    try {
+        const practitionerId = new mongoose.Types.ObjectId(req.params.id);
+        const patients = await Patient.find({
+            "general_file.general_practitioner.practitionerId": practitionerId
+        });
+        if (!patients || patients.length === 0) {
+            return res.status(404).json({ error: "Aucun patient trouvé pour ce praticien." });
+        }
+        res.json(patients);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 
 // UPDATE - PUT /api/patients/:id
 router.put('/:id', async (req, res) => {

@@ -120,11 +120,23 @@ button {
   background: linear-gradient(180deg, $blue-500, $blue-600);
   color: white;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(25,118,210,0.15);
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 14px rgba(25,118,210,0.15);
 }
 
+/* Hover élégante */
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 10px 22px rgba(25,118,210,0.25),
+    0 0 10px rgba(66,165,245,0.35); /* glow bleu */
+}
 
-.btn-primary:hover { transform: translateY(-2px); }
+/* Animation lors du clic */
+.btn-primary:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 3px 8px rgba(25,118,210,0.25);
+}
 
 
 .btn-outline {
@@ -148,11 +160,27 @@ button {
 .btn-retour {
   padding: 0.6rem 1rem;
   background: transparent;
-  border: 1px solid rgba(16,24,40,0.06);
+  border: 1px solid rgba(16, 24, 40, 0.12);
   color: $blue-600;
   border-radius: 8px;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
+  
+.btn-retour:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: rgba(16, 24, 40, 0.2);
+  background: rgba(59, 130, 246, 0.04); /* léger voile bleu */
+  box-shadow:
+    0 6px 12px rgba(16, 24, 40, 0.12),
+    0 0 10px rgba(59, 130, 246, 0.25); /* glow bleu discret */
+}
+  
+.btn-retour:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 4px rgba(16,24,40,0.15);
+}
+
 
 
 /* Responsive */
@@ -161,4 +189,48 @@ button {
   .card { padding: 1.25rem; }
   .avatar { width: 64px; height: 64px; }
   .actions { justify-content: center; }
+}
+
+
+.patient-list-page .content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px;
+}
+
+.patient-list-page section.card {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;          /* espace entre les boutons */
+  margin-top: 20px;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #111827;
+  border: 1px solid #d1d5db;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* Effet hover premium */
+.btn-secondary:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: #e5e7eb;
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+/* Petit clic smooth */
+.btn-secondary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.10);
 }

@@ -14,9 +14,11 @@ import { MedicalRecord } from '../models/record';
 export class RecordTransition {
   userId: string = "";
   bool: MedicalRecord | null = null;
+  userType: string | null = null;
   constructor(private router: Router, private recordService: MedicalRecordService) {}
   ngOnInit() {
     this.userId = localStorage.getItem('userId') || '';
+    this.userType = localStorage.getItem('userType') || '';	
 
     this.recordService.getById(this.userId)
     .subscribe((data: any) => {
@@ -38,5 +40,9 @@ export class RecordTransition {
 goToConsultMedical() {
     this.router.navigateByUrl('/medicalrecord/:id');
   }
+
+  goToConsultPatients(){
+    this.router.navigateByUrl('/patientpage/:id');
+}
 }
 
