@@ -96,7 +96,7 @@ export class Followuppage implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/patients']); // Adaptez selon votre route
+    history.back(); // Adaptez selon votre route
   }
 
   createNewFollowup(): void {

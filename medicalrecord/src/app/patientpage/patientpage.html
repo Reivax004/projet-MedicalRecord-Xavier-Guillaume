@@ -79,10 +79,17 @@
             </div>
           </div>  
           <div class="actions">
-            <button class="btn-primary" (click)="patient._id ? viewPatient(patient._id) : null">
+            <button class="btn-secondary"
+                    (click)="patient._id ? viewFollowedFiles(patient._id) : null">
+              Voir leurs dossiers suivis
+            </button>
+          
+            <button class="btn-primary"
+                    (click)="patient._id ? viewPatient(patient._id) : null">
               Voir son dossier général
             </button>
           </div>
+          
               
         </section>
       }
