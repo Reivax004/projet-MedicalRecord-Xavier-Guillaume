@@ -8,15 +8,13 @@ const Appointment = require('../models/appointment');
 // -----------------------------------------------------
 router.get('/:id', async (req, res) => {
     try {
-        const record = await Appointment.find({ patientId: req.params.id });
+        const appointments = await Appointment.find({ patientId: req.params.id }).limit(10).sort({ date: -1 });
 
-        if (!record) {
-            return res.status(404).json({ error: 'Appointment not found' });
-        }
-
-        res.json(record);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.log("Fetched appointments:", appointments);
+        return res.status(200).json(appointments);
+    } catch (error) {
+        console.error("Error fetching appointments:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
 });
 

@@ -17,6 +17,7 @@ export class PatientPage implements OnInit {
   current!: Account;
   loading = true;
   error: string | null = null;
+  userId: string = '';
 
   userType: string | null = null; // 'patient' ou 'practitioner'
 
@@ -29,7 +30,6 @@ export class PatientPage implements OnInit {
   ngOnInit(): void {
     const id = localStorage.getItem('userId');
     this.userType = localStorage.getItem('userType');
-
     if (!id || !this.userType) {
       this.error = "Vous devez être connecté pour accéder à cette page.";
       this.loading = false;

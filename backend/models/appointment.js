@@ -2,34 +2,39 @@ const mongoose = require('mongoose');
 const {Schema} = require("mongoose");
 
 const AppointmentSchema = new Schema({
-    patientId: { 
+    patientId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient',
-        required: true 
+        required: true,
+        index: true
     },
 
-    /*practitionerId: { 
+    /*practitionerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Practitioner',
-        required: true 
+        required: true
     },*/
 
-    name: { 
-        type: String, 
+    name: {
+        type: String,
         required: true },
 
-    date: { 
-        type: Date, 
-        default: null },
+    date: {
+        type: Date,
+        required: true,
+        default: null,
+        },
 
-    type: { 
-        type: String, 
+    type: {
+        type: String,
         require: true },
 
-    description: { 
-        type: String, 
+    description: {
+        type: String,
         required: false }
 
 });
+
+AppointmentSchema.index({ patientId: 1});
 
 module.exports = mongoose.model('appointments', AppointmentSchema);
