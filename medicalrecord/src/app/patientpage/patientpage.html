@@ -1,46 +1,29 @@
 <div class="patient-page">
-  <header class="page-header">
-  </header>
-  <main class="content">
-    <section class="card">
-      <div class="card-row">
-        <div class="avatar">{{ current.firstname.charAt(0) }}{{ current.lastname.charAt(0) }}</div>
-        <div class="personal">
-          <h2>{{ current.firstname }} {{ current.lastname }}</h2>
-          <p class="muted">Né(e) le {{ current.birthdate | date: 'longDate' }} — Sexe : {{ current.sex }}</p>
-          <p class="muted">N° SSN : {{ current.SSN }}</p>
-        </div>
-      </div>
-      <hr />
-      <div class="info-grid">
-        <div class="info-block">
-          <h3>Contact</h3>
-          <p><strong>Téléphone</strong><br>{{ current.phone }}</p>
-          <p><strong>Email</strong><br>{{ current.email }}</p>
-        </div>
-        <div class="info-block">
-          <h3>Adresse</h3>
-          <p>{{ current.address.number }}</p>
-          <p>{{ current.address.street }}</p>
-          <p>{{ current.address.postal_code }} {{ current.address.city }}</p>
-          <p>{{ current.address.country }}</p>
-        </div>
-        <div class="info-block full-width">
-          <h3>Observations</h3>
-          <p class="muted">Aucune observation pour l'instant. (Zone libre pour notes cliniques)</p>
-        </div>
-      </div>
-      <div class="actions">
-        <button class="btn-primary" (click)="onEdit()">Modifier</button>
-      </div>
-      <div class="actions">
-        <button class="btn-primary" (click)="onDelete()">Supprimer</button>
-      </div>
-    </section>
-  </main>
-  <footer class="page-footer">
-    <div class="retour-container">
-      <button class="btn-retour" (click)="history.back()">Retour</button>
-    </div>
-  </footer>
+
+  <ng-container *ngIf="loading">
+    <p>Chargement…</p>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && error">
+    <p class="error">{{ error }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && !error">
+    <h2>
+      Mon compte
+      <span *ngIf="userType === 'patient'"> (Patient) </span>
+      <span *ngIf="userType === 'practitioner'"> (Praticien) </span>
+    </h2>
+
+    <p><strong>Nom :</strong> {{ current.lastname }}</p>
+    <p><strong>Prénom :</strong> {{ current.firstname }}</p>
+    <p><strong>Email :</strong> {{ current.email }}</p>
+    <p *ngIf="current.phone"><strong>Téléphone :</strong> {{ current.phone }}</p>
+
+    <!-- autres champs spécifiques si tu veux, en fonction du type -->
+
+    <button (click)="onEdit()">Modifier mon profil</button>
+    <button (click)="onDelete()">Supprimer mon compte</button>
+  </ng-container>
+
 </div>
