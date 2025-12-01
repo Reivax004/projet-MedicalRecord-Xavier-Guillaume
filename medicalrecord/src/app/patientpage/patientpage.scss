@@ -234,3 +234,17 @@ button {
   transform: translateY(0) scale(0.98);
   box-shadow: 0 2px 4px rgba(0,0,0,0.10);
 }
+
+.meeting-badge {
+  background: #e0e7ff;                 /* Bleu pastel */
+  color: #3730a3;                      /* Bleu foncé élégant */
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid rgba(55, 48, 163, 0.25);
+  white-space: nowrap;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.15);
+  transform: translateY(2px);           /* alignement visuel parfait */
+}

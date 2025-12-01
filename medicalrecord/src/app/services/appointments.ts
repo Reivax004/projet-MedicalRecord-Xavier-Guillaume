@@ -16,4 +16,9 @@ export class AppointmentService {
   getById(patientId: String, type: String): Observable<Appointment> {
     return this.http.get<Appointment>(`${this.apiUrl}/${patientId}/${type}`);
   }
+
+  getNumberPatientsForPractitioner(id: string): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/practitioners/numbers/${id}`);
+  }
+
 }

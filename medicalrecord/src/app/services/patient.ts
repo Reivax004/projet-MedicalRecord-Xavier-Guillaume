@@ -21,10 +21,6 @@ export class PatientService {
     return this.http.get<Account>(`${this.baseUrl}/${id}`);
   }
 
-  getNumberPatientsForPractitioner(id: string): Observable<number> {
-    return this.http.get<number>(`${this.baseUrl}/practitioners/numbers/${id}`);
-  }
-
   // Créer un patient
   createPatient(patient: Partial<Account>): Observable<Account> {
     console.log('Creating patient:', patient);

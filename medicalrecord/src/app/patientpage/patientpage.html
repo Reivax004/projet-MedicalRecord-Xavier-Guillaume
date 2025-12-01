@@ -50,8 +50,7 @@
           <div class="card-row">
             <div class="avatar">
               {{ patient.firstname.charAt(0) }}{{ patient.lastname.charAt(0) }}
-            </div>
-    
+            </div>    
             <div class="personal">
               <h2>{{ patient.firstname }} {{ patient.lastname }}</h2>
               <p class="muted">
@@ -59,6 +58,9 @@
               </p>
               <p class="muted">N° SSN : {{ patient.SSN }}</p>
             </div>
+            <span class="meeting-badge" *ngIf="patient.totalMeetings && patient.totalMeetings > 0">
+              Vu {{ patient.totalMeetings }} fois
+            </span>
           </div>
     
           <hr />

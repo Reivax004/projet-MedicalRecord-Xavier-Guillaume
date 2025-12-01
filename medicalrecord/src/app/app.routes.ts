@@ -37,5 +37,6 @@ export const routes: Routes = [
   { path: 'medicalrecord/:id', component: RecordPage },
   { path: 'allpractitioners', component: AllPractitionners },
   { path: 'login', component: Login },
+  { path: 'practitioners/numbers/:practitionerId', component: Appointments },
   { path: '**', redirectTo: 'home'},
 ];

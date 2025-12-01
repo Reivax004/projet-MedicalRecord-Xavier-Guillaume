@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
@@ -23,5 +24,35 @@ router.get('/:id/:type', async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+// READ ALL PATIENTS OF A PRACTITIONER - GET /api/practitioners/numbers/:id
+router.get('/practitioners/numbers/:practitionerId', async (req, res) => {
+    try {
+        console.log("Fetching patients for practitioner ID:", req.params.practitionerId);
+        const practitionerId = new mongoose.Types.ObjectId(req.params.practitionerId);
+        const result = await Appointment.aggregate([
+            {
+              $match: {
+                practitionerId: practitionerId
+              }
+            },
+            {
+                $group: {
+                    _id: '$patientId',
+                    totalMeetings: { $sum: 1 }
+                }
+            },
+          ]);
+        console.log("Fetched patients:", result);
+
+        if (!result || result.length === 0) {
+            return res.status(404).json({ error: "Aucun patient trouvé pour ce praticien." });
+        }
+        res.json(result);
+    } catch (err) {
+        res.status(500).json({ error: err.message });   
+    }
+});
+
 
 module.exports = router;

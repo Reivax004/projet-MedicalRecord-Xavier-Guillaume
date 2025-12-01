@@ -14,4 +14,5 @@ export interface Account {
   email: string;
   password: string;
   general_file : MedicalRecord;
+  totalMeetings?: number;
 }

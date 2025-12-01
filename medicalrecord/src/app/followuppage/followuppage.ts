@@ -58,7 +58,8 @@ export class Followuppage implements OnInit {
 
     this.followuprecordService.getByPatientId(patientId).subscribe({
       next: (data) => {
-        console.log("Dossiers de suivi chargés :", data);        
+        console.log("Dossiers de suivi chargés :", data);     
+
         this.followupsInProgress = data.inProgress || [];
         this.followupsOther = data.others || [];
         console.log("Dossiers en cours :", this.followupsInProgress);
@@ -88,6 +89,7 @@ export class Followuppage implements OnInit {
           docs.forEach((docList, i) => {
             this.followupsInProgress[i].medical_document = docList;
           });
+          this.loading = false
         });
 
         forkJoin(requestsOther).subscribe((docs) => {

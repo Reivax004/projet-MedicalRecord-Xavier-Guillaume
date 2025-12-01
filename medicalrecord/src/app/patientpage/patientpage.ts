@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PatientService } from '../services/patient';
 import { Account } from '../models/account';
+import { AppointmentService } from '../services/appointments';
+import { totalMeetings } from '../models/totalMeetings';
 
 @Component({
   selector: 'app-patient-page',
@@ -19,12 +21,13 @@ export class PatientPage implements OnInit {
   userId: string = '';
   userType: string | null = "";
   users: Account[] = [];
-  totalMeetings: number = 0;
+  meetings: totalMeetings[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private AppointmentService: AppointmentService
   ) {}
 
   ngOnInit(): void {
@@ -42,10 +45,27 @@ export class PatientPage implements OnInit {
     } else {
       this.loadPatientsForPractitioner();
       this.loadNumberPatientsForPractioner();
-      console.log(this.totalMeetings)
     }
   }
 
+  private mergeProperties(): void {
+    if (!this.users.length || !this.meetings.length) {
+      return;
+    }
+  
+    this.users = this.users.map(user => {
+        const match = this.meetings.find(meeting =>
+        meeting._id?.toString() === user._id?.toString()
+      );
+  
+      return {
+        ...user,
+        totalMeetings: match ? match.totalMeetings : 0
+      };
+    });
+
+  console.log("Utilisateurs après fusion :", this.users);
+}
   
   private loadPatient(): void {
     this.patientService.getPatient(this.userId).subscribe({
@@ -61,11 +81,11 @@ export class PatientPage implements OnInit {
   }
 
   loadNumberPatientsForPractioner(): void {
-    this.patientService.getNumberPatientsForPractitioner(this.userId).subscribe({
+    this.AppointmentService.getNumberPatientsForPractitioner(this.userId).subscribe({
       next: (result: any) => {
-        this.totalMeetings = result.totalMeetings || 0;
-        this.loading = false;
-        console.log("Nombre total de rencontres :", this.totalMeetings);
+        this.meetings = result;
+        console.log("Nombre de rencontres chargées :", this.meetings);
+        this.mergeProperties();
       },
       error: () => {
         this.error = "Erreur lors du chargement du nombre de rencontres.";
@@ -82,7 +102,7 @@ export class PatientPage implements OnInit {
       next: (patients: Account[]) => {
         if (patients.length > 0) {
           this.users = patients;
-          this.loading = false;
+          this.mergeProperties();
         } else {
           this.error = "Aucun patient trouvé pour ce praticien.";
           this.loading = false;
