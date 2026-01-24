@@ -43,3 +43,10 @@ db.follow_up_files.insertMany(contenu du fichier follow_up_files.json dans le do
 db.medical_documents.insertMany(contenu du fichier medical_documents.json dans le dossier dataset)
 db.appointments.insertMany(contenu du fichier appointments.json dans le dossier dataset)
 ```
+
+## Auteurs
+
+- [ALIBERT Xavier](https://github.com/Reivax004) – Développeur Front-End  
+- [HUANG Steven](https://github.com/Steven200405) – Co-Modélisateur de la base de données MongoDB
+- [JIN Christine](https://github.com/JinChristine) – Co-Modélisatrice de la base de données MongoDB
+- [ORDONNEAU Guillaume](https://github.com/Qxillum) - Développeur Back-End
