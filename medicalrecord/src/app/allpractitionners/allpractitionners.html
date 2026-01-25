@@ -3,13 +3,16 @@
   <h2>Liste des praticiens</h2>
 
   <!-- Loading -->
-  <div *ngIf="loading" class="loading">Chargement...</div>
-
-  <!-- Erreur -->
-  <div *ngIf="error" class="error">{{ error }}</div>
+  @if(loading){
+    <div class="loading">Chargement...</div>
+  }
+  @if(error){
+    <div class="error">{{ error }}</div>
+  }
 
   <!-- Tableau -->
-  <table *ngIf="!loading && !error">
+  @if(!loading && !error){
+   <table>
     <thead>
     <tr>
       <th>Nom</th>
@@ -20,13 +23,18 @@
     </thead>
 
     <tbody>
-    <tr *ngFor="let p of practitioners">
-      <td>{{ p.lastname }}</td>
-      <td>{{ p.firstname }}</td>
-      <td>{{ p.email }}</td>
-      <td>{{ p.specialization }}</td>
+    @for(practitioner of practitioners; track practitioner){
+      <tr>
+      <td>{{ practitioner.lastname }}</td>
+      <td>{{ practitioner.firstname }}</td>
+      <td>{{ practitioner.email }}</td>
+      <td>{{ practitioner.specialization }}</td>
     </tr>
+    }
     </tbody>
   </table>
-
+  }
+  <div class="retour-container">
+    <button class="btn-retour" onclick="history.back()">⟵ Retour</button>
+  </div>
 </div>

@@ -1,29 +1,33 @@
 <nav class="navbar">
   <div class="logo">MedicalRecord</div>
+
   <ul class="nav-links">
     <li><a routerLink="/home">Accueil</a></li>
-    @if(typeUser){
-      <li><a routerLink="/appointments">Rendez-vous</a></li>
-      <li><a routerLink="/recordtransition">Dossier</a></li>
-    }
-    @if (typeUser === 'practitioner') {
-      <li><a routerLink="/practitionerpage">Mon compte</a></li>
-    }
-    @if(typeUser === 'patient') {
-      <li><a routerLink="/patientpage">Mon compte</a></li>
-    }
-    
-    <li><a routerLink="/allpractitioners">Liste des Praticiens</a></li>
 
-    @if(typeUser != 'practitioner' && typeUser != 'patient') {
-      <li><a routerLink="/accounttransition">Compte</a></li>
-    }
-    @if(!typeUser) {
-      <li><a routerLink="/login">Connexion</a></li>
-    }
-    @else{
-      <li><a routerLink="/login/logout">Déconnexion</a></li>
-    }
+    @switch (typeUser) {
 
+      @case ('practitioner') {
+        <li><a routerLink="/appointments">Rendez-vous</a></li>
+        <li><a routerLink="/recordtransition">Dossier</a></li>
+        <li><a routerLink="/practitionerpage">Mon compte</a></li>
+        <li><a routerLink="/allpractitioners">Liste des Praticiens</a></li>
+        <li><a routerLink="/login/logout">Déconnexion</a></li>
+      }
+
+      @case ('patient') {
+        <li><a routerLink="/appointments">Rendez-vous</a></li>
+        <li><a routerLink="/recordtransition">Dossier</a></li>
+        <li><a routerLink="/patientpage">Mon compte</a></li>
+        <li><a routerLink="/allpractitioners">Liste des Praticiens</a></li>
+        <li><a routerLink="/login/logout">Déconnexion</a></li>
+      }
+
+      @default {
+        <li><a routerLink="/allpractitioners">Liste des Praticiens</a></li>
+        <li><a routerLink="/accounttransition">Compte</a></li>
+        <li><a routerLink="/login">Connexion</a></li>
+      }
+
+    }
   </ul>
 </nav>

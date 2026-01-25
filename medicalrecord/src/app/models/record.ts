@@ -6,7 +6,6 @@ export interface MedicalRecord {
   height: number;
   blood_group : string;
   blood_pressure: string;
-  //general_practitioner: Practitioner;
   vaccines: Vaccine[];
   allergies: [];
 }
