@@ -14,5 +14,4 @@ export class Header {
   ngOnInit() {
     this.typeUser = localStorage.getItem('userType') || '';
   }
-
 }
