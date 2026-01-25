@@ -2,67 +2,58 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { FollowupRecord } from '../models/followuprecord';
+import {Prescription} from '../models/prescription';
+import {MedicalDocument} from '../models/medicaldocument';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Followuprecord {
+export class FollowuprecordService {
 
   private apiUrl = 'http://localhost:3000/api/followuprecord';
 
   constructor(private http: HttpClient) {}
 
-  // GET ALL
   getAll(): Observable<FollowupRecord[]> {
     return this.http.get<FollowupRecord[]>(this.apiUrl);
   }
 
-  // GET ONE BY ID
   getById(id: string): Observable<FollowupRecord> {
     return this.http.get<FollowupRecord>(`${this.apiUrl}/form/${id}`);
   }
 
-  // GET ALL BY PATIENT ID
-  getByPatientId(patientId: string): Observable<{ 
-    inProgress: FollowupRecord[], 
-    others: FollowupRecord[] 
+  getByPatientId(patientId: string): Observable<{
+    inProgress: FollowupRecord[],
+    others: FollowupRecord[]
   }> {
-    const url = `${this.apiUrl}/${patientId}`;
-    console.log('🚀 Appel API:', url);
-    console.log(patientId);
-    console.log(this.http.get<FollowupRecord[]>(url));
+    const url = `${this.apiUrl}/${patientId}`
     return this.http.get<{ inProgress: FollowupRecord[], others: FollowupRecord[] }>(url);
   }
 
-  // CREATE
-  create(record: {
+  create(FollowupRecord: {
     patientId?: string;
-    pathology: any;
-    start_date: any;
-    end_date: any;
-    status: any;
-    prescriptions: any[];
-    medical_document: any[]
-  }): Observable<any> {
-    return this.http.post<any>(this.apiUrl, record);
-  }
-
-  // UPDATE
-  update(id: string, record: {
-    pathology: any;
-    start_date: any;
-    end_date: any;
-    status: any;
-    prescriptions: any[];
-    medical_document: any[]
+    pathology: string;
+    start_date: Date;
+    end_date: Date | null;
+    status: string;
+    prescriptions: Prescription[];
+    medical_document: MedicalDocument[]
   }): Observable<FollowupRecord> {
-    return this.http.put<FollowupRecord>(`${this.apiUrl}/${id}`, record);
-    //                                   ↑ Parenthèse, pas backtick seul
+    return this.http.post<any>(this.apiUrl, FollowupRecord);
   }
 
-  // DELETE
+  update(id: string, followuprecord: {
+    pathology: string;
+    start_date: Date;
+    end_date: Date | null;
+    status: string;
+    prescriptions: Prescription[];
+    medical_document: MedicalDocument[]
+  }): Observable<FollowupRecord> {
+    return this.http.put<FollowupRecord>(`${this.apiUrl}/${id}`, followuprecord);
+  }
+
   delete(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
-    //                      ↑ Parenthèse, pas backtick seul
   }
 }

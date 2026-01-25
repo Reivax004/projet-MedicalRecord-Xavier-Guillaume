@@ -6,9 +6,8 @@ import {RecordTransition} from './recordtransition/recordtransition';
 import {AccountTransition} from './accounttransition/accounttransition';
 import {Appointments} from './appointments/appointments';
 import {PatientPage} from './patientpage/patientpage';
-//import {Practitionerpage} from './practitionerpage/practitionerpage';
 import {RecordPage} from './recordpage/recordpage';
-import {FollowupRecord} from './followuprecord/followuprecord';
+import {Followuprecord} from './followuprecord/followuprecord';
 import {Followuppage} from './followuppage/followuppage';
 import {Login} from './login/login';
 import {PractitionerForm} from './accountpractitioner/accountpractitioner';
@@ -25,8 +24,8 @@ export const routes: Routes = [
   { path: 'accounttransition', component: AccountTransition},
   { path: 'record', component: Record },
   { path: 'record/:id', component: Record },
-  { path: 'followuprecord', component: FollowupRecord},
-  { path: 'followuprecord/:id', component: FollowupRecord},
+  { path: 'followuprecord', component: Followuprecord},
+  { path: 'followuprecord/:id', component: Followuprecord},
   { path: 'followuppage/:id', component: Followuppage},
   { path: 'recordtransition', component: RecordTransition},
   { path: 'appointments', component: Appointments},

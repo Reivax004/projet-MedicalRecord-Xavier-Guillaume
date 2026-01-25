@@ -8,12 +8,11 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Followuprecord} from '../services/followuprecord';
-import {Prescription} from '../models/prescription';
+import {FollowuprecordService} from '../services/followuprecord';
 import {Medicaldocument} from '../services/medicaldocument';
 import {catchError, forkJoin, map, Observable, of, switchMap} from 'rxjs';
 import {MedicalDocument} from '../models/medicaldocument';
-
+import {FollowupRecord} from '../models/followuprecord';
 
 @Component({
   selector: 'app-dossier-suivi',
@@ -22,7 +21,7 @@ import {MedicalDocument} from '../models/medicaldocument';
   templateUrl: './followuprecord.html',
   styleUrls: ['./followuprecord.scss']
 })
-export class FollowupRecord implements OnInit {
+export class Followuprecord implements OnInit {
 
   dossierForm!: FormGroup;
 
@@ -32,7 +31,7 @@ export class FollowupRecord implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private followupService: Followuprecord,
+    private followupService: FollowuprecordService,
     private medicalDocumentService: Medicaldocument,
     private route: ActivatedRoute,
     private router: Router
@@ -41,14 +40,12 @@ export class FollowupRecord implements OnInit {
 
   ngOnInit(): void {
 
-    /** :id dans l’URL */
     this.followupId = this.route.snapshot.paramMap.get('id');
     this.userId = localStorage.getItem('userId') || '';
     console.log(this.followupId);
     console.log(!!this.followupId);
     this.isEdit = !!this.followupId;
 
-    /** construction formulaire */
     this.dossierForm = this.fb.group({
       patientId: [this.userId],
       pathology: ['', Validators.required],
@@ -59,13 +56,11 @@ export class FollowupRecord implements OnInit {
       medical_document: this.fb.array([])
     });
 
-    /** Si modification charge les données */
     if (this.isEdit) {
       this.loadFollowup(this.followupId!);
     }
   }
 
-  /** GETTERS */
   get prescriptions(): FormArray {
     return this.dossierForm.get('prescriptions') as FormArray;
   }
@@ -74,7 +69,6 @@ export class FollowupRecord implements OnInit {
     return this.dossierForm.get('medical_document') as FormArray;
   }
 
-  /** -------------------- PRESCRIPTIONS -------------------- */
   addPrescription() {
     const group = this.fb.group({
       drug_name: ['', Validators.required],
@@ -92,7 +86,6 @@ export class FollowupRecord implements OnInit {
     this.prescriptions.removeAt(index);
   }
 
-  /** -------------------- MEDICAL DOCS -------------------- */
   addMedicalDoc() {
     const group = this.fb.group({
       follow_up_file_Id: ['', Validators.required],
@@ -108,13 +101,11 @@ export class FollowupRecord implements OnInit {
     this.documentsMedicaux.removeAt(index);
   }
 
-  /** -------------------- LOAD (GET BY ID) -------------------- */
   loadFollowup(id: string) {
     this.followupService.getById(id).pipe(
       switchMap((followup) => {
         console.log("➡ Données chargées :", followup);
 
-        // Patch des champs du formulaire principal
         this.dossierForm.patchValue({
           patientId: followup.patientId,
           pathology: followup.pathology,
@@ -123,7 +114,6 @@ export class FollowupRecord implements OnInit {
           status: followup.status,
         });
 
-        // Prescriptions
         this.prescriptions.clear();
         followup.prescriptions.forEach((p: any) => {
           const g = this.fb.group({
@@ -138,17 +128,14 @@ export class FollowupRecord implements OnInit {
           this.prescriptions.push(g);
         });
 
-        // Requête pour récupérer les documents médicaux
         return this.medicalDocumentService.getByFollowupId(id).pipe(
           map((docs: any) => ({followup, docs})) // On renvoie followup + docs ensemble
         );
       })
     ).subscribe({
       next: ({followup, docs}) => {
-        // On ajoute les documents médicaux au followup pour pouvoir récupérer leur _id
         followup.medical_document = docs;
 
-        // Documents médicaux → ajout au FormArray
         this.documentsMedicaux.clear();
         docs.forEach((d: any) => {
           const g = this.fb.group({
@@ -168,21 +155,13 @@ export class FollowupRecord implements OnInit {
   }
 
 
-  /** -------------------- SUBMIT -------------------- */
   onSubmit() {
-    /*
-    if (this.dossierForm.invalid) {
-      alert("Veuillez remplir tous les champs obligatoires.");
-      return;
-    }*/
 
     const formValue = this.dossierForm.value;
 
-    // Séparer prescriptions et documents médicaux
     const prescriptionsPayload = formValue.prescriptions || [];
     const medicalDocsPayload = formValue.medical_document || [];
 
-    // Préparer le payload du followup sans les documents médicaux
     const followupPayload = {
       patientId: formValue.patientId,
       pathology: formValue.pathology,
@@ -192,7 +171,6 @@ export class FollowupRecord implements OnInit {
       prescriptions: prescriptionsPayload,
       medical_document: medicalDocsPayload
     };
-    /** Mode EDIT → UPDATE */
     if (this.isEdit && this.followupId) {
       console.log(medicalDocsPayload);
 
@@ -204,13 +182,11 @@ export class FollowupRecord implements OnInit {
           const creates: Observable<any>[] = [];
 
           medicalDocsPayload.forEach((doc: MedicalDocument) => {
-            // Ajouter l'id du followup si nécessaire
             if (this.followupId != null) {
               doc.follow_up_file_Id = this.followupId;
             }
 
             if (doc._id) {
-              // 🔹 Document EXISTANT → UPDATE
               updates.push(
                 this.medicalDocumentService.update(doc._id, doc).pipe(
                   catchError(err => {
@@ -221,7 +197,6 @@ export class FollowupRecord implements OnInit {
               );
 
             } else {
-              // 🔹 Nouveau document → CREATE
               creates.push(
                 this.medicalDocumentService.create(doc).pipe(
                   catchError(err => {
@@ -233,7 +208,6 @@ export class FollowupRecord implements OnInit {
             }
           });
 
-          // Combiner updates + creates
           return forkJoin([...updates, ...creates]);
         })
       ).subscribe({
@@ -250,23 +224,20 @@ export class FollowupRecord implements OnInit {
       return;
     }
 
-    /** Mode CREATE → CREATE */
     this.followupService.create(followupPayload).pipe(
-      switchMap((res) => {
+      switchMap((res : FollowupRecord) => {
         const followupId = res._id;
         const creates: Observable<any>[] = [];
 
         if (medicalDocsPayload.length === 0) {
-          return of([]); // aucun doc médical : on renvoie un observable vide
+          return of([]);
         }
 
-        // Associer l'ID du followup à chaque document
         const docsToCreate = medicalDocsPayload.map((doc: any) => ({
           ...doc,
           follow_up_file_Id: followupId
         }));
 
-        // Créer réellement chaque document
         docsToCreate.forEach((doc: MedicalDocument) => {
           creates.push(
             this.medicalDocumentService.create(doc).pipe(
@@ -278,7 +249,7 @@ export class FollowupRecord implements OnInit {
           );
         });
 
-        return forkJoin(creates); // attendre que tous les documents soient créés
+        return forkJoin(creates);
       })
     ).subscribe({
       next: () => {
