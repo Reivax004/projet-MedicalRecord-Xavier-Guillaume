@@ -3,24 +3,21 @@
     <h1>Dossiers de Suivi</h1>
   </div>
 
-  <!-- LOADING -->
   @if (loading) {
     <div class="loading-message">
       <p>Chargement des dossiers...</p>
     </div>
   }
 
-  <!-- ERROR -->
   @if (error && !loading) {
     <div class="error-message">
       <p>{{ error }}</p>
     </div>
   }
 
-  <!-- LISTE DES DOSSIERS -->
   @if (!loading && !error) {
 
-    <!-- 📌 BLOC 1 : DOSSIERS EN COURS -->
+    <!-- BLOC 1 : DOSSIERS EN COURS -->
     <h2 class="followup-section-title">Dossiers suivis en cours</h2>
 
     @if (followupsInProgress && followupsInProgress.length > 0) {
@@ -30,7 +27,6 @@
 
           <div class="followup-card">
 
-            <!-- Header du dossier -->
             <div class="card-header">
               <h3>{{ followup.pathology }}</h3>
               <span class="status-badge" [ngClass]="getStatusClass(followup.status)">
@@ -38,10 +34,8 @@
               </span>
             </div>
 
-            <!-- Corps du dossier -->
             <div class="card-body">
 
-              <!-- Dates -->
               <div class="info-row">
                 <div class="info-content">
                   <span class="info-label">Début :</span>
@@ -57,7 +51,7 @@
 
               <!-- PRESCRIPTIONS -->
               <div class="section prescriptions">
-                <h4>Prescriptions ({{ followup.prescriptions?.length || 0 }})</h4>
+                <h4>Prescriptions ({{ followup.prescriptions.length || 0 }})</h4>
 
                 @if (followup.prescriptions && followup.prescriptions.length > 0) {
                   <ul>
@@ -77,7 +71,6 @@
                 }
               </div>
 
-              <!-- DOCUMENTS MÉDICAUX REGROUPÉS PAR TYPE -->
               <div class="section medical-documents">
                 <h4>Documents Médicaux</h4>
 
@@ -109,15 +102,14 @@
 
             </div>
 
-            <!-- Actions -->
             <div class="card-actions">
               <button class="btn-action btn-edit" (click)="editFollowup(followup._id, $event)">Modifier</button>
               <button class="btn-action btn-delete" (click)="deleteFollowup(followup._id, $event)">Supprimer</button>
             </div>
 
-          </div> <!-- end card -->
+          </div>
 
-        } <!-- end for -->
+        }
       </div>
 
     } @else {
@@ -126,7 +118,7 @@
 
 
 
-    <!-- 📌 BLOC 2 : DOSSIERS TERMINÉS -->
+    <!--  BLOC 2 : DOSSIERS TERMINÉS -->
     <h2 class="followup-section-title">Dossiers suivis terminés</h2>
 
     @if (followupsOther && followupsOther.length > 0) {
@@ -146,7 +138,6 @@
 
             <div class="card-body">
 
-              <!-- Dates -->
               <div class="info-row">
                 <div class="info-content">
                   <span class="info-label">Début :</span>
@@ -160,9 +151,8 @@
                 </div>
               </div>
 
-              <!-- Prescriptions -->
               <div class="section prescriptions">
-                <h4>Prescriptions ({{ followup.prescriptions?.length || 0 }})</h4>
+                <h4>Prescriptions ({{ followup.prescriptions.length || 0 }})</h4>
 
                 @if (followup.prescriptions && followup.prescriptions.length > 0) {
                   <ul>
@@ -182,7 +172,6 @@
                 }
               </div>
 
-              <!-- DOCUMENTS REGROUPÉS PAR TYPE -->
               <div class="section medical-documents">
                 <h4>Documents Médicaux</h4>
 
@@ -227,9 +216,7 @@
     } @else {
       <p class="empty-state">Aucun dossier terminé</p>
     }
-
   }
-
   <div class="footer-actions">
     <button class="btn-back" (click)="goBack()">⟵ Retour</button>
   </div>

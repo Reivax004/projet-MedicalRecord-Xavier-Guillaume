@@ -11,28 +11,22 @@ export class PatientService {
 
   constructor(private http: HttpClient) {}
 
-  // Récupérer tous les patients
   getPatients(id: string): Observable<Account[]> {
     return this.http.get<Account[]>(`${this.baseUrl}/practitioners/${id}`);
   }
 
-  // Récupérer un patient par id
   getPatient(id: string): Observable<Account> {
     return this.http.get<Account>(`${this.baseUrl}/${id}`);
   }
 
-  // Créer un patient
   createPatient(patient: Partial<Account>): Observable<Account> {
-    console.log('Creating patient:', patient);
     return this.http.post<Account>(this.baseUrl, patient);
   }
 
-  // Mettre à jour un patient
   updatePatient(id: string, patient: Partial<Account>): Observable<Account> {
     return this.http.put<Account>(`${this.baseUrl}/${id}`, patient);
   }
 
-  // Supprimer un patient
   deletePatient(id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
