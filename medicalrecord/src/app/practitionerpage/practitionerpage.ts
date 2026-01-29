@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Practitioner } from '../models/practitioner';
 import {PractitionerService} from '../services/practitioners';
@@ -14,18 +14,17 @@ import {PractitionerService} from '../services/practitioners';
 })
 export class PractitionerPage implements OnInit {
 
-  current!: Practitioner;
-  loading: boolean = true;
-  error: string = '';
-  practitionerId: string = '';
+  public current!: Practitioner;
+  public loading: boolean = true;
+  public error: string = '';
+  private practitionerId: string = '';
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private practitionerService: PractitionerService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.practitionerId = localStorage.getItem('userId') || '';
     console.log("ID du praticien récupéré :", this.practitionerId);
 
@@ -38,7 +37,7 @@ export class PractitionerPage implements OnInit {
     this.loadPractitionerById(this.practitionerId);
   }
 
-  loadPractitionerById(id: string): void {
+  private loadPractitionerById(id: string): void {
     this.loading = true;
 
     this.practitionerService.getById(id).subscribe({
@@ -55,38 +54,41 @@ export class PractitionerPage implements OnInit {
     });
   }
 
-  goBack(): void {
+  public goBack(): void {
     this.router.navigate(['/practitioners']); // adapte selon ta route
   }
 
-  editPractitioner(): void {
+  public editPractitioner(): void {
     if (this.current ) {
       this.router.navigate(['/accountpractitioner/', this.current._id]);
     }
   }
 
-  deletePractitioner(): void {
-    if (!this.current || !this.current._id) return;
+  public deletePractitioner(): void {
+    if (!this.current?._id) return;
 
-    if (confirm("Voulez-vous vraiment supprimer ce praticien ?")) {
-      this.practitionerService.delete(this.current._id).subscribe({
-        next: () => {
-          localStorage.removeItem('userId');
-          localStorage.removeItem('userType');
-          localStorage.removeItem('userFirstname');
-          localStorage.removeItem('userLastname');
-          this.router.navigate(['/home']).then(() => {
-            alert("Praticien supprimé avec succès");
-            window.location.reload();
-          });
-        },
-        error: (err) => {
-          console.error(err);
-          alert("Erreur lors de la suppression du praticien");
-        }
-      });
-      
-      
-    }
+    const ok = confirm("Voulez-vous vraiment supprimer ce praticien ?");
+    if (!ok) return;
+
+    this.practitionerService.delete(this.current._id).subscribe({
+      next: () => {
+        this.clearSession();
+        this.router.navigate(['/home']).then(() => {
+          alert("Praticien supprimé avec succès");
+          window.location.reload();
+        });
+      },
+      error: (err: unknown) => {
+        console.error(err);
+        alert("Erreur lors de la suppression du praticien");
+      }
+    });
+  }
+
+  private clearSession(): void {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('userFirstname');
+    localStorage.removeItem('userLastname');
   }
 }
