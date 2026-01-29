@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Account } from '../models/account';
 import { MedicalRecord } from '../models/record';
@@ -9,16 +9,16 @@ import { PatientService } from '../services/patient';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './register.html',
   styleUrls: ['./register.scss']
 })
 export class Register implements OnInit {
 
-  registerForm: FormGroup;
-  serverError: string | null = null;
-  isEdit: boolean = false;
-  idToEdit: string | null = null; // <-- ID MongoDB
+  public registerForm: FormGroup;
+  public serverError: string | null = null;
+  public isEdit: boolean = false;
+  private idToEdit: string | null = null; // <-- ID MongoDB
 
   constructor(
     private fb: FormBuilder,
@@ -43,7 +43,7 @@ export class Register implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
 
     // ⬅️ On récupère l'ID MongoDB dans l’URL
     this.idToEdit = this.route.snapshot.paramMap.get('id');
@@ -57,7 +57,7 @@ export class Register implements OnInit {
     }
   }
 
-  loadForm(patient: Account) {
+  private loadForm(patient: Account): void {
     this.registerForm.patchValue({
       SSN: patient.SSN,
       firstname: patient.firstname,
@@ -75,8 +75,8 @@ export class Register implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log('Form submitted');  
+  public onSubmit(): void {
+    console.log('Form submitted');
     this.serverError = null;
 
     if (this.registerForm.invalid) {
@@ -123,7 +123,7 @@ export class Register implements OnInit {
       this.patientService.createPatient(account).subscribe({
         next: (created: any) => {
           alert('Patient créé !');
-          this.router.navigate(['/patient', created._id]); // ➜ Redirige vers la fiche du nouveau patient
+          this.router.navigate(['/patientpage', created._id]); // ➜ Redirige vers la fiche du nouveau patient
         },
         error: (err) => {
           console.error(err);
