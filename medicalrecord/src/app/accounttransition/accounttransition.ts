@@ -13,11 +13,11 @@ export class AccountTransition {
 
   constructor(private router: Router) {}
 
-  goToPatientAccount() {
+  public goToPatientAccount(): void {
     this.router.navigate(['/register']);
   }
 
-  goToPractitionerAccount() {
+  public goToPractitionerAccount(): void {
     this.router.navigate(['/accountpractitioner']);
   }
 }
