@@ -1,10 +1,7 @@
 <div class="medical-container">
-  @if(!isEdit){
-    <h2>Créer un dossier médical</h2>
-  }
-  @else{
-    <h2>Modifier le dossier médical</h2>
-  }
+  <h2>
+    @if (!isEdit) { Créer un dossier médical } @else { Modifier le dossier médical }
+  </h2>
   <form [formGroup]="medicalForm" (ngSubmit)="submitForm()">
 
     <label for="weight">Poids (kg)</label>

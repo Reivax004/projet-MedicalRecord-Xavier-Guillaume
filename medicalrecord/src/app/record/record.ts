@@ -13,10 +13,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class Record implements OnInit {
 
-  medicalForm!: FormGroup;
-  isEdit: boolean = false;
-  recordId: string | null = null;
-  userType: string | null = null;
+  public medicalForm!: FormGroup;
+  public isEdit: boolean = false;
+  private recordId: string | null = null;
+  private userType: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -25,14 +25,14 @@ export class Record implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     // Récupérer l'ID dans l'URL
     this.userType = localStorage.getItem('userType');
     if(this.userType === 'practitioner'){
       this.recordId = this.route.snapshot.paramMap.get('id');
     }
     else{
-      this.recordId = localStorage.getItem('userId') || '';
+      this.recordId = localStorage.getItem('userId');
     }
 
     this.isEdit = !!this.recordId;
@@ -54,12 +54,12 @@ export class Record implements OnInit {
   }
 
   // Getter du FormArray
-  get vaccineArray(): FormArray {
+  public get vaccineArray(): FormArray {
     return this.medicalForm.get('vaccine') as FormArray;
   }
 
   // FormGroup vaccin
-  createVaccineGroup(): FormGroup {
+  public createVaccineGroup(): FormGroup {
     return this.fb.group({
       name: ['', Validators.required],
       injection_date: [''],
@@ -69,7 +69,7 @@ export class Record implements OnInit {
   }
 
   // Chargement des données
-  loadRecord(id: string) {
+  private loadRecord(id: string): void {
     this.recordService.getById(id).subscribe({
       next: (record) => {
         // remplir le formulaire
@@ -100,15 +100,15 @@ export class Record implements OnInit {
     });
   }
 
-  addVaccine() {
+  public addVaccine(): void {
     this.vaccineArray.push(this.createVaccineGroup());
   }
 
-  removeVaccine(index: number) {
+  public removeVaccine(index: number): void {
     this.vaccineArray.removeAt(index);
   }
 
-  submitForm() {
+  public submitForm(): void {
     if (this.medicalForm.invalid) {
       return;
     }
