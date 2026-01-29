@@ -12,7 +12,7 @@ import { PractitionerService } from '../services/practitioners';
   templateUrl: './accountpractitioner.html',
   styleUrls: ['./accountpractitioner.scss']
 })
-export class Accountpractitioner implements OnInit {
+export class PractitionerForm implements OnInit {
 
   public practitionerForm!: FormGroup;
   public isEdit: boolean = false;
