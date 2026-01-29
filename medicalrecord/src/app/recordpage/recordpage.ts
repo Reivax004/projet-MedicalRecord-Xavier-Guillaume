@@ -13,11 +13,11 @@ import { MedicalRecord } from '../models/record';
 })
 export class RecordPage implements OnInit {
 
-  record: MedicalRecord[] = [];
-  loading: boolean = true;
-  error: string = '';
-  recordId!: string;
-  userType: string | null = null;
+  public record: MedicalRecord[] = [];
+  public loading: boolean = true;
+  public error: string = '';
+  public recordId!: string;
+  private userType: string | null = null;
 
   constructor(
     private router: Router,
@@ -25,7 +25,7 @@ export class RecordPage implements OnInit {
     private recordService: MedicalRecordService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.userType = localStorage.getItem('userType');
     if(this.userType === 'practitioner'){
       this.recordId = this.route.snapshot.paramMap.get('id') || '';
@@ -42,7 +42,7 @@ export class RecordPage implements OnInit {
     this.loadRecordById(this.recordId);
   }
 
-  loadRecordById(id: string): void {
+  private loadRecordById(id: string): void {
     this.loading = true;
 
     this.recordService.getById(id).subscribe({
@@ -60,11 +60,11 @@ export class RecordPage implements OnInit {
     });
   }
 
-  goBack(): void {
+  public goBack(): void {
     window.history.back() // adapte selon ta route
   }
 
-  deleteRecord(): void {
+  public deleteRecord(): void {
     if (confirm("Voulez-vous vraiment supprimer ce dossier ?")) {
       this.recordService.delete(this.recordId).subscribe({
         next: () => {
@@ -79,11 +79,10 @@ export class RecordPage implements OnInit {
     }
   }
 
-editRecord(id: string): void {
+  public editRecord(id: string): void {
     this.router.navigate(['/record/', id]);
   }
-
-  formatDate(date: any): string {
+  public formatDate(date: any): string {
     if (!date) return 'Non renseignée';
     return new Date(date).toLocaleDateString('fr-FR', {
       year: 'numeric',
@@ -92,7 +91,7 @@ editRecord(id: string): void {
     });
   }
 
-  calculateBMI(record: MedicalRecord): string {
+  public calculateBMI(record: MedicalRecord): string {
     if (!record?.weight || !record?.height) {
       return 'Non calculable';
     }
@@ -101,7 +100,7 @@ editRecord(id: string): void {
     return bmi.toFixed(1);
   }
 
-  getBMICategory(record: MedicalRecord): string {
+  public getBMICategory(record: MedicalRecord): string {
     const bmi = parseFloat(this.calculateBMI(record));
     if (isNaN(bmi)) return '';
 
