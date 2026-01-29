@@ -10,7 +10,7 @@ import {RouterLink} from '@angular/router';
 })
 export class Home implements OnInit{
   public userType: string | null = null;
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.userType = localStorage.getItem('userType');
     console.log('User Type:', this.userType);
   }
