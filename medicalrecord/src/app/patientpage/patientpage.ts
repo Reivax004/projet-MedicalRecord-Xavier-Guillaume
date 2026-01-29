@@ -15,7 +15,7 @@ import { totalMeetings } from '../models/totalMeetings';
 })
 export class PatientPage implements OnInit {
 
-  public current: Account | null = null;
+  public current!: Account;
   public loading: boolean = true;
   public error: string | null = null;
   public userType: string | null = "";
