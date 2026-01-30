@@ -1,30 +1,97 @@
 .login-container {
-  margin-top: 80px; /* ajuste selon la hauteur de ton header */
-  display: flex;
-  flex-direction: column;
-  max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
+  padding: 36px 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  margin: 6rem auto;
 }
 
+/* Titre */
+.login-container h2 {
+  text-align: center;
+  color: #1976d2;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Formulaire */
 .login-container form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
+/* Labels */
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Inputs */
+input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+
+  transition: all 0.2s ease;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+}
+
+/* Bouton */
 button {
-  padding: 10px;
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+
+  background: linear-gradient(135deg, #1976d2, #1565c0);
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.success-snackbar {
-  background-color: #4caf50 !important;
-  color: white !important;
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(25, 118, 210, 0.35);
 }
 
-.error-snackbar {
-  background-color: #f44336 !important;
-  color: white !important;
+button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.25);
+}
+
+button:disabled {
+  background: #90caf9;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Message d’erreur */
+.error-message {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #d32f2f;
+  font-weight: 500;
 }

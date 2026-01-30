@@ -12,28 +12,22 @@ export class PractitionerService {
 
   constructor(private http: HttpClient) {}
 
-  // Récupérer tous les praticiens
   getPractitioners(): Observable<Practitioner[]> {
     return this.http.get<Practitioner[]>(this.baseUrl);
   }
 
-  // Récupérer un praticien par id
   getById(id: string): Observable<Practitioner> {
     return this.http.get<Practitioner>(`${this.baseUrl}/${id}`);
   }
 
-  // Créer un praticien
   create(practitioner: Partial<Practitioner>): Observable<Practitioner> {
-    console.log(practitioner);
     return this.http.post<Practitioner>(this.baseUrl, practitioner);
   }
 
-  // Mettre à jour un praticien
   update(id: string, practitioner: Partial<Practitioner>): Observable<Practitioner> {
     return this.http.put<Practitioner>(`${this.baseUrl}/${id}`, practitioner);
   }
 
-  // Supprimer un praticien
   delete(id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }

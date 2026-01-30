@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FollowupRecord } from '../models/followuprecord';
-import { Followuprecord } from '../services/followuprecord';
+import {FollowuprecordService} from '../services/followuprecord';
 import {Medicaldocument} from '../services/medicaldocument';
 import {MedicalDocument} from '../models/medicaldocument';
 import {catchError, forkJoin, of} from 'rxjs';
@@ -20,21 +20,19 @@ export class Followuppage implements OnInit {
   followupsOther: FollowupRecord[] = [];
   loading: boolean = true;
   error: string = '';
-  patientId: string = ''; // ← Initialisé au lieu de !
+  patientId: string = '';
   followupId: string = '';
-  medicalDocuments: MedicalDocument[] = [];
   userType: string | null = "";
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private followuprecordService: Followuprecord,
+    private followuprecordService: FollowuprecordService,
     private medicalDocumentService: Medicaldocument
   ) {}
 
   ngOnInit(): void {
-    // Récupération de l'utilisateur connecté
-   
+
     this.userType = localStorage.getItem('userType');
     if(this.userType === 'practitioner'){
       this.patientId = this.route.snapshot.paramMap.get('id') || '';
@@ -55,14 +53,14 @@ export class Followuppage implements OnInit {
   loadFollowupsByPatientId(patientId: string): void {
     this.loading = true;
     this.error = '';
-  
+
     this.followuprecordService.getByPatientId(patientId).subscribe({
-      next: (data) => {
-        console.log("Dossiers de suivi chargés :", data);     
-  
+      next: (data : any) => {
+        console.log("Dossiers de suivi chargés :", data);
+
         this.followupsInProgress = data.inProgress || [];
         this.followupsOther = data.others || [];
-  
+
         if (
           this.followupsInProgress.length === 0 &&
           this.followupsOther.length === 0
@@ -70,46 +68,45 @@ export class Followuppage implements OnInit {
           this.loading = false;
           return;
         }
-  
+
         const reqInProgress = this.followupsInProgress.map(follow =>
           this.medicalDocumentService.getByFollowupTypeId(follow._id).pipe(
             catchError(() => of([]))
           )
         );
-  
+
         const reqOther = this.followupsOther.map(follow =>
           this.medicalDocumentService.getByFollowupTypeId(follow._id).pipe(
             catchError(() => of([]))
           )
         );
-  
+
         forkJoin(reqInProgress).subscribe((docLists) => {
           docLists.forEach((docs, index) => {
-  
-            // CRUD regroupement par type
+
             const grouped: Record<string, MedicalDocument[]> = {};
 
             docs.forEach(group => {
               if (!group._id) return;
               grouped[group._id] = group.documents;
             });
-  
+
             this.followupsInProgress[index].documentsByType = grouped;
           });
           this.loading = false;
         });
-  
+
 
         forkJoin(reqOther).subscribe((docLists) => {
           docLists.forEach((docs, index) => {
-  
+
             const grouped: Record<string, MedicalDocument[]> = {};
 
             docs.forEach(group => {
               if (!group._id) return;
               grouped[group._id] = group.documents;
             });
-  
+
             this.followupsOther[index].documentsByType = grouped;
           });
           this.loading = false;
@@ -117,24 +114,19 @@ export class Followuppage implements OnInit {
 
         console.log("Dossiers après association des documents :", this.followupsOther, this.followupsInProgress);
       },
-  
-      error: (err) => {
+
+      error: (err: any) => {
         console.error("Erreur complète :", err);
         this.error = "Impossible de charger les dossiers de suivi";
         this.loading = false;
       }
     });
   }
-  
+
 
   goBack(): void {
-    history.back(); // Adaptez selon votre route
+    history.back();
   }
-
-  createNewFollowup(): void {
-    this.router.navigate(['/followuprecord']);
-  }
-
   deleteFollowup(followupId: string, event: Event): void {
     console.log('deleteFollowup', followupId);
     event.stopPropagation();
