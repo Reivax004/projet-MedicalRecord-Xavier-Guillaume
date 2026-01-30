@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MedicalRecordService } from '../services/record';
@@ -11,38 +11,41 @@ import { MedicalRecord } from '../models/record';
   templateUrl: './recordtransition.html',
   styleUrls: ['./recordtransition.scss']
 })
-export class RecordTransition {
-  userId: string = "";
-  bool: MedicalRecord | null = null;
-  userType: string | null = null;
+export class RecordTransition implements OnInit {
+  public userId: string = "";
+  public record: MedicalRecord | null = null;
+  public userType: string | null = null;
   constructor(private router: Router, private recordService: MedicalRecordService) {}
-  ngOnInit() {
+  public ngOnInit(): void {
     this.userId = localStorage.getItem('userId') || '';
-    this.userType = localStorage.getItem('userType') || '';	
+    this.userType = localStorage.getItem('userType');
 
-    this.recordService.getById(this.userId)
-    .subscribe((data: any) => {
-      this.bool = data;
-      console.log(this.bool);
+    this.recordService.getById(this.userId).subscribe({
+      next: (data: MedicalRecord) => {
+        this.record = data;
+      },
+      error: () => {
+        this.record = null;
+      }
     });
   }
-  goToCreateFollowup() {
+  public goToCreateFollowup(): void {
     this.router.navigate(['/followuprecord']);
   }
 
-  goToCreateMedical() {
+  public goToCreateMedical(): void {
     this.router.navigateByUrl('/record');
   }
-  goToConsultFollowup() {
-    this.router.navigateByUrl('/followuppage/:id');
+  public goToConsultFollowup(): void {
+    this.router.navigate(['/followuppage', this.userId]);
   }
 
-goToConsultMedical() {
-    this.router.navigateByUrl('/medicalrecord/:id');
+public goToConsultMedical(): void {
+  this.router.navigate(['/medicalrecord', this.userId]);
   }
 
-  goToConsultPatients(){
-    this.router.navigateByUrl('/patientpage/:id');
+  public goToConsultPatients(): void{
+    this.router.navigate([' /patientpage', this.userId]);
 }
 }
 

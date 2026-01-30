@@ -15,13 +15,13 @@ import { totalMeetings } from '../models/totalMeetings';
 })
 export class PatientPage implements OnInit {
 
-  current!: Account;
-  loading: boolean = true;
-  error: string | null = null;
-  userId: string = '';
-  userType: string | null = "";
-  users: Account[] = [];
-  meetings: totalMeetings[] = [];
+  public current!: Account;
+  public loading: boolean = true;
+  public error: string | null = null;
+  public userType: string | null = "";
+  public users: Account[] = [];
+  private userId: string = '';
+  private meetings: totalMeetings[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,16 +30,16 @@ export class PatientPage implements OnInit {
     private AppointmentService: AppointmentService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.userId = localStorage.getItem('userId') || '';
     this.userType = localStorage.getItem('userType');
-  
+
     if (!this.userId) {
       this.error = "Identifiant patient invalide.";
       this.loading = false;
       return;
     }
-  
+
     if (this.userType === 'patient') {
       this.loadPatient();
     } else {
@@ -49,24 +49,17 @@ export class PatientPage implements OnInit {
   }
 
   private mergeProperties(): void {
-    if (!this.users.length || !this.meetings.length) {
-      return;
-    }
-  
     this.users = this.users.map(user => {
-        const match = this.meetings.find(meeting =>
+      const match = this.meetings.find(meeting =>
         meeting._id?.toString() === user._id?.toString()
       );
-  
       return {
         ...user,
         totalMeetings: match ? match.totalMeetings : 0
       };
     });
+  }
 
-  console.log("Utilisateurs après fusion :", this.users);
-}
-  
   private loadPatient(): void {
     this.patientService.getPatient(this.userId).subscribe({
       next: (patient: Account) => {
@@ -80,7 +73,7 @@ export class PatientPage implements OnInit {
     });
   }
 
-  loadNumberPatientsForPractioner(): void {
+  private loadNumberPatientsForPractioner(): void {
     this.AppointmentService.getNumberPatientsForPractitioner(this.userId).subscribe({
       next: (result: any) => {
         this.meetings = result;
@@ -94,10 +87,10 @@ export class PatientPage implements OnInit {
     });
   }
 
-  
+
   private loadPatientsForPractitioner(): void {
     console.log("ID du praticien récupéré :", this.userId);
-  
+
     this.patientService.getPatients(this.userId).subscribe({
       next: (patients: Account[]) => {
         if (patients.length > 0) {
@@ -115,14 +108,14 @@ export class PatientPage implements OnInit {
     });
   }
 
-  
 
-  onEdit() {
+
+  public onEdit(): void {
     if (!this.current || !this.current._id) return;
     this.router.navigate(['/register/', this.current._id]);
   }
 
-  onDelete() {
+  public onDelete(): void {
 
     if (!this.current || !this.current._id) return;
 
@@ -161,9 +154,9 @@ export class PatientPage implements OnInit {
   viewPatient(id: string) {
     this.router.navigate(['/medicalrecord', id]);
   }
-  
-  viewFollowedFiles(id: string) {
+
+  public viewFollowedFiles(id: string): void {
     this.router.navigate(['/followuppage', id]);
   }
-  
+
 }

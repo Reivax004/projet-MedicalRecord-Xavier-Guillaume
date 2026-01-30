@@ -1,27 +1,27 @@
 <main class="hero">
   <h1>Bienvenue sur MedicalRecord</h1>
   <p>Suivi médical simplifié pour votre bien-être.</p>
-  @if(!userType){
-    <button class="btn-action" routerLink="/login">Se connecter</button>
-  }
-  @if(userType === 'practitioner'){
-    <button class="btn-action" routerLink="/practitionerpage">Voir mon compte</button>
-  }
-  @if(userType === 'patient'){
-    <button class="btn-action" routerLink="/patientpage">Voir mon compte</button>
-  }
 
+  @if (!userType) {
+    <button type="button" class="btn-action" routerLink="/login">Se connecter</button>
+  } @else {
+    @if (userType === 'practitioner') {
+      <button type="button" class="btn-action" routerLink="/practitionerpage">Voir mon compte</button>
+    } @else if (userType === 'patient') {
+      <button type="button" class="btn-action" routerLink="/patientpage">Voir mon compte</button>
+    }
+  }
   <section class="hero-features">
     <div class="feature">
       <img [src]="'/img/lit.png'" alt="Lit d'hôpital">
-      <p>Hospitalisation et suivie</p>
+      <p>Hospitalisation et suivi</p>
     </div>
     <div class="feature">
-      <img [src]="'/img/chaise.png'" alt="Lit d'hôpital">
+      <img [src]="'/img/chaise.png'" alt="Chaise roulante">
       <p>Mobilité assistée</p>
     </div>
     <div class="feature">
-      <img [src]="'/img/marche.png'" alt="Lit d'hôpital">
+      <img [src]="'/img/marche.png'" alt="Personne en rééducation">
       <p>Rééducation et reprise d’autonomie</p>
     </div>
   </section>

@@ -5,9 +5,9 @@
     <h2>Création</h2>
     <p>Choisissez le type de dossier à créer :</p>
     <div class="buttons">
-      <button (click)="goToCreateFollowup()">Créer dossier de suivi</button>
-      @if(bool?.weight == null){
-        <button (click)="goToCreateMedical()">Créer dossier médical</button>
+      <button type="button" (click)="goToCreateFollowup()">Créer dossier de suivi</button>
+      @if(!record){
+        <button type="button" (click)="goToCreateMedical()">Créer dossier médical</button>
       }
     </div>
   </div>
@@ -19,21 +19,21 @@
     @if(userType === "patient"){
       <p>Choisissez le type de dossier à consulter :</p>
       <div class="buttons">
-        <button (click)="goToConsultFollowup()">Consulter dossier de suivi</button>
-        <button (click)="goToConsultMedical()">Consulter dossier médical</button>
+        <button type="button" (click)="goToConsultFollowup()">Consulter dossier de suivi</button>
+        <button type="button" (click)="goToConsultMedical()">Consulter dossier médical</button>
       </div>
     }
     @else{
       <div class="buttons">
-        <button (click)="goToConsultPatients()">Consulter mes patients</button>
+        <button type="button" (click)="goToConsultPatients()">Consulter mes patients</button>
       </div>
     }
-  
+
   </div>
 
 </div>
 
 <!-- Bouton retour -->
 <div class="retour-container">
-  <button class="btn-retour" onclick="history.back()">⟵ Retour</button>
+  <button type="button" class="btn-retour" onclick="history.back()">⟵ Retour</button>
 </div>

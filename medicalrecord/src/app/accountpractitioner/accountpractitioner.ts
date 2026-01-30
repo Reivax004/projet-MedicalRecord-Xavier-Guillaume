@@ -14,9 +14,9 @@ import { PractitionerService } from '../services/practitioners';
 })
 export class PractitionerForm implements OnInit {
 
-  practitionerForm!: FormGroup;
-  isEdit: boolean = false;
-  idToEdit: string | null = null;
+  public practitionerForm!: FormGroup;
+  public isEdit: boolean = false;
+  private idToEdit: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -25,13 +25,13 @@ export class PractitionerForm implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
 
     // Récupération de l'ID dans l'URL
     this.idToEdit = this.route.snapshot.paramMap.get('id');
     this.isEdit = !!this.idToEdit;
 
-    // Formulaire simplifié pour correspondre exactement au HTML fourni
+    // Formulaire
     this.practitionerForm = this.fb.group({
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
@@ -41,12 +41,12 @@ export class PractitionerForm implements OnInit {
       password: ['', Validators.required]
     });
 
-    if (this.isEdit) {
+    if (this.isEdit && this.idToEdit) {
       this.loadPractitioner(this.idToEdit!);
     }
   }
 
-  loadPractitioner(id: string) {
+  private loadPractitioner(id: string): void {
     this.practitionerService.getById(id).subscribe({
       next: (p: Practitioner) => {
         this.practitionerForm.patchValue({
@@ -55,7 +55,7 @@ export class PractitionerForm implements OnInit {
           specialization: p.specialization,
           phone: p.phone,
           email: p.email,
-          password: p.password
+          password: p.password // Discutable de si on le renvoit ou non, pour ce projet oui
         });
       },
       error: (err: any) => {
@@ -64,7 +64,7 @@ export class PractitionerForm implements OnInit {
     });
   }
 
-  onSubmit() {
+  public onSubmit(): void {
     if (this.practitionerForm.invalid) {
       this.practitionerForm.markAllAsTouched();
       return;

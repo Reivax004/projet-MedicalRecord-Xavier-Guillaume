@@ -1,32 +1,41 @@
 <div class="record-page-container">
-    <h1>Dossier Médical</h1>
+  <h1>Dossier Médical</h1>
+
+  @if (record && record.length > 0) {
+    @let r = record[0];
+
     <div class="section">
       <h2>Informations Générales</h2>
+
       <div class="info-grid">
         <div class="info-item">
           <span class="label">Poids :</span>
-          <span class="value">{{ record[0].weight ? record[0].weight + ' kg' : 'Non renseigné' }}</span>
+          <span class="value">{{ r.weight ? (r.weight + ' kg') : 'Non renseigné' }}</span>
         </div>
+
         <div class="info-item">
           <span class="label">Taille :</span>
-          <span class="value">{{ record[0].height ? record[0].height + ' cm' : 'Non renseigné' }}</span>
+          <span class="value">{{ r.height ? (r.height + ' cm') : 'Non renseigné' }}</span>
         </div>
-        @if(record[0].weight && record[0].height){
-        <div class="info-item">
-          <span class="label">IMC :</span>
-          <span class="value">
-            {{ calculateBMI(record[0]) }}
-            <span class="bmi-category">({{ getBMICategory(record[0]) }})</span>
-          </span>
-        </div>
+
+        @if (r.weight && r.height) {
+          <div class="info-item">
+            <span class="label">IMC :</span>
+            <span class="value">
+              {{ calculateBMI(r) }}
+              <span class="bmi-category">({{ getBMICategory(r) }})</span>
+            </span>
+          </div>
         }
+
         <div class="info-item">
           <span class="label">Groupe sanguin :</span>
-          <span class="value blood-group">{{ record[0].blood_group }}</span>
+          <span class="value blood-group">{{ r.blood_group }}</span>
         </div>
+
         <div class="info-item">
           <span class="label">Pression sanguine :</span>
-          <span class="value">{{ record[0].blood_pressure }}</span>
+          <span class="value">{{ r.blood_pressure }}</span>
         </div>
       </div>
     </div>
@@ -34,62 +43,66 @@
     <!-- ALLERGIES -->
     <div class="section">
       <h2>Allergies</h2>
-      @if(record[0].allergies && record[0].allergies.length > 0){
-      <div class="allergies-list">
-        @for(allergy of record[0].allergies; track allergy){
-        <span>{{ allergy }}</span>
+
+      @if (r.allergies && r.allergies.length > 0) {
+        <div class="allergies-list">
+          @for (allergy of r.allergies; track allergy) {
+            <span>{{ allergy }}</span>
           }
-      </div>
-        @if(!record[0].allergies || record[0].allergies.length === 0){
+        </div>
+      } @else {
         <p>Aucune allergie renseignée</p>
       }
-      }
     </div>
+
     <!-- VACCINS -->
     <div class="section">
       <h2>Historique de Vaccination</h2>
-      @if(record[0].vaccines && record[0].vaccines.length > 0){
-      <div class="vaccines-list">
-        @for(vaccine of record[0].vaccines; track vaccine.name; let i = $index){
-        <div class="vaccine-card">
-          <div class="vaccine-header">
-            <h3>{{ vaccine.name }}</h3>
-            <span class="vaccine-number">#{{ i + 1 }}</span>
-          </div>
-          <div class="vaccine-details">
-            @if(vaccine.injection_date){
-            <div>
-              <span class="detail-label">Date :</span>
-              <span class="detail-value">{{ formatDate(vaccine.injection_date) }}</span>
+
+      @if (r.vaccines && r.vaccines.length > 0) {
+        <div class="vaccines-list">
+          @for (vaccine of r.vaccines; track i; let i = $index) {
+            <div class="vaccine-card">
+              <div class="vaccine-header">
+                <h3>{{ vaccine.name }}</h3>
+                <span class="vaccine-number">#{{ i + 1 }}</span>
+              </div>
+
+              <div class="vaccine-details">
+                @if (vaccine.injection_date) {
+                  <div>
+                    <span class="detail-label">Date :</span>
+                    <span class="detail-value">{{ formatDate(vaccine.injection_date) }}</span>
+                  </div>
+                }
+                @if (vaccine.vaccination_type) {
+                  <div>
+                    <span class="detail-label">Type :</span>
+                    <span class="detail-value">{{ vaccine.vaccination_type }}</span>
+                  </div>
+                }
+                @if (vaccine.vaccinator_name) {
+                  <div>
+                    <span class="detail-label">Vaccinateur :</span>
+                    <span class="detail-value">{{ vaccine.vaccinator_name }}</span>
+                  </div>
+                }
+              </div>
             </div>
-            }
-            @if(vaccine.vaccination_type){
-            <div>
-              <span class="detail-label">Type :</span>
-              <span class="detail-value">{{ vaccine.vaccination_type }}</span>
-            </div>
-            }
-            @if(vaccine.vaccinator_name){
-            <div>
-              <span class="detail-label">Vaccinateur :</span>
-              <span class="detail-value">{{ vaccine.vaccinator_name }}</span>
-            </div>
-            }
-          </div>
+          }
         </div>
-        }
-      </div>
-      }
-      @if(!record[0].vaccines || record[0].vaccines.length === 0){
-      <p>Aucun vaccin enregistré</p>
+      } @else {
+        <p>Aucun vaccin enregistré</p>
       }
     </div>
 
-    <!-- FOOTER ACTIONS -->
     <div class="footer-actions">
-      <button class="btn-back" (click)="goBack()">⟵ Retour</button>
-      <button class="btn-back" (click)="editRecord(this.recordId)">Modifier</button>
-      <button class="btn-delete" (click)="deleteRecord()">Supprimer</button>
+      <button type="button" class="btn-back" (click)="goBack()">⟵ Retour</button>
+      <button type="button" class="btn-back" (click)="editRecord(recordId)">Modifier</button>
+      <button type="button" class="btn-delete" (click)="deleteRecord()">Supprimer</button>
     </div>
 
+  } @else {
+    <p>Aucun dossier médical trouvé.</p>
+  }
 </div>

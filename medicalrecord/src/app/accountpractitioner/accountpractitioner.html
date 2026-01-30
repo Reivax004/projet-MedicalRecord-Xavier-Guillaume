@@ -13,16 +13,22 @@
     <input id="specialisation" formControlName="specialization" type="text">
 
     <label for="telephone">Téléphone*</label>
-    <input id="telephone" formControlName="phone" type="text">
+    <input id="telephone" formControlName="phone" type="tel">
 
     <label for="email">Email*</label>
-    <input id="email" formControlName="email" type="text">
+    <input id="email" formControlName="email" type="email">
 
     <label for="password">Mot de passe*</label>
     <input type="password" id="password" formControlName="password">
 
 
-    <button class="submit-btn" type="submit">@if(isEdit){Enregistrer}@else{S'inscrire}</button>
+    <button class="submit-btn" type="submit">
+      @if (isEdit) {
+        Enregistrer
+      } @else {
+        S'inscrire
+      }
+    </button>
   </form>
   <div class="retour-container">
     <button class="btn-retour" onclick="history.back()">⟵ Retour</button>

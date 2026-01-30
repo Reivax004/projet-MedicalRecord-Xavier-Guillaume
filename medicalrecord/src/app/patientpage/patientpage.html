@@ -32,10 +32,8 @@
         </div>
       </div>
       <div class="actions">
-        <button class="btn-primary" (click)="onEdit()">Modifier</button>
-      </div>
-      <div class="actions">
-        <button class="btn-primary" (click)="onDelete()">Supprimer</button>
+        <button type="button" class="btn-primary" (click)="onEdit()">Modifier</button>
+        <button type="button" class="btn-danger" (click)="onDelete()">Supprimer</button>
       </div>
     </section>
   }
@@ -44,13 +42,13 @@
       <header class="page-header">
         <h1>Liste des patients</h1>
       </header>
-    
+
         @for (patient of users; track patient._id) {
         <section class="card">
           <div class="card-row">
             <div class="avatar">
               {{ patient.firstname.charAt(0) }}{{ patient.lastname.charAt(0) }}
-            </div>    
+            </div>
             <div class="personal">
               <h2>{{ patient.firstname }} {{ patient.lastname }}</h2>
               <p class="muted">
@@ -58,20 +56,20 @@
               </p>
               <p class="muted">N° SSN : {{ patient.SSN }}</p>
             </div>
-            <span class="meeting-badge" *ngIf="patient.totalMeetings && patient.totalMeetings > 0">
-              Vu {{ patient.totalMeetings }} fois
-            </span>
+            @if (patient.totalMeetings && patient.totalMeetings > 0) {
+              <span class="meeting-badge">Vu {{ patient.totalMeetings }} fois</span>
+            }
           </div>
-    
+
           <hr />
-    
+
           <div class="info-grid">
             <div class="info-block">
               <h3>Contact</h3>
               <p><strong>Téléphone</strong><br>{{ patient.phone }}</p>
               <p><strong>Email</strong><br>{{ patient.email }}</p>
             </div>
-    
+
             <div class="info-block">
               <h3>Adresse</h3>
               <p>{{ patient.address.number }}</p>
@@ -79,23 +77,29 @@
               <p>{{ patient.address.postal_code }} {{ patient.address.city }}</p>
               <p>{{ patient.address.country }}</p>
             </div>
-          </div>  
+          </div>
           <div class="actions">
-            <button class="btn-secondary"
-                    (click)="patient._id ? viewFollowedFiles(patient._id) : null">
+            <button
+              type="button"
+              class="btn-secondary"
+              [disabled]="!patient._id"
+              (click)="viewFollowedFiles(patient._id!)">
               Voir leurs dossiers suivis
             </button>
-          
-            <button class="btn-primary"
-                    (click)="patient._id ? viewPatient(patient._id) : null">
+
+            <button
+              type="button"
+              class="btn-primary"
+              [disabled]="!patient._id"
+              (click)="viewPatient(patient._id!)">
               Voir son dossier général
             </button>
           </div>
-          
-              
+
+
         </section>
       }
-    
+
     </div>
   }
   </main>
